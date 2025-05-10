@@ -19,6 +19,7 @@ public class Player : Entity
     public float dashSpeed;
     public float dashDuration;
     public float dashDir {get; private set;}
+    public bool playerIsInBlackHole;
 
     public SkillManager skill {get; private set;}
     public GameObject sword {get; private set;}
@@ -39,6 +40,7 @@ public class Player : Entity
 
     public PlayerAimSwordState aimSword {get; private set;}
     public PlayerCatchSwordState catchSword {get; private set;}
+    public PlayerBlackholeState blackhole {get; private set;}
 
     #endregion
     
@@ -61,6 +63,7 @@ public class Player : Entity
     
         aimSword = new PlayerAimSwordState(this, stateMachine, "AimSword");
         catchSword = new PlayerCatchSwordState(this, stateMachine, "CatchSword");
+        blackhole = new PlayerBlackholeState(this, stateMachine, "Jump");
     }
 
     protected override void Start()
@@ -105,7 +108,7 @@ public class Player : Entity
 
     private void CheckForDashInput()
     {
-        if(IsWallDetected())
+        if(IsWallDetected() || playerIsInBlackHole)
             return;
 
 
