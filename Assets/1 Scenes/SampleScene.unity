@@ -2346,6 +2346,7 @@ GameObject:
   - component: {fileID: 504560061}
   - component: {fileID: 504560062}
   - component: {fileID: 504560063}
+  - component: {fileID: 504560064}
   m_Layer: 0
   m_Name: SkillManager
   m_TagString: Untagged
@@ -2409,6 +2410,12 @@ MonoBehaviour:
   clonePrefab: {fileID: 3348524936157918158, guid: ada9f4ec5ffdb8c409dc219e2d73dc00, type: 3}
   cloneDuration: 1.5
   canAttack: 1
+  createCloneOnDashStart: 1
+  createCloneOnDashOver: 1
+  canCreateCloneOnCounterAttack: 1
+  canDuplicateClone: 0
+  chanceToDuplicate: 0
+  crystalInseadOfClone: 1
 --- !u!114 &504560062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2461,6 +2468,33 @@ MonoBehaviour:
   maxSize: 15
   growSpeed: 3
   shrinkSpeed: 6
+--- !u!114 &504560064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504560057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f9320cd84cb784885b195f04382ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  crystalDuration: 1.5
+  crystalPrefab: {fileID: 3901842309790632372, guid: 748c11c1636dbce419f83471254c015f, type: 3}
+  cloneInsteadOfCrystal: 0
+  canExplode: 1
+  canMoveToEnemy: 1
+  moveSpeed: 4
+  canUseMultiStacks: 1
+  amountOfStacks: 3
+  multiStackCooldown: 4
+  useTimeWindow: 2.5
+  crystalLeft:
+  - {fileID: 3901842309790632372, guid: 748c11c1636dbce419f83471254c015f, type: 3}
+  - {fileID: 3901842309790632372, guid: 748c11c1636dbce419f83471254c015f, type: 3}
+  - {fileID: 3901842309790632372, guid: 748c11c1636dbce419f83471254c015f, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2548,7 +2582,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.600048, y: 1.8275416, z: -10.074983}
+  m_LocalPosition: {x: -18.61874, y: 1.8275416, z: -10.074983}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3245,7 +3279,7 @@ Transform:
   m_GameObject: {fileID: 991027221}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.600048, y: 1.8275416, z: -10.074983}
+  m_LocalPosition: {x: -18.61874, y: 1.8275416, z: -10.074983}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5872,6 +5906,7 @@ MonoBehaviour:
   swordReturnImpact: 5
   dashSpeed: 25
   dashDuration: 0.2
+  playerIsInBlackHole: 0
 --- !u!4 &1699748495
 Transform:
   m_ObjectHideFlags: 0
