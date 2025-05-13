@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Stat
 {
     [SerializeField] private int baseValue;
@@ -17,6 +18,11 @@ public class Stat
         }
 
         return finalValue;
+    }
+
+    public void SetDefaultValue(int _value)
+    {
+        baseValue = _value;
     }
 
     public void AddModifier(int _modifier)
