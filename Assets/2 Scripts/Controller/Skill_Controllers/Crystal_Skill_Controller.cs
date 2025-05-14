@@ -74,11 +74,15 @@ public class Crystal_Skill_Controller : MonoBehaviour
         {
             if(hit.GetComponent<Enemy>() != null)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:Assets/2 Scripts/Skill/Skill_Controllers/Crystal_Skill_Controller.cs
                 hit.GetComponent<Enemy>().Damage();
 =======
                 player.stats.DoMagicalDamage(hit.GetComponent<CharacterStats>());
 >>>>>>> Stashed changes:Assets/2 Scripts/Controller/Skill_Controllers/Crystal_Skill_Controller.cs
+=======
+                player.stats.DoMagicalDamage(hit.GetComponent<CharacterStats>());
+>>>>>>> Stashed changes
 =======
                 player.stats.DoMagicalDamage(hit.GetComponent<CharacterStats>());
 >>>>>>> Stashed changes

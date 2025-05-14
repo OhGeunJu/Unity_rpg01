@@ -66,11 +66,15 @@ public class Clone_Skill_Controller : MonoBehaviour
             if(hit.GetComponent<Enemy>() != null)
             {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:Assets/2 Scripts/Skill/Skill_Controllers/Clone_Skill_Controller.cs
                 hit.GetComponent<Enemy>().Damage();
 =======
                 player.stats.DoDamage(hit.GetComponent<CharacterStats>());
 >>>>>>> Stashed changes:Assets/2 Scripts/Controller/Skill_Controllers/Clone_Skill_Controller.cs
+=======
+                player.stats.DoDamage(hit.GetComponent<CharacterStats>());
+>>>>>>> Stashed changes
 =======
                 player.stats.DoDamage(hit.GetComponent<CharacterStats>());
 >>>>>>> Stashed changes

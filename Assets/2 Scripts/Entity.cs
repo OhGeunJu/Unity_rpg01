@@ -50,11 +50,17 @@ public class Entity : MonoBehaviour
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public virtual void Damage()
     {
         fx.StartCoroutine("FlashFX");
         StartCoroutine("HitKnockback");
         Debug.Log("Damage");
+=======
+    public virtual void SlowEntityBy(float _slowPercentage, float _slowDuration)
+    {
+        
+>>>>>>> Stashed changes
 =======
     public virtual void SlowEntityBy(float _slowPercentage, float _slowDuration)
     {
@@ -137,6 +143,7 @@ public class Entity : MonoBehaviour
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public void MakeTransprent(bool _transprent)
     {
         if(_transprent)
@@ -144,6 +151,8 @@ public class Entity : MonoBehaviour
         else
             sr.color = Color.white;
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     public virtual void Die()
