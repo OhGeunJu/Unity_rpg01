@@ -42,7 +42,10 @@ public class Enemy : Entity
     }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
     public virtual void AssignLastAnimName(string _animBoolName) => lastAnimBoolName = _animBoolName;
 
     public override void SlowEntityBy(float _slowPercentage, float _slowDuration)
@@ -51,6 +54,16 @@ public class Enemy : Entity
         anim.speed = anim.speed * (1 - _slowPercentage);
 
         Invoke("ReturnDefaultSpeed", _slowDuration);
+<<<<<<< Updated upstream
+=======
+    }
+
+    protected override void ReturnDefaultSpeed()
+    {
+        base.ReturnDefaultSpeed();
+
+        moveSpeed = defaultMoveSpeed;
+>>>>>>> Stashed changes
     }
 
     protected override void ReturnDefaultSpeed()
