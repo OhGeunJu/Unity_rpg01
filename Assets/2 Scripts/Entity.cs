@@ -48,12 +48,25 @@ public class Entity : MonoBehaviour
         
     }
 
+<<<<<<< Updated upstream
     public virtual void Damage()
     {
         fx.StartCoroutine("FlashFX");
         StartCoroutine("HitKnockback");
         Debug.Log("Damage");
+=======
+    public virtual void SlowEntityBy(float _slowPercentage, float _slowDuration)
+    {
+        
+>>>>>>> Stashed changes
     }
+
+    protected virtual void ReturnDefaultSpeed()
+    {
+        anim.speed = 1;
+    }
+
+    public virtual void DamageImpact() => StartCoroutine("HitKnockback");
 
     protected virtual IEnumerator HitKnockback()
     {
@@ -116,12 +129,18 @@ public class Entity : MonoBehaviour
     
     #endregion
 
+<<<<<<< Updated upstream
     public void MakeTransprent(bool _transprent)
     {
         if(_transprent)
             sr.color = Color.clear;
         else
             sr.color = Color.white;
+=======
+    public virtual void Die()
+    {
+
+>>>>>>> Stashed changes
     }
 
 }

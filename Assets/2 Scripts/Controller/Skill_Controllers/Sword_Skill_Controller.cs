@@ -204,7 +204,11 @@ public class Sword_Skill_Controller : MonoBehaviour
 
     private void SwordSkillDamage(Enemy enemy)
     {
+<<<<<<< Updated upstream:Assets/2 Scripts/Skill/Skill_Controllers/Sword_Skill_Controller.cs
         enemy.Damage();
+=======
+        player.stats.DoDamage(enemy.GetComponent<CharacterStats>());
+>>>>>>> Stashed changes:Assets/2 Scripts/Controller/Skill_Controllers/Sword_Skill_Controller.cs
         enemy.StartCoroutine("FreezeTimerFor", freezeTimeDuration);
     }
 
