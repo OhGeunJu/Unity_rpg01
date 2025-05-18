@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
@@ -5,15 +6,15 @@ public class CharacterStats : MonoBehaviour
     private EntityFX fx;
 
     [Header("Major stats")]
-    public Stat strength; // 1 point increase damage by 1 and crit.power by 1%
-    public Stat agility;  // 1 point increase evasion by 1% and crit.chance by 1%
-    public Stat intelligence; // 1 point increase magic damage by 1 and magic resistance by 3
-    public Stat vitality; // 1 point incredase health by 3 or 5 points
+    public Stat strength;
+    public Stat agility;
+    public Stat intelligence;
+    public Stat vitality;
 
     [Header("Offensive stats")]
     public Stat damage;
     public Stat critChance;
-    public Stat critPower;              // default value 150%
+    public Stat critPower;
 
     [Header("Defensive stats")]
     public Stat maxHealth;
@@ -27,9 +28,9 @@ public class CharacterStats : MonoBehaviour
     public Stat lightingDamage;
 
 
-    public bool isIgnited;   // does damage over time
-    public bool isChilled;   // reduce armor by 20%
-    public bool isShocked;   // reduce accuracy by 20%
+    public bool isIgnited;
+    public bool isChilled;
+    public bool isShocked;
 
 
     [SerializeField] private float ailmentsDuration = 4;
@@ -78,7 +79,20 @@ public class CharacterStats : MonoBehaviour
             ApplyIgniteDamage();
     }
 
-    
+    public virtual void IncreaseStatBy(int _modifier, float _duration, Stat _statToModify)
+    {
+        StartCoroutine(StatModCoroutime(_modifier, _duration, _statToModify));
+    }
+
+    private IEnumerator StatModCoroutime(int _modifier, float _duration, Stat _statToModify)
+    {
+        _statToModify.AddModifier(_modifier);
+
+        yield return new WaitForSeconds(_duration);
+
+        _statToModify.RemoveModifier(_modifier);
+    }
+
 
     public virtual void DoDamage(CharacterStats _targetStats)
     {
@@ -92,15 +106,10 @@ public class CharacterStats : MonoBehaviour
             totalDamage = CalculateCriticalDamage(totalDamage);
         }
 
-
-
         totalDamage = CheckTargetArmor(_targetStats, totalDamage);
         _targetStats.TakeDamage(totalDamage);
-        
 
-        //if invnteroy current weapon has fire effect
-        // then DoMagicalDamage(_targetStats);
-
+        DoMagicalDamage(_targetStats);
     }
 
     #region Magical damage and ailemnts
@@ -285,6 +294,17 @@ public class CharacterStats : MonoBehaviour
             Die();
 
 
+    }
+
+    public virtual void IncreaseMealthBy(int _amount)
+    {
+        currentHealth += _amount;
+
+        if (currentHealth > GetMaxHealthValue())
+            currentHealth = GetMaxHealthValue();
+
+        if (onHealthChanged != null)
+            onHealthChanged();
     }
 
     protected virtual void DecreaseHealthBy(int _damage)

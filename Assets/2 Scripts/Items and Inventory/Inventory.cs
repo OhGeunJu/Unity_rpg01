@@ -27,6 +27,13 @@ public class Inventory : MonoBehaviour
     private UI_ItemSlot[] stashItemSlot;
     private UI_EquipmentSlot[] equipmentSlot;
 
+    [Header("Items cooldown")]
+    private float lastTimeUsedFlask;
+    private float lastTimeUsedArmor;
+
+    private float flaskCooldown;
+    private float armorCooldown;
+
     private void Awake()
     {
         if (instance == null)
@@ -204,11 +211,11 @@ public class Inventory : MonoBehaviour
     {
         List<InventoryItem> materialsToRemove = new List<InventoryItem>();
 
-        for(int i = 0; i < _requiredMaterials.Count; i++)
+        for (int i = 0; i < _requiredMaterials.Count; i++)
         {
             if (stashDictionary.TryGetValue(_requiredMaterials[i].data, out InventoryItem stashValue))
             {
-                if(stashValue.stackSize < _requiredMaterials[i].stackSize)
+                if (stashValue.stackSize < _requiredMaterials[i].stackSize)
                 {
                     Debug.Log("Not enough materials");
                     return false;
@@ -251,5 +258,40 @@ public class Inventory : MonoBehaviour
         }
 
         return equipmentItem;
+    }
+
+    public void UseFlask()
+    {
+        ItemData_Equipment currentFlask = GetEquipment(EquipmentType.Flask);
+
+        if (currentFlask == null)
+            return;
+
+
+        bool canUseFlask = Time.time > lastTimeUsedFlask + flaskCooldown;
+
+        if (canUseFlask)
+        {
+            flaskCooldown = currentFlask.itemCooldown;
+            currentFlask.Effect(null);
+            lastTimeUsedFlask = Time.time;
+        }
+        else
+            Debug.Log("Flask is on cooldown");
+    }
+
+    public bool CanUseArmor()
+    {
+        ItemData_Equipment currentArmor = GetEquipment(EquipmentType.Armor);
+
+        if (Time.time > lastTimeUsedArmor + armorCooldown)
+        {
+            armorCooldown = currentArmor.itemCooldown;
+            lastTimeUsedArmor = Time.time;
+            return true;
+        }
+
+        Debug.Log("Armor is on cooldown");
+        return false;
     }
 }

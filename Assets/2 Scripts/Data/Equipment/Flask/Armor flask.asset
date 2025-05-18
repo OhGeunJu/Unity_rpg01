@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d355362667e9f54d8a7e9c693f45b8d, type: 3}
-  m_Name: Ice and Fire
+  m_Name: Armor flask
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: Ice and Fire
-  icon: {fileID: 1398721256, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
-  dropChance: 6.2
-  equipmentType: 0
+  itemName: Armor flask
+  icon: {fileID: -165920498, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+  dropChance: 0
+  equipmentType: 3
+  itemCooldown: 15
   itemEffects:
-  - {fileID: 11400000, guid: 2c16c0886faab7845b0ff23f04ec1ce1, type: 2}
+  - {fileID: 11400000, guid: 9c89c5d22db5cd34c873a2976ac2d21e, type: 2}
+  - {fileID: 11400000, guid: f1c8d6517b8d7ad4f80e182a1345bf10, type: 2}
   strength: 0
   agility: 0
   intelligence: 0
@@ -30,7 +32,7 @@ MonoBehaviour:
   armor: 0
   evasion: 0
   magicResistance: 0
-  fireDamage: 5
-  iceDamage: 5
+  fireDamage: 0
+  iceDamage: 0
   lightingDamage: 0
   craftingMaterials: []
