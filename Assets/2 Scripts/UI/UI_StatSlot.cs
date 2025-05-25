@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UI_StatSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UI_StatSlot : MonoBehaviour , IPointerEnterHandler, IPointerExitHandler
 {
     private UI ui;
 
@@ -20,6 +20,7 @@ public class UI_StatSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         gameObject.name = "Stat - " + statName;
 
+
         if(statNameText != null)
             statNameText.text = statName;
     }
@@ -34,27 +35,28 @@ public class UI_StatSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         PlayerStats playerStats = PlayerManager.instance.player.GetComponent<PlayerStats>();
 
-
-        if (playerStats != null)
+        if(playerStats != null)
         {
             statValueText.text = playerStats.GetStat(statType).GetValue().ToString();
-        
-            if(statType == StatType.health)
+
+
+
+            if (statType == StatType.health)
                 statValueText.text = playerStats.GetMaxHealthValue().ToString();
 
             if (statType == StatType.damage)
                 statValueText.text = (playerStats.damage.GetValue() + playerStats.strength.GetValue()).ToString();
 
-            if(statType == StatType.critPower)
+            if (statType == StatType.critPower)
                 statValueText.text = (playerStats.critPower.GetValue() + playerStats.strength.GetValue()).ToString();
 
-            if(statType == StatType.critPower)
+            if(statType == StatType.critChance)
                 statValueText.text = (playerStats.critChance.GetValue() + playerStats.agility.GetValue()).ToString();
 
-            if(statType == StatType.evasion)
+            if (statType == StatType.evasion)
                 statValueText.text = (playerStats.evasion.GetValue() + playerStats.agility.GetValue()).ToString();
 
-            if(statType == StatType.magicRes)
+            if (statType == StatType.magicRes)
                 statValueText.text = (playerStats.magicResistance.GetValue() + (playerStats.intelligence.GetValue() * 3)).ToString();
         }
     }

@@ -7,11 +7,11 @@ public class EnemyStats : CharacterStats
     private Enemy enemy;
     private ItemDrop myDropSystem;
 
-    [Header("level details")]
+    [Header("Level details")]
     [SerializeField] private int level = 1;
 
     [Range(0f, 1f)]
-    [SerializeField] private float percentageModifier = .4f;
+    [SerializeField] private float percantageModifier = .4f;
 
     protected override void Start()
     {
@@ -42,14 +42,13 @@ public class EnemyStats : CharacterStats
         Modify(fireDamage);
         Modify(iceDamage);
         Modify(lightingDamage);
-
     }
 
     private void Modify(Stat _stat)
     {
-        for(int i = 0; i < level; i++)
+        for (int i = 1; i < level; i++)
         {
-            float modifier = _stat.GetValue() * percentageModifier;
+            float modifier = _stat.GetValue() * percantageModifier;
 
             _stat.AddModifier(Mathf.RoundToInt(modifier));
         }

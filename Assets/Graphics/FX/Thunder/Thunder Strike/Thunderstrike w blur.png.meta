@@ -3,7 +3,7 @@ guid: afe81f347eefa0a46b73aa061be8a8ca
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,12 +20,11 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMipmapLimit: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -64,7 +63,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -77,7 +75,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -90,7 +87,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -103,7 +99,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -116,7 +111,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -137,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb3f520326fafc342a6bb8cc5c45a107
-      internalID: 646172506
+      spriteID: 792544bc41ab97e46867ecda39e171ce
+      internalID: 1276969378
       vertices: []
       indices: 
       edges: []
@@ -158,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56396a26aa595674ba0bdabc0a0df4a3
-      internalID: 752316916
+      spriteID: a5f1678108a722b41a82aea459ca7344
+      internalID: -1454677030
       vertices: []
       indices: 
       edges: []
@@ -179,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5dea186e8e8a314e809ed910c311bd0
-      internalID: -974358901
+      spriteID: b7b34dbf8edf37740aa1c04908409edb
+      internalID: -34528049
       vertices: []
       indices: 
       edges: []
@@ -200,8 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca7a0e96c6ee029498c107fcc280b6ef
-      internalID: -1266522135
+      spriteID: 3139d40ceb840bd43ad6447ad52a46ba
+      internalID: 2063399491
       vertices: []
       indices: 
       edges: []
@@ -221,8 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fd1a40e2c6f80248b9b5c0ee09406ea
-      internalID: -1091026903
+      spriteID: 50019d4350991754c82e5a5a95669f0c
+      internalID: -23776447
       vertices: []
       indices: 
       edges: []
@@ -242,8 +236,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e3cb80995ba6f74da37d2c6532ad561
-      internalID: 127753757
+      spriteID: 152bfd41de155cb4ba23ce9a9e5ec401
+      internalID: 307096374
       vertices: []
       indices: 
       edges: []
@@ -263,8 +257,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1e030fa964d46d4b8950962ebfa6795
-      internalID: 1853557595
+      spriteID: e3a6ec51cf49f4547a9afbe1265e3a4e
+      internalID: 1632385235
       vertices: []
       indices: 
       edges: []
@@ -284,8 +278,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bcab99e0ded77d4eabd2a3c5c08dbeb
-      internalID: -1060449913
+      spriteID: f75373bcc7073bb4db453246fa7496f8
+      internalID: -1012350263
       vertices: []
       indices: 
       edges: []
@@ -305,8 +299,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aae4388bff82c5b4db84bb0e406d8cd0
-      internalID: 1887909808
+      spriteID: 49bcb05ce9d8b7748b51888f17d54a23
+      internalID: 755138451
       vertices: []
       indices: 
       edges: []
@@ -326,8 +320,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b7a35772f96593459e4a6599456a4cc
-      internalID: -1518158737
+      spriteID: 22cdf51401dbf1146a5ad8665f3a4aa8
+      internalID: 609944769
       vertices: []
       indices: 
       edges: []
@@ -347,8 +341,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50b42f3ae2e0bb14ab0128169094daa0
-      internalID: 50762188
+      spriteID: d7221919e80383a46abc24ae087ada7c
+      internalID: 207575785
       vertices: []
       indices: 
       edges: []
@@ -368,8 +362,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bd601a919e37e3478193f843d7cebfb
-      internalID: -1068008661
+      spriteID: fbecda4b2da781c4ca830e9be57f87f2
+      internalID: 1517386643
       vertices: []
       indices: 
       edges: []
@@ -385,20 +379,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Thunderstrike w blur_0: 646172506
-      Thunderstrike w blur_1: 752316916
-      Thunderstrike w blur_10: 50762188
-      Thunderstrike w blur_11: -1068008661
-      Thunderstrike w blur_2: -974358901
-      Thunderstrike w blur_3: -1266522135
-      Thunderstrike w blur_4: -1091026903
-      Thunderstrike w blur_5: 127753757
-      Thunderstrike w blur_6: 1853557595
-      Thunderstrike w blur_7: -1060449913
-      Thunderstrike w blur_8: 1887909808
-      Thunderstrike w blur_9: -1518158737
-  mipmapLimitGroupName: 
+      Thunderstrike w blur_9: 609944769
+      Thunderstrike w blur_0: 1276969378
+      Thunderstrike w blur_10: 207575785
+      Thunderstrike w blur_11: 1517386643
+      Thunderstrike w blur_4: -23776447
+      Thunderstrike w blur_1: -1454677030
+      Thunderstrike w blur_5: 307096374
+      Thunderstrike w blur_6: 1632385235
+      Thunderstrike w blur_3: 2063399491
+      Thunderstrike w blur_8: 755138451
+      Thunderstrike w blur_7: -1012350263
+      Thunderstrike w blur_2: -34528049
+  spritePackingTag: 
   pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

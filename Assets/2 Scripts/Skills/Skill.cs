@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Skill : MonoBehaviour
 {
-    [SerializeField] protected float cooldown;
+    public float cooldown;
     protected float cooldownTimer;
 
     protected Player player;
@@ -38,7 +38,7 @@ public class Skill : MonoBehaviour
 
     public virtual void UseSkill()
     {
-        // do some skill spesific things
+        
     }
 
     protected virtual Transform FindClosestEnemy(Transform _checkTransform)

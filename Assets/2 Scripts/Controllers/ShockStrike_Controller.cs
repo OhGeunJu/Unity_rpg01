@@ -23,7 +23,6 @@ public class ShockStrike_Controller : MonoBehaviour
         targetStats = _targetStats;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(!targetStats)
@@ -56,7 +55,7 @@ public class ShockStrike_Controller : MonoBehaviour
     private void DamageAndSelfDestroy()
     {
             targetStats.ApplyShock(true);
-            targetStats.TakeDamage(damage);
+            targetStats.TakeDamage(1);
             Destroy(gameObject, .4f);
     }
     

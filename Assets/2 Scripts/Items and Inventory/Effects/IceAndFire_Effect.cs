@@ -12,14 +12,14 @@ public class IceAndFire_Effect : ItemEffect
     {
         Player player = PlayerManager.instance.player;
 
-        bool thirdAttack = player.GetComponent<Player>().primaryAttack.comboCounter == 2;
+        bool thirdAttack = player.primaryAttack.comboCounter == 2;
 
-        if(thirdAttack)
+        if (thirdAttack)
         {
             GameObject newIceAndFire = Instantiate(iceAndFirePrefab, _respawnPosition.position, player.transform.rotation);
             newIceAndFire.GetComponent<Rigidbody2D>().velocity = new Vector2(xVelocity * player.facingDir, 0);
 
-            Destroy(newIceAndFire, 10f);
+            Destroy(newIceAndFire, 10);
         }
     }
 }

@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
+
 
 [CreateAssetMenu(fileName = "Buff effect", menuName = "Data/Item effect/Buff effect")]
 
@@ -17,5 +15,4 @@ public class Buff_Effect : ItemEffect
         stats = PlayerManager.instance.player.GetComponent<PlayerStats>();
         stats.IncreaseStatBy(buffAmount, buffDuration, stats.GetStat(buffType));
     }
-
 }

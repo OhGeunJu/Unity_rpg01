@@ -1,12 +1,12 @@
 using System.Collections;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+
 
 public enum StatType
 {
     strength,
     agility,
-    intelligence,
+    intelegence,
     vitality,
     damage,
     critChance,
@@ -17,7 +17,7 @@ public enum StatType
     magicRes,
     fireDamage,
     iceDamage,
-    lightingDamage,
+    lightingDamage
 }
 
 public class CharacterStats : MonoBehaviour
@@ -26,9 +26,9 @@ public class CharacterStats : MonoBehaviour
 
     [Header("Major stats")]
     public Stat strength;
-    public Stat agility;
+    public Stat agility; // 민첩성
     public Stat intelligence;
-    public Stat vitality;
+    public Stat vitality; // 생명력
 
     [Header("Offensive stats")]
     public Stat damage;
@@ -38,7 +38,7 @@ public class CharacterStats : MonoBehaviour
     [Header("Defensive stats")]
     public Stat maxHealth;
     public Stat armor;
-    public Stat evasion;
+    public Stat evasion; // 회피율
     public Stat magicResistance;
 
     [Header("Magic stats")]
@@ -66,7 +66,8 @@ public class CharacterStats : MonoBehaviour
     public int currentHealth;
 
     public System.Action onHealthChanged;
-    public bool isDead {get; private set;}
+    public bool isDead { get; private set; }
+    private bool isVulnerable;
 
     protected virtual void Start()
     {
@@ -98,12 +99,24 @@ public class CharacterStats : MonoBehaviour
             ApplyIgniteDamage();
     }
 
-    public virtual void IncreaseStatBy(int _modifier, float _duration, Stat _statToModify)
+
+    public void MakeVulnerableFor(float _duration) => StartCoroutine(VulnerableCorutine(_duration));
+
+    private IEnumerator VulnerableCorutine(float _duartion)
     {
-        StartCoroutine(StatModCoroutime(_modifier, _duration, _statToModify));
+        isVulnerable = true;
+
+        yield return new WaitForSeconds(_duartion);
+
+        isVulnerable = false;
     }
 
-    private IEnumerator StatModCoroutime(int _modifier, float _duration, Stat _statToModify)
+    public virtual void IncreaseStatBy(int _modifier, float _duration, Stat _statToModify)
+    {
+        StartCoroutine(StatModCoroutine(_modifier, _duration, _statToModify));
+    }
+
+    private IEnumerator StatModCoroutine(int _modifier, float _duration, Stat _statToModify)
     {
         _statToModify.AddModifier(_modifier);
 
@@ -111,7 +124,7 @@ public class CharacterStats : MonoBehaviour
 
         _statToModify.RemoveModifier(_modifier);
     }
-
+    
 
     public virtual void DoDamage(CharacterStats _targetStats)
     {
@@ -128,7 +141,9 @@ public class CharacterStats : MonoBehaviour
         totalDamage = CheckTargetArmor(_targetStats, totalDamage);
         _targetStats.TakeDamage(totalDamage);
 
-        DoMagicalDamage(_targetStats);
+
+        DoMagicalDamage(_targetStats); // 지우면 마법 데미지 없어짐
+
     }
 
     #region Magical damage and ailemnts
@@ -315,19 +330,25 @@ public class CharacterStats : MonoBehaviour
 
     }
 
-    public virtual void IncreaseMealthBy(int _amount)
+
+    public virtual void IncreaseHealthBy(int _amount)
     {
         currentHealth += _amount;
 
         if (currentHealth > GetMaxHealthValue())
             currentHealth = GetMaxHealthValue();
 
-        if (onHealthChanged != null)
+        if(onHealthChanged != null)
             onHealthChanged();
     }
 
+
     protected virtual void DecreaseHealthBy(int _damage)
     {
+
+        if (isVulnerable)
+            _damage = Mathf.RoundToInt( _damage * 1.1f);
+
         currentHealth -= _damage;
 
         if (onHealthChanged != null)
@@ -341,7 +362,7 @@ public class CharacterStats : MonoBehaviour
 
 
     #region Stat calculations
-    private int CheckTargetArmor(CharacterStats _targetStats, int totalDamage)
+    protected int CheckTargetArmor(CharacterStats _targetStats, int totalDamage)
     {
         if (_targetStats.isChilled)
             totalDamage -= Mathf.RoundToInt(_targetStats.armor.GetValue() * .8f);
@@ -361,7 +382,12 @@ public class CharacterStats : MonoBehaviour
         return totalMagicalDamage;
     }
 
-    private bool TargetCanAvoidAttack(CharacterStats _targetStats)
+    public virtual void OnEvasion()
+    {
+
+    }
+
+    protected bool TargetCanAvoidAttack(CharacterStats _targetStats)
     {
         int totalEvasion = _targetStats.evasion.GetValue() + _targetStats.agility.GetValue();
 
@@ -370,13 +396,14 @@ public class CharacterStats : MonoBehaviour
 
         if (Random.Range(0, 100) < totalEvasion)
         {
+            _targetStats.OnEvasion();
             return true;
         }
 
         return false;
     }
 
-    private bool CanCrit()
+    protected bool CanCrit()
     {
         int totalCriticalChance = critChance.GetValue() + agility.GetValue();
 
@@ -389,7 +416,7 @@ public class CharacterStats : MonoBehaviour
         return false;
     }
 
-    private int CalculateCriticalDamage(int _damage)
+    protected int CalculateCriticalDamage(int _damage)
     {
         float totalCritPower = (critPower.GetValue() + strength.GetValue()) * .01f;
         float critDamage = _damage * totalCritPower;
@@ -403,12 +430,12 @@ public class CharacterStats : MonoBehaviour
     }
 
     #endregion
-    
+
     public Stat GetStat(StatType _statType)
     {
         if (_statType == StatType.strength) return strength;
         else if (_statType == StatType.agility) return agility;
-        else if (_statType == StatType.intelligence) return intelligence;
+        else if (_statType == StatType.intelegence) return intelligence;
         else if (_statType == StatType.vitality) return vitality;
         else if (_statType == StatType.damage) return damage;
         else if (_statType == StatType.critChance) return critChance;

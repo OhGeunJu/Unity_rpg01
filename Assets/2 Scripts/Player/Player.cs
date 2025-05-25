@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : Entity
 {
@@ -78,7 +79,6 @@ public class Player : Entity
 
         stateMachine.Initialize(idleState);
 
-
         defaultMoveSpeed = moveSpeed;
         defaultJumpForce = jumpForce;
         defaultDashSpeed = dashSpeed;
@@ -94,10 +94,10 @@ public class Player : Entity
         CheckForDashInput();
 
 
-        if(Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && skill.crystal.crystalUnlocked)
             skill.crystal.CanUseSkill();
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
             Inventory.instance.UseFlask();
     }
 
@@ -147,7 +147,8 @@ public class Player : Entity
         if (IsWallDetected())
             return;
 
-
+        if (skill.dash.dashUnlocked == false)
+            return;
 
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && SkillManager.instance.dash.CanUseSkill())
