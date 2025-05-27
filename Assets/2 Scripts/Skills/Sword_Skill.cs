@@ -127,6 +127,15 @@ public class Sword_Skill : Skill
 
     #region Unlock region
 
+    override protected void CheckUnlock()
+    {
+        UnlockSword();
+        UnlockBounceSword();
+        UnlockPierceSword();
+        UnlockSpinSword();
+        UnlockTimeStop();
+        UnlockVulnurable();
+    }
 
     private void UnlockTimeStop()
     {
