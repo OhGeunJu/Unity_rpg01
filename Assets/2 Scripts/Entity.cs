@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Accessibility;
+
 
 public class Entity : MonoBehaviour
 {
@@ -9,26 +8,28 @@ public class Entity : MonoBehaviour
     #region Components
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
-    public EntityFX fx { get; private set; }
+    
     public SpriteRenderer sr { get; private set; }
     public CharacterStats stats { get; private set; }
     public CapsuleCollider2D cd {  get; private set; }
     #endregion
 
     [Header("Knockback info")]
-    [SerializeField] protected Vector2 knockbackDirection;
-    [SerializeField] protected float knockbackDuration;
+    [SerializeField] protected Vector2 knockbackPower = new Vector2(7,12);
+    [SerializeField] protected Vector2 knockbackOffset = new Vector2(.5f,2);
+    [SerializeField] protected float knockbackDuration = .07f;
     protected bool isKnocked;
 
     [Header("Collision info")]
     public Transform attackCheck;
-    public float attackCheckRadius;
+    public float attackCheckRadius = 1.2f;
     [SerializeField] protected Transform groundCheck;
-    [SerializeField] protected float groundCheckDistance;
+    [SerializeField] protected float groundCheckDistance = 1;
     [SerializeField] protected Transform wallCheck;
-    [SerializeField] protected float wallCheckDistance;
+    [SerializeField] protected float wallCheckDistance = .8f;
     [SerializeField] protected LayerMask whatIsGround;
 
+    public int knockbackDir { get; private set; }
     public int facingDir { get; private set; } = 1;
     protected bool facingRight = true;
 
@@ -44,7 +45,7 @@ public class Entity : MonoBehaviour
         sr = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        fx = GetComponent<EntityFX>();
+        
         stats = GetComponent<CharacterStats>();
         cd = GetComponent<CapsuleCollider2D>();
     }
@@ -66,14 +67,35 @@ public class Entity : MonoBehaviour
 
     public virtual void DamageImpact() => StartCoroutine("HitKnockback");
  
+    public virtual void SetupKnockbackDir(Transform _damageDirection)
+    {
+        if (_damageDirection.position.x > transform.position.x)
+            knockbackDir = -1;
+        else if (_damageDirection.position.x < transform.position.x)
+            knockbackDir = 1;
+
+       
+    }
+
+    public void SetupKnockbackPower(Vector2 _knockbackpower) => knockbackPower = _knockbackpower;
     protected virtual IEnumerator HitKnockback()
     {
         isKnocked = true;
 
-        rb.velocity = new Vector2(knockbackDirection.x * -facingDir, knockbackDirection.y);
+        float xOffset = Random.Range(knockbackOffset.x, knockbackOffset.y);
+
+
+        if(knockbackPower.x > 0 || knockbackPower.y > 0) // This line makes player immune to freeze effect when he takes hit
+            rb.velocity = new Vector2((knockbackPower.x + xOffset) * knockbackDir, knockbackPower.y);
 
         yield return new WaitForSeconds(knockbackDuration);
         isKnocked = false;
+        SetupZeroKnockbackPower();
+    }
+
+    protected virtual void SetupZeroKnockbackPower()
+    {
+
     }
 
     #region Velocity
@@ -101,7 +123,7 @@ public class Entity : MonoBehaviour
     protected virtual void OnDrawGizmos()
     {
         Gizmos.DrawLine(groundCheck.position, new Vector3(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
-        Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
+        Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance * facingDir, wallCheck.position.y));
         Gizmos.DrawWireSphere(attackCheck.position, attackCheckRadius);
     }
     #endregion
@@ -122,6 +144,14 @@ public class Entity : MonoBehaviour
             Flip();
         else if (_x < 0 && facingRight)
             Flip();
+    }
+
+    public virtual void SetupDefailtFacingDir(int _direction)
+    {
+        facingDir = _direction;
+
+        if (facingDir == -1)
+            facingRight = false;
     }
     #endregion
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerBlackholeState : PlayerState
 {
-    private float flyTime = .4f;
+    private float flyTime = .25f;
     private bool skillUsed;
 
 
@@ -25,6 +25,7 @@ public class PlayerBlackholeState : PlayerState
         skillUsed = false;
         stateTimer = flyTime;
         rb.gravityScale = 0;
+        player.stats.MakeInvincible(true);
     }
 
     public override void Exit()
@@ -33,6 +34,7 @@ public class PlayerBlackholeState : PlayerState
 
         player.rb.gravityScale = defaultGravity;
         player.fx.MakeTransprent(false);
+        player.stats.MakeInvincible(false);
     }
 
     public override void Update()
@@ -56,4 +58,5 @@ public class PlayerBlackholeState : PlayerState
         if (player.skill.blackhole.SkillCompleted())
             stateMachine.ChangeState(player.airState);
     }
+
 }

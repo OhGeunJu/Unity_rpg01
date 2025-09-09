@@ -26,6 +26,7 @@ public class Player : Entity
 
     public SkillManager skill { get; private set; }
     public GameObject sword {  get ; private set; }
+    public PlayerFX fx { get; private set; }
 
 
     #region States
@@ -75,6 +76,8 @@ public class Player : Entity
     {
         base.Start();
 
+                fx = GetComponent<PlayerFX>();
+
         skill = SkillManager.instance;
 
         stateMachine.Initialize(idleState);
@@ -87,6 +90,10 @@ public class Player : Entity
 
     protected override void Update()
     {
+
+        if (Time.timeScale == 0)
+            return;
+
         base.Update();
 
         stateMachine.currentState.Update();
@@ -169,5 +176,10 @@ public class Player : Entity
         base.Die();
 
         stateMachine.ChangeState(deadState);
+    }
+
+    protected override void SetupZeroKnockbackPower()
+    {
+        knockbackPower = new Vector2(0, 0);
     }
 }

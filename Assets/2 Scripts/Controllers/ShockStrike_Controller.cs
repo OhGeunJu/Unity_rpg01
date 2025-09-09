@@ -23,6 +23,7 @@ public class ShockStrike_Controller : MonoBehaviour
         targetStats = _targetStats;
     }
 
+    // Update is called once per frame
     void Update()
     {
         if(!targetStats)

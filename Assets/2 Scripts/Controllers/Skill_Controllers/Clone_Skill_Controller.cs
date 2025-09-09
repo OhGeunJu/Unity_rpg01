@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Clone_Skill_Controller : MonoBehaviour
@@ -13,17 +12,24 @@ public class Clone_Skill_Controller : MonoBehaviour
     private float attackMultiplier;
     [SerializeField] private Transform attackCheck;
     [SerializeField] private float attackCheckRadius = .8f;
-    private Transform closestEnemy;
     private int facingDir = 1;
 
 
     private bool canDuplicateClone;
     private float chanceToDuplicate;
 
+    [Space]
+    [SerializeField] private LayerMask whatIsEnemy;
+    [SerializeField] private float closestEnemyCheckRadius = 25;
+    [SerializeField] private Transform closestEnemy;
+
+
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+
+        StartCoroutine(FaceClosestTarget());
     }
 
     private void Update()
@@ -39,7 +45,7 @@ public class Clone_Skill_Controller : MonoBehaviour
         }
     }
 
-    public void SetupClone(Transform _newTransform, float _cloneDuration, bool _canAttack, Vector3 _offset, Transform _closestEnemy, bool _canDuplicate,float _chanceToDuplicate,Player _player,float _attackMultiplier)
+    public void SetupClone(Transform _newTransform, float _cloneDuration, bool _canAttack, Vector3 _offset, bool _canDuplicate, float _chanceToDuplicate, Player _player, float _attackMultiplier)
     {
         if (_canAttack)
             anim.SetInteger("AttackNumber", Random.Range(1, 3));
@@ -51,8 +57,6 @@ public class Clone_Skill_Controller : MonoBehaviour
 
         canDuplicateClone = _canDuplicate;
         chanceToDuplicate = _chanceToDuplicate;
-        closestEnemy = _closestEnemy;
-        FaceClosestTarget();
     }
 
 
@@ -69,7 +73,9 @@ public class Clone_Skill_Controller : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null)
             {
-                //player.stats.DoDamage(hit.GetComponent<CharacterStats>());
+                //player.stats.DoDamage(hit.GetComponent<CharacterStats>()); // make a new function for clone damage to regulate damage;
+
+                hit.GetComponent<Entity>().SetupKnockbackDir(transform);
 
                 PlayerStats playerStats = player.GetComponent<PlayerStats>();
                 EnemyStats enemyStats = hit.GetComponent<EnemyStats>();
@@ -95,8 +101,12 @@ public class Clone_Skill_Controller : MonoBehaviour
         }
     }
 
-    private void FaceClosestTarget()
+    private IEnumerator FaceClosestTarget()
     {
+        yield return null;
+
+        FindClosestEnemy();
+
         if (closestEnemy != null)
         {
             if (transform.position.x > closestEnemy.position.x)
@@ -105,5 +115,29 @@ public class Clone_Skill_Controller : MonoBehaviour
                 transform.Rotate(0, 180, 0);
             }
         }
+    }
+
+    private void FindClosestEnemy()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, closestEnemyCheckRadius, whatIsEnemy);
+
+        float closestDistance = Mathf.Infinity;
+
+        foreach (var hit in colliders)
+        {
+            float distanceToEnemy = Vector2.Distance(transform.position, hit.transform.position);
+
+            if (distanceToEnemy < closestDistance)
+            {
+                closestDistance = distanceToEnemy;
+                closestEnemy = hit.transform;
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, closestEnemyCheckRadius);
     }
 }

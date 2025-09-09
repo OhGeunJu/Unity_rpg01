@@ -25,20 +25,20 @@ public class CharacterStats : MonoBehaviour
     private EntityFX fx;
 
     [Header("Major stats")]
-    public Stat strength;
-    public Stat agility; // 민첩성
-    public Stat intelligence;
-    public Stat vitality; // 생명력
+    public Stat strength; // 1 point increase damage by 1 and crit.power by 1%
+    public Stat agility;  // 1 point increase evasion by 1% and crit.chance by 1%
+    public Stat intelligence; // 1 point increase magic damage by 1 and magic resistance by 3
+    public Stat vitality; // 1 point incredase health by 5 points
 
     [Header("Offensive stats")]
     public Stat damage;
     public Stat critChance;
-    public Stat critPower;
+    public Stat critPower;              // default value 150%
 
     [Header("Defensive stats")]
     public Stat maxHealth;
     public Stat armor;
-    public Stat evasion; // 회피율
+    public Stat evasion;
     public Stat magicResistance;
 
     [Header("Magic stats")]
@@ -47,9 +47,9 @@ public class CharacterStats : MonoBehaviour
     public Stat lightingDamage;
 
 
-    public bool isIgnited;
-    public bool isChilled;
-    public bool isShocked;
+    public bool isIgnited;   // does damage over time
+    public bool isChilled;   // reduce armor by 20%
+    public bool isShocked;   // reduce accuracy by 20%
 
 
     [SerializeField] private float ailmentsDuration = 4;
@@ -67,6 +67,7 @@ public class CharacterStats : MonoBehaviour
 
     public System.Action onHealthChanged;
     public bool isDead { get; private set; }
+    public bool isInvincible { get; private set; }
     private bool isVulnerable;
 
     protected virtual void Start()
@@ -113,6 +114,7 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void IncreaseStatBy(int _modifier, float _duration, Stat _statToModify)
     {
+        // start corototuine for stat increase
         StartCoroutine(StatModCoroutine(_modifier, _duration, _statToModify));
     }
 
@@ -128,21 +130,32 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void DoDamage(CharacterStats _targetStats)
     {
+        bool criticalStrike = false;
+
+
+        if (_targetStats.isInvincible)
+            return;
+
         if (TargetCanAvoidAttack(_targetStats))
             return;
+
+        _targetStats.GetComponent<Entity>().SetupKnockbackDir(transform);
 
         int totalDamage = damage.GetValue() + strength.GetValue();
 
         if (CanCrit())
         {
             totalDamage = CalculateCriticalDamage(totalDamage);
+            criticalStrike = true;
         }
+
+        fx.CreateHitFx(_targetStats.transform,criticalStrike);
 
         totalDamage = CheckTargetArmor(_targetStats, totalDamage);
         _targetStats.TakeDamage(totalDamage);
 
 
-        DoMagicalDamage(_targetStats); // 지우면 마법 데미지 없어짐
+         DoMagicalDamage(_targetStats); // remove if you don't want to apply magic hit on primary attack
 
     }
 
@@ -319,7 +332,13 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void TakeDamage(int _damage)
     {
+
+        if (isInvincible)
+            return;
+
         DecreaseHealthBy(_damage);
+
+
 
         GetComponent<Entity>().DamageImpact();
         fx.StartCoroutine("FlashFX");
@@ -351,6 +370,9 @@ public class CharacterStats : MonoBehaviour
 
         currentHealth -= _damage;
 
+        if (_damage > 0)
+            fx.CreatePopUpText(_damage.ToString());
+
         if (onHealthChanged != null)
             onHealthChanged();
     }
@@ -359,6 +381,14 @@ public class CharacterStats : MonoBehaviour
     {
         isDead = true;
     }
+
+    public void KillEntity()
+    {
+        if (!isDead)
+            Die();
+    }
+
+    public void MakeInvincible(bool _invincible) => isInvincible = _invincible;
 
 
     #region Stat calculations

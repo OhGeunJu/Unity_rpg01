@@ -23,12 +23,29 @@ public class PlayerStats : CharacterStats
         base.Die();
         player.Die();
 
+        GameManager.instance.lostCurrencyAmount = PlayerManager.instance.currency;
+        PlayerManager.instance.currency = 0;
+
         GetComponent<PlayerItemDrop>()?.GenerateDrop();
     }
 
     protected override void DecreaseHealthBy(int _damage)
     {
         base.DecreaseHealthBy(_damage);
+
+        if (isDead)
+            return;
+
+        if (_damage > GetMaxHealthValue() * .3f )
+        {
+            player.SetupKnockbackPower(new Vector2(10,6));
+            player.fx.ScreenShake(player.fx.shakeHighDamage);
+
+
+            int randomSound = Random.Range(34, 35);
+            AudioManager.instance.PlaySFX(randomSound, null);
+            
+        }
 
         ItemData_Equipment currentArmor = Inventory.instance.GetEquipment(EquipmentType.Armor);
 
@@ -60,6 +77,6 @@ public class PlayerStats : CharacterStats
         _targetStats.TakeDamage(totalDamage);
 
 
-        DoMagicalDamage(_targetStats); // 지우면 마법 데미지 없어짐
+        DoMagicalDamage(_targetStats); // remove if you don't want to apply magic hit on primary attack
     }
 }

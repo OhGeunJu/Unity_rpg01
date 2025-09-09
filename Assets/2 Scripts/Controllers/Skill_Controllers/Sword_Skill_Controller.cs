@@ -36,7 +36,7 @@ public class Sword_Skill_Controller : MonoBehaviour
     private float hitTimer;
     private float hitCooldown;
 
-
+    private float spinDirection;
 
     private void Awake()
     {
@@ -62,6 +62,8 @@ public class Sword_Skill_Controller : MonoBehaviour
         if (pierceAmount <= 0)
             anim.SetBool("Rotation", true);
 
+
+        spinDirection = Mathf.Clamp(rb.velocity.x, -1, 1);
 
         Invoke("DestroyMe", 7);
     }
@@ -131,8 +133,7 @@ public class Sword_Skill_Controller : MonoBehaviour
             {
                 spinTimer -= Time.deltaTime;
 
-
-               //transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + 1 , transform.position.y), 2.4f * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + spinDirection, transform.position.y), 1.5f * Time.deltaTime);
 
                 if (spinTimer < 0)
                 {
@@ -170,8 +171,6 @@ public class Sword_Skill_Controller : MonoBehaviour
     {
         if (isBouncing && enemyTarget.Count > 0)
         {
-
-
             transform.position = Vector2.MoveTowards(transform.position, enemyTarget[targetIndex].position, bounceSpeed * Time.deltaTime);
 
             if (Vector2.Distance(transform.position, enemyTarget[targetIndex].position) < .1f)
@@ -249,26 +248,33 @@ public class Sword_Skill_Controller : MonoBehaviour
         }
     }
 
+    private bool spinWasTriggered;
+
     private void StuckInto(Collider2D collision)
     {
+        if (collision.GetComponent<CharacterStats>()?.isInvincible == true)
+            return;
+
         if (pierceAmount > 0 && collision.GetComponent<Enemy>() != null)
         {
             pierceAmount--;
             return;
         }
 
-        if (isSpinning)
+
+        if (isSpinning && !spinWasTriggered)
         {
+            spinWasTriggered = true;
             StopWhenSpinning();
             return;
         }
-
 
         canRotate = false;
         cd.enabled = false;
 
         rb.isKinematic = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        GetComponentInChildren<ParticleSystem>().Play();
 
         if (isBouncing && enemyTarget.Count > 0)
             return;

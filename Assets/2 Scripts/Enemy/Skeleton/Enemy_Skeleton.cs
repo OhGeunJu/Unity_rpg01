@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class Enemy_Skeleton : Enemy
 {
+
     #region States
 
     public SkeletonIdleState idleState { get; private set; }
@@ -21,7 +24,7 @@ public class Enemy_Skeleton : Enemy
         
         idleState = new SkeletonIdleState(this, stateMachine, "Idle", this);
         moveState = new SkeletonMoveState(this, stateMachine, "Move", this);
-        battleState = new SkeletonBattleState(this, stateMachine, "Move", this);
+        battleState = new SkeletonBattleState(this, stateMachine, "Battle", this);
         attackState = new SkeletonAttackState(this, stateMachine, "Attack", this);
         stunnedState = new SkeletonStunnedState(this, stateMachine, "Stunned", this);
         deadState = new SkeletonDeadState(this, stateMachine, "Idle", this);
@@ -33,16 +36,6 @@ public class Enemy_Skeleton : Enemy
         stateMachine.Initialize(idleState);
     }
 
-    protected override void Update()
-    {
-        base.Update();
-
-        if(Input.GetKeyDown(KeyCode.U))
-        {
-            stateMachine.ChangeState(stunnedState);
-        }
-
-    }
 
     public override bool CanBeStunned()
     {
@@ -55,6 +48,10 @@ public class Enemy_Skeleton : Enemy
         return false;
     }
 
+    protected override void Update()
+    {
+        base.Update();
+    }
     public override void Die()
     {
         base.Die();

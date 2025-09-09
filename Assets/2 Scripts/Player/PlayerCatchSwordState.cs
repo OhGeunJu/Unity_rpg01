@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerCatchSwordState : PlayerState
 {
@@ -15,6 +14,9 @@ public class PlayerCatchSwordState : PlayerState
         base.Enter();
 
         sword = player.sword.transform;
+
+        player.fx.PlayDustFX();
+        player.fx.ScreenShake(player.fx.shakeSwordImpact);
 
         if (player.transform.position.x > sword.position.x && player.facingDir == 1)
             player.Flip();
