@@ -1,0 +1,3628 @@
+fileFormatVersion: 2
+guid: 4abedf0f01fe8d143bdd6913f2c3b61e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5337576169146855987
+    second: CornerTopLeft
+  - first:
+      213: -4355447609090006971
+    second: Roof
+  - first:
+      213: 3804151421242027988
+    second: CornerTopRight
+  - first:
+      213: -5370355276318982701
+    second: ExternalCornerTopLeftA
+  - first:
+      213: 4985417468706766452
+    second: ExternalCornerTopRightA
+  - first:
+      213: -4181897972887727991
+    second: FloorCornerTopLeft
+  - first:
+      213: 687078075867812911
+    second: FloorCornerTopRight
+  - first:
+      213: -7042515064965405228
+    second: PlatformHorizontalMiddle
+  - first:
+      213: -5303202372429136646
+    second: BackdropShadowTopLeft
+  - first:
+      213: -5916142875628598625
+    second: BackdropShadowTopCenter
+  - first:
+      213: 5377830689974041092
+    second: BackdropShadowTopRight
+  - first:
+      213: 169183713068984760
+    second: Backdrop
+  - first:
+      213: 8864126493599320946
+    second: BackdropStairsDown
+  - first:
+      213: 1735921448108786401
+    second: TileSet16x16_13
+  - first:
+      213: 5874141504128534325
+    second: BackdropStairsUp
+  - first:
+      213: 6841329527115412061
+    second: TileSet16x16_15
+  - first:
+      213: -4542804089024972400
+    second: WallLeft
+  - first:
+      213: -2706909384852813819
+    second: Inner
+  - first:
+      213: -528559636770605021
+    second: WallRight
+  - first:
+      213: 1065299194805751620
+    second: ExternalCornerBottomLeft
+  - first:
+      213: -5791286541844677980
+    second: ExternalCornerBottomRight
+  - first:
+      213: -5256427452298962496
+    second: RoofCornerBottomLeft
+  - first:
+      213: 3679504316312994312
+    second: RoofCornerBottomRight
+  - first:
+      213: 3344484147033642064
+    second: PlatformVerticalMiddle
+  - first:
+      213: -2361237145112079606
+    second: BackdropShadowCenterLeft
+  - first:
+      213: 7857654174077240320
+    second: BackdropShadowLeft
+  - first:
+      213: 2352206229709187550
+    second: BackdropShadowCenterRight
+  - first:
+      213: -3972366668421672545
+    second: BackdropShadow
+  - first:
+      213: 3672523975036504268
+    second: TileSet16x16_28
+  - first:
+      213: 9152617598920754650
+    second: TileSet16x16_29
+  - first:
+      213: -4456342034879590247
+    second: TileSet16x16_30
+  - first:
+      213: 1161175329453861822
+    second: TileSet16x16_31
+  - first:
+      213: 1167275927115754813
+    second: CornerBottomLeft
+  - first:
+      213: 2700791101412474751
+    second: FloorA
+  - first:
+      213: 5006457237505504544
+    second: CornerBottomRight
+  - first:
+      213: 5497381770991422970
+    second: PlatformTop
+  - first:
+      213: 3288978150451153553
+    second: Platform
+  - first:
+      213: -1308518803808673106
+    second: TwoCornerBottom
+  - first:
+      213: 5325809603210556856
+    second: TwoCornerLeft
+  - first:
+      213: -8103411433886781607
+    second: FloorB
+  - first:
+      213: 860161679807723686
+    second: BackdropShadowBottomLeft
+  - first:
+      213: -4377548799765974370
+    second: BackdropShadowRight
+  - first:
+      213: -6134682945295963777
+    second: BackdropShadowBottomRight
+  - first:
+      213: -4295969618177286286
+    second: BackdropBricksLeft
+  - first:
+      213: -7783473699507538935
+    second: BackdropDrainB
+  - first:
+      213: 7480558393098146783
+    second: TileSet16x16_45
+  - first:
+      213: -629962775456734188
+    second: BackdropDrainA
+  - first:
+      213: -473080515416786715
+    second: TileSet16x16_47
+  - first:
+      213: 9133691755874382833
+    second: PlatformCornerTopLeft
+  - first:
+      213: 5954240682823776418
+    second: PlatformCornerTopRight
+  - first:
+      213: 2238727228359952006
+    second: PlatformLeft
+  - first:
+      213: -5392851800893640008
+    second: PlatformMiddle
+  - first:
+      213: -4754356906659361458
+    second: PlatformRight
+  - first:
+      213: 2536662641456939720
+    second: TwoCornerRight
+  - first:
+      213: -2316635736980783942
+    second: TwoCornerTopB
+  - first:
+      213: -7069520671972300245
+    second: FloorC
+  - first:
+      213: -6936880207028065739
+    second: "BackdropBricksLeftTop\u0421orner"
+  - first:
+      213: 2492149055506892028
+    second: BackdropBricksCenterA
+  - first:
+      213: -1151602774201239913
+    second: BackdropBricksCenterB
+  - first:
+      213: 8487952742129970965
+    second: BackdropBricksRight
+  - first:
+      213: -4878186291917405325
+    second: TileSet16x16_60
+  - first:
+      213: 8935259280500861790
+    second: TileSet16x16_61
+  - first:
+      213: -8421844232886138632
+    second: TileSet16x16_62
+  - first:
+      213: -8828609011829700882
+    second: TileSet16x16_63
+  - first:
+      213: -3665648936819116971
+    second: PlatformCornerBottomLeft
+  - first:
+      213: 6328673601925198636
+    second: PlatformCornerBottomRight
+  - first:
+      213: -5164728938980241003
+    second: IntersectionA
+  - first:
+      213: -5108763263847725511
+    second: PlatformBottom
+  - first:
+      213: 8365768281937712198
+    second: IntersectionB
+  - first:
+      213: 5978302116753736889
+    second: InnerRandom
+  - first:
+      213: -1881282043989643345
+    second: ExternalCornerTopLeftB
+  - first:
+      213: -5920451072890637126
+    second: ExternalCornerTopRightB
+  - first:
+      213: 6018888243096335496
+    second: BackdropBricksRightCenter
+  - first:
+      213: -3734377576321180657
+    second: BackdropBricksLeftCenter
+  - first:
+      213: 2768094575599526095
+    second: "BackdropBricksRightTop\u0421orner"
+  - first:
+      213: -3306351863813818067
+    second: BackdropBricksRandomA
+  - first:
+      213: 5197043967366255653
+    second: BackdropBig
+  - first:
+      213: 1927695502186909890
+    second: TileSet16x16_77
+  - first:
+      213: 7919363677383011767
+    second: BackdropLantern
+  - first:
+      213: 6791378983477293636
+    second: TileSet16x16_79
+  - first:
+      213: 8239500218009925243
+    second: ThreeCornerRightTop
+  - first:
+      213: 952743741448973106
+    second: ThreeCornerTopLeft
+  - first:
+      213: -7872196669501613619
+    second: PlatformIntersectionUpRightDown
+  - first:
+      213: 7285250978847680889
+    second: PlatformIntersectionLeftDawnRight
+  - first:
+      213: 2820440836940415868
+    second: WallRightCornerTopLeft
+  - first:
+      213: 2430970103475143450
+    second: WallLeftCornerTopRight
+  - first:
+      213: -7210395720246230784
+    second: FloorBig
+  - first:
+      213: -1310706101380349676
+    second: TileSet16x16_87
+  - first:
+      213: 467812171009303671
+    second: "BackdropBricksRightBottom\u0421orner"
+  - first:
+      213: -6074904709620269446
+    second: "BackdropBricksLeftBottom\u0421orner"
+  - first:
+      213: 243863486372885897
+    second: BackdropBricks
+  - first:
+      213: -7913348482154448066
+    second: BackdropBricksRandomB
+  - first:
+      213: -4995721161962733542
+    second: TileSet16x16_92
+  - first:
+      213: 889785650707249230
+    second: TileSet16x16_93
+  - first:
+      213: -1376470241418308582
+    second: TileSet16x16_94
+  - first:
+      213: 6347037072793357723
+    second: TileSet16x16_95
+  - first:
+      213: -5837949120361749889
+    second: ThreeCornerBottomRight
+  - first:
+      213: 7932307542691606931
+    second: ThreeCornerBottomLeft
+  - first:
+      213: -6993023535287421586
+    second: PlatformIntersectionLeftUpRight
+  - first:
+      213: 6211717407571034310
+    second: PlatformIntersectionDawnLeftRight
+  - first:
+      213: 6211598851214995395
+    second: WallRightCornerBottomLeft
+  - first:
+      213: 5039822840893810605
+    second: WallLeftCornerBottomRight
+  - first:
+      213: -4526415489340809497
+    second: TileSet16x16_102
+  - first:
+      213: 5524134919391155993
+    second: TileSet16x16_103
+  - first:
+      213: -6770947252088299168
+    second: BackdropBricksRandomC
+  - first:
+      213: -8590266718386698713
+    second: LadderTop
+  - first:
+      213: 91668649906566581
+    second: LadderMiddle
+  - first:
+      213: 1076580485530262477
+    second: LadderBottom
+  - first:
+      213: 878867233855565643
+    second: LanternA
+  - first:
+      213: -2767634377150534184
+    second: TileSet16x16_109
+  - first:
+      213: -6463383425867285052
+    second: SkullsMiddle
+  - first:
+      213: -7857859447325405770
+    second: TileSet16x16_111
+  - first:
+      213: 6727084611504447095
+    second: StairsDown
+  - first:
+      213: -6892507878147055426
+    second: TileSet16x16_113
+  - first:
+      213: 1600482216276026047
+    second: StairsUp
+  - first:
+      213: 8513096193511062628
+    second: TileSet16x16_115
+  - first:
+      213: 3804631259661138646
+    second: DoorOpen
+  - first:
+      213: -7141770594348501915
+    second: TileSet16x16_117
+  - first:
+      213: 462579121162559109
+    second: DoorClosed
+  - first:
+      213: -5235906976982018181
+    second: TileSet16x16_119
+  - first:
+      213: 832961201858245310
+    second: Banner
+  - first:
+      213: 7158846890520991380
+    second: TileSet16x16_121
+  - first:
+      213: 553547375938840588
+    second: LanternB
+  - first:
+      213: 4427093693382557835
+    second: TileSet16x16_123
+  - first:
+      213: -7874403904784268663
+    second: TileSet16x16_124
+  - first:
+      213: 3038633099606021262
+    second: TileSet16x16_125
+  - first:
+      213: 2517591690881356028
+    second: PrisonCellB
+  - first:
+      213: -9207614901543834062
+    second: TileSet16x16_127
+  - first:
+      213: 5693459726748111075
+    second: TileSet16x16_128
+  - first:
+      213: 7140887041944591687
+    second: TileSet16x16_129
+  - first:
+      213: 8261816323518623063
+    second: TileSet16x16_130
+  - first:
+      213: -66317487223116030
+    second: TileSet16x16_131
+  - first:
+      213: 2026140916163919853
+    second: TileSet16x16_132
+  - first:
+      213: -6039856648170115264
+    second: TileSet16x16_133
+  - first:
+      213: 1693367154639598538
+    second: TileSet16x16_134
+  - first:
+      213: 2129586433189597278
+    second: TileSet16x16_135
+  - first:
+      213: 2516775607764671937
+    second: TileSet16x16_136
+  - first:
+      213: -1572952869154127921
+    second: TileSet16x16_137
+  - first:
+      213: 9158925481684405955
+    second: TileSet16x16_138
+  - first:
+      213: -4053259862726585439
+    second: TileSet16x16_139
+  - first:
+      213: 3879433005832696135
+    second: PrisonCellA
+  - first:
+      213: -5631871480083814507
+    second: TileSet16x16_141
+  - first:
+      213: -8935757160041189612
+    second: TileSet16x16_142
+  - first:
+      213: 4314776288904824618
+    second: TileSet16x16_143
+  - first:
+      213: -421922180711549341
+    second: ColumnATop
+  - first:
+      213: -3614224492620821583
+    second: TileSet16x16_145
+  - first:
+      213: 4422658384734471270
+    second: ColumnBTop
+  - first:
+      213: -3516647603743883333
+    second: TileSet16x16_147
+  - first:
+      213: 4759866357976164925
+    second: Statue
+  - first:
+      213: -7969726972878390773
+    second: TileSet16x16_149
+  - first:
+      213: -312367467777034936
+    second: BannerBig
+  - first:
+      213: 3279695619500527619
+    second: TileSet16x16_151
+  - first:
+      213: -2211414216141682909
+    second: "\u0421handelierTop"
+  - first:
+      213: -4958016186136148225
+    second: TileSet16x16_153
+  - first:
+      213: -2579434511673007903
+    second: Window
+  - first:
+      213: -3952691655091605320
+    second: TileSet16x16_155
+  - first:
+      213: 6732317123022464995
+    second: TileSet16x16_156
+  - first:
+      213: -291083445123422972
+    second: TileSet16x16_157
+  - first:
+      213: 5495637094377969769
+    second: TileSet16x16_158
+  - first:
+      213: -7621271271126638025
+    second: TileSet16x16_159
+  - first:
+      213: -2280210802218986038
+    second: ColumnAMiddle
+  - first:
+      213: -6036190070710125574
+    second: TileSet16x16_161
+  - first:
+      213: 9078214843651273747
+    second: ColumnBMiddle
+  - first:
+      213: 3156485585331580307
+    second: TileSet16x16_163
+  - first:
+      213: 4721614564519978076
+    second: TileSet16x16_164
+  - first:
+      213: 8852005456438138178
+    second: TileSet16x16_165
+  - first:
+      213: -4093457881161165833
+    second: TileSet16x16_166
+  - first:
+      213: 7497409459414266177
+    second: TileSet16x16_167
+  - first:
+      213: -7393727184102426629
+    second: "\u0421handelierMiddle"
+  - first:
+      213: -1453388738429899725
+    second: TileSet16x16_169
+  - first:
+      213: 3008836306572987958
+    second: TileSet16x16_170
+  - first:
+      213: 242424524613210892
+    second: TileSet16x16_171
+  - first:
+      213: -4475194146549852812
+    second: TileSet16x16_172
+  - first:
+      213: -1333870560571064512
+    second: TileSet16x16_173
+  - first:
+      213: -8146799332792372280
+    second: ColumnABottom
+  - first:
+      213: -7990254051686196127
+    second: TileSet16x16_175
+  - first:
+      213: 69097633227105531
+    second: ColumnBBottom
+  - first:
+      213: 7859070581007639405
+    second: TileSet16x16_177
+  - first:
+      213: 8360786860247264446
+    second: TileSet16x16_178
+  - first:
+      213: -6674804049534797183
+    second: TileSet16x16_179
+  - first:
+      213: -3338048113788262108
+    second: TileSet16x16_180
+  - first:
+      213: 8850393944648235350
+    second: TileSet16x16_181
+  - first:
+      213: 4174720285215303519
+    second: "\u0421handelierBottom"
+  - first:
+      213: -8378543804012111613
+    second: TileSet16x16_183
+  - first:
+      213: -6933149397710952352
+    second: TileSet16x16_184
+  - first:
+      213: 397745536189017603
+    second: TileSet16x16_185
+  - first:
+      213: 4323238737646632496
+    second: Kegs
+  - first:
+      213: 1836300117074672173
+    second: TileSet16x16_187
+  - first:
+      213: 5514424250629374624
+    second: SkullsMany
+  - first:
+      213: 6477480863418656260
+    second: TileSet16x16_189
+  - first:
+      213: -8539193674733646098
+    second: Skull
+  - first:
+      213: -6853500975124762746
+    second: Skells2
+  - first:
+      213: 4741438694967797507
+    second: GoldenChest
+  - first:
+      213: 78998993489255156
+    second: TileSet16x16_193
+  - first:
+      213: -1515693602025706957
+    second: Chest
+  - first:
+      213: -5163437407085828136
+    second: TileSet16x16_195
+  - first:
+      213: -4263270767320600501
+    second: TileSet16x16_196
+  - first:
+      213: 3683005389368408910
+    second: TileSet16x16_197
+  - first:
+      213: -4486232836340208514
+    second: TileSet16x16_198
+  - first:
+      213: -4803377802229694680
+    second: TileSet16x16_199
+  - first:
+      213: -4690421254116516410
+    second: "\u0421hainTop"
+  - first:
+      213: 1745664359406460404
+    second: "\u0421hainLong"
+  - first:
+      213: -7678019646920709038
+    second: GoldenChestOpened
+  - first:
+      213: -4947429694597619488
+    second: TileSet16x16_203
+  - first:
+      213: -3926137423837644553
+    second: ChestOpened
+  - first:
+      213: -5301100337304841366
+    second: TileSet16x16_205
+  - first:
+      213: -9184959344833821648
+    second: Keg
+  - first:
+      213: -9190245524772683251
+    second: TrapA
+  - first:
+      213: -210127746977866015
+    second: "\u0421hainShort"
+  - first:
+      213: -690348114391111817
+    second: "\u0421hainBottomB"
+  - first:
+      213: 2611074688671560058
+    second: "\u0421hainMiddle"
+  - first:
+      213: 3517141519026132991
+    second: TileSet16x16_211
+  - first:
+      213: -1974709332204384863
+    second: TileSet16x16_212
+  - first:
+      213: -7323710559396191765
+    second: TileSet16x16_213
+  - first:
+      213: -2907408861222035352
+    second: TileSet16x16_214
+  - first:
+      213: 5601303912341425974
+    second: TileSet16x16_215
+  - first:
+      213: 1830602890927169166
+    second: ShieldWood
+  - first:
+      213: -374934263731550694
+    second: TileSet16x16_217
+  - first:
+      213: 6965432620035595926
+    second: ShieldRed
+  - first:
+      213: 5085522351990818763
+    second: TileSet16x16_219
+  - first:
+      213: 2607748733348440402
+    second: "\u0421hainBottomA"
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CornerTopLeft
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcd496cf0ce1de5b0800000000000000
+      internalID: -5337576169146855987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Roof
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 540ad56c9775e83c0800000000000000
+      internalID: -4355447609090006971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CornerTopRight
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dfade6ff8f0bc430800000000000000
+      internalID: 3804151421242027988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExternalCornerTopLeftA
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ddbc5d545aa875b0800000000000000
+      internalID: -5370355276318982701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExternalCornerTopRightA
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47e3b4f16c2cf2540800000000000000
+      internalID: 4985417468706766452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorCornerTopLeft
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 980d91743f9e6f5c0800000000000000
+      internalID: -4181897972887727991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorCornerTopRight
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f245f05aeddf88900800000000000000
+      internalID: 687078075867812911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformHorizontalMiddle
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d5666b7cd5f34e90800000000000000
+      internalID: -7042515064965405228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropShadowTopLeft
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afc3a533a8d3766b0800000000000000
+      internalID: -5303202372429136646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropShadowTopCenter
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9a03b15663a5eda0800000000000000
+      internalID: -5916142875628598625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropShadowTopRight
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40ab8120584e1aa40800000000000000
+      internalID: 5377830689974041092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Backdrop
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b9224fc0bf095200800000000000000
+      internalID: 169183713068984760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropStairsDown
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 224
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27bcd1fe414b30b70800000000000000
+      internalID: 8864126493599320946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropStairsUp
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 224
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 537c5f15394258150800000000000000
+      internalID: 5874141504128534325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WallLeft
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0997975ffb7b4f0c0800000000000000
+      internalID: -4542804089024972400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inner
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5084dac91402f6ad0800000000000000
+      internalID: -2706909384852813819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WallRight
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 328bdaf8fcd2aa8f0800000000000000
+      internalID: -528559636770605021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExternalCornerBottomLeft
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44f08e539f3b8ce00800000000000000
+      internalID: 1065299194805751620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExternalCornerBottomRight
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aaf8d0e29731afa0800000000000000
+      internalID: -5791286541844677980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoofCornerBottomLeft
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c9db16f41b6d07b0800000000000000
+      internalID: -5256427452298962496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoofCornerBottomRight
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8024a5b4ea9301330800000000000000
+      internalID: 3679504316312994312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformVerticalMiddle
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0549dd4ac9ef96e20800000000000000
+      internalID: 3344484147033642064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropShadowCenterLeft
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a03132fa3533b3fd0800000000000000
+      internalID: -2361237145112079606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropShadowLeft
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0044db5f6defb0d60800000000000000
+      internalID: 7857654174077240320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropShadowCenterRight
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed9e6487a17b4a020800000000000000
+      internalID: 2352206229709187550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropShadow
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f91df13cf815fd8c0800000000000000
+      internalID: -3972366668421672545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CornerBottomLeft
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3d699e654ff23010800000000000000
+      internalID: 1167275927115754813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorA
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7ff93482332b7520800000000000000
+      internalID: 2700791101412474751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CornerBottomRight
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 025f2b805528a7540800000000000000
+      internalID: 5006457237505504544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformTop
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afdc6a6289f9a4c40800000000000000
+      internalID: 5497381770991422970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Platform
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19a89abb33cc4ad20800000000000000
+      internalID: 3288978150451153553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwoCornerBottom
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea2a01da41537dde0800000000000000
+      internalID: -1308518803808673106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwoCornerLeft
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b5bab4ed9319e940800000000000000
+      internalID: 5325809603210556856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorB
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95fe65e0c36ea8f80800000000000000
+      internalID: -8103411433886781607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropShadowBottomLeft
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a8b75e8d78efeb00800000000000000
+      internalID: 860161679807723686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropShadowRight
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e92f2035f82df33c0800000000000000
+      internalID: -4377548799765974370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropShadowBottomRight
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f79acfb3d5a3ddaa0800000000000000
+      internalID: -6134682945295963777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropBricksLeft
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27f1caea466a164c0800000000000000
+      internalID: -4295969618177286286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropDrainB
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 904f14ea8eb8bf390800000000000000
+      internalID: -7783473699507538935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropDrainA
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 192
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 414ae23813ce147f0800000000000000
+      internalID: -629962775456734188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformCornerTopLeft
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f37ec4724461ce70800000000000000
+      internalID: 9133691755874382833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformCornerTopRight
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a8f3e6aa56b1a250800000000000000
+      internalID: 5954240682823776418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformLeft
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 686c36b8d8e811f10800000000000000
+      internalID: 2238727228359952006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformMiddle
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b2b8611cddb825b0800000000000000
+      internalID: -5392851800893640008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformRight
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4dc4234591250eb0800000000000000
+      internalID: -4754356906659361458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwoCornerRight
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c28b0b8b39043320800000000000000
+      internalID: 2536662641456939720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwoCornerTopB
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abcf84f3218a9dfd0800000000000000
+      internalID: -2316635736980783942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorC
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2a6fce976404ed90800000000000000
+      internalID: -7069520671972300245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "BackdropBricksLeftTop\u0421orner"
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53a67a274304bbf90800000000000000
+      internalID: -6936880207028065739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropBricksCenterA
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf440dcac54e59220800000000000000
+      internalID: 2492149055506892028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropBricksCenterB
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7967169d06fa400f0800000000000000
+      internalID: -1151602774201239913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropBricksRight
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51fa5f04c044bc570800000000000000
+      internalID: 8487952742129970965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformCornerBottomLeft
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 554bb91a6bff02dc0800000000000000
+      internalID: -3665648936819116971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformCornerBottomRight
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c23b4263c17f3d750800000000000000
+      internalID: 6328673601925198636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntersectionA
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59117e6d4623358b0800000000000000
+      internalID: -5164728938980241003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformBottom
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9368ac001e60a19b0800000000000000
+      internalID: -5108763263847725511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntersectionB
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 644902ebded291470800000000000000
+      internalID: 8365768281937712198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InnerRandom
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b4821dc91237f250800000000000000
+      internalID: 5978302116753736889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExternalCornerTopLeftB
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faf2dadc2f754e5e0800000000000000
+      internalID: -1881282043989643345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExternalCornerTopRightB
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab4f54afd1556dda0800000000000000
+      internalID: -5920451072890637126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropBricksRightCenter
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8843888b7f2678350800000000000000
+      internalID: 6018888243096335496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropBricksLeftCenter
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0c11324163dc2cc0800000000000000
+      internalID: -3734377576321180657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "BackdropBricksRightTop\u0421orner"
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc0ab4bb95f3a6620800000000000000
+      internalID: 2768094575599526095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropBricksRandomA
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d293de66f7a7d12d0800000000000000
+      internalID: -3306351863813818067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropBig
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 524d3f404fb9f1840800000000000000
+      internalID: 5197043967366255653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropLantern
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bdab855e4b37ed60800000000000000
+      internalID: 7919363677383011767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThreeCornerRightTop
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b763c352bc5985270800000000000000
+      internalID: 8239500218009925243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThreeCornerTopLeft
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23bea0f8263d83d00800000000000000
+      internalID: 952743741448973106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformIntersectionUpRightDown
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc9d75876d650c290800000000000000
+      internalID: -7872196669501613619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformIntersectionLeftDawnRight
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97968c59a296a1560800000000000000
+      internalID: 7285250978847680889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WallRightCornerTopLeft
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c73c6d37ff7342720800000000000000
+      internalID: 2820440836940415868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WallLeftCornerTopRight
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a130b35ed6a8cb120800000000000000
+      internalID: 2430970103475143450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorBig
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 144
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0010ab47b478feb90800000000000000
+      internalID: -7210395720246230784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "BackdropBricksRightBottom\u0421orner"
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7742d92e0b00e7600800000000000000
+      internalID: 467812171009303671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "BackdropBricksLeftBottom\u0421orner"
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7e7cb25a5a91bba0800000000000000
+      internalID: -6074904709620269446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropBricks
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 985b1fe7c80626300800000000000000
+      internalID: 243863486372885897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropBricksRandomB
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3bbe417b732e2290800000000000000
+      internalID: -7913348482154448066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThreeCornerBottomRight
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f72a800b4307bfea0800000000000000
+      internalID: -5837949120361749889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThreeCornerBottomLeft
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 391f843dea7351e60800000000000000
+      internalID: 7932307542691606931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformIntersectionLeftUpRight
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e653f31352ac3fe90800000000000000
+      internalID: -6993023535287421586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformIntersectionDawnLeftRight
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c0c1633214743650800000000000000
+      internalID: 6211717407571034310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WallRightCornerBottomLeft
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cfe4e5ae38043650800000000000000
+      internalID: 6211598851214995395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WallLeftCornerBottomRight
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da72062fb2c01f540800000000000000
+      internalID: 5039822840893810605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropBricksRandomC
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 061ae562953c802a0800000000000000
+      internalID: -6770947252088299168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LadderTop
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72643bcceed39c880800000000000000
+      internalID: -8590266718386698713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LadderMiddle
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b578b2c62ca54100800000000000000
+      internalID: 91668649906566581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LadderBottom
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcb16246f38c0fe00800000000000000
+      internalID: 1076580485530262477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LanternA
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4fe0beb71d523c00800000000000000
+      internalID: 878867233855565643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkullsMiddle
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 144
+        width: 32
+        height: 16
+      alignment: 9
+      pivot: {x: 0.25, y: 0.625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cd7806c4037d46a0800000000000000
+      internalID: -6463383425867285052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StairsDown
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77e18b200d76b5d50800000000000000
+      internalID: 6727084611504447095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StairsUp
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 112
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb26672981e063610800000000000000
+      internalID: 1600482216276026047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoorOpen
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 112
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6daf27d09f3ccc430800000000000000
+      internalID: 3804631259661138646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoorClosed
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 112
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25000048, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58e186582496b6600800000000000000
+      internalID: 462579121162559109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Banner
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 112
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb27174ccc54f8b00800000000000000
+      internalID: 832961201858245310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LanternB
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 112
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c082f25d7689ea700800000000000000
+      internalID: 553547375938840588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrisonCellA
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 80
+        width: 32
+        height: 48
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7417592c3c386d530800000000000000
+      internalID: 3879433005832696135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ColumnATop
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 16
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36674d71308052af0800000000000000
+      internalID: -421922180711549341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ColumnBTop
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 16
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66440016e50706d30800000000000000
+      internalID: 4422658384734471270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Statue
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 48
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3a6085db317e0240800000000000000
+      internalID: 4759866357976164925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BannerBig
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 48
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 845f2cb617f3aabf0800000000000000
+      internalID: -312367467777034936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u0421handelierTop"
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 32
+        height: 16
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32740abac7a7f41e0800000000000000
+      internalID: -2211414216141682909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Window
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 32
+        height: 48
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e0e8526af1043cd0800000000000000
+      internalID: -2579434511673007903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u0421handelierMiddle"
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 80
+        width: 32
+        height: 16
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf7fc69bc44346990800000000000000
+      internalID: -7393727184102426629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkullsMany
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.34375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a24097a3ab278c40800000000000000
+      internalID: 5514424250629374624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skull
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 48
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eee0d3d6890be7980800000000000000
+      internalID: -8539193674733646098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skells2
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 48
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68f25edac2973e0a0800000000000000
+      internalID: -6853500975124762746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u0421hainTop"
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cd517568b648eeb0800000000000000
+      internalID: -4690421254116516410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u0421hainLong"
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 16
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.75}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fd5b776c78d93810800000000000000
+      internalID: 1745664359406460404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrisonCellB
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 96
+        width: 32
+        height: 48
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf05578dd4840f220800000000000000
+      internalID: 2517591690881356028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ColumnAMiddle
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 32
+        height: 16
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac59ab04b501b50e0800000000000000
+      internalID: -2280210802218986038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ColumnBMiddle
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 80
+        width: 32
+        height: 16
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31433864d4c4cfd70800000000000000
+      internalID: 9078214843651273747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ColumnABottom
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 16
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c37580ab21c0fe80800000000000000
+      internalID: -8146799332792372280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ColumnBBottom
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 16
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf4625b6eeb75f000800000000000000
+      internalID: 69097633227105531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u0421handelierBottom"
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 32
+        height: 16
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5720e41bf59fe930800000000000000
+      internalID: 4174720285215303519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kegs
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03eb2a4f9ba3ffb30800000000000000
+      internalID: 4323238737646632496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoldenChest
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 307e8d13f59fcc140800000000000000
+      internalID: 4741438694967797507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33aecee03bc27fae0800000000000000
+      internalID: -1515693602025706957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoldenChestOpened
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25c22de9fc1327590800000000000000
+      internalID: -7678019646920709038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChestOpened
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f83ac880de8389c0800000000000000
+      internalID: -3926137423837644553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keg
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.75}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03486cec328788080800000000000000
+      internalID: -9184959344833821648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TrapA
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.75}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d020d412360b57080800000000000000
+      internalID: -9190245524772683251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u0421hainShort"
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ee5eeb6de9751df0800000000000000
+      internalID: -210127746977866015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u0421hainBottomB"
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7776b5e2c046b66f0800000000000000
+      internalID: -690348114391111817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u0421hainMiddle"
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a71384468966c3420800000000000000
+      internalID: 2611074688671560058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldWood
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 16
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8e548e51ab976910800000000000000
+      internalID: 1830602890927169166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldRed
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 16
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69ed32040103aa060800000000000000
+      internalID: 6965432620035595926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u0421hainBottomA"
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25965b218a5903420800000000000000
+      internalID: 2607748733348440402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: c893143fa90d3594192acb615d05b82f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Backdrop: 169183713068984760
+      BackdropBig: 5197043967366255653
+      BackdropBricks: 243863486372885897
+      BackdropBricksCenterA: 2492149055506892028
+      BackdropBricksCenterB: -1151602774201239913
+      BackdropBricksLeft: -4295969618177286286
+      "BackdropBricksLeftBottom\u0421orner": -6074904709620269446
+      BackdropBricksLeftCenter: -3734377576321180657
+      "BackdropBricksLeftTop\u0421orner": -6936880207028065739
+      BackdropBricksRandomA: -3306351863813818067
+      BackdropBricksRandomB: -7913348482154448066
+      BackdropBricksRandomC: -6770947252088299168
+      BackdropBricksRight: 8487952742129970965
+      "BackdropBricksRightBottom\u0421orner": 467812171009303671
+      BackdropBricksRightCenter: 6018888243096335496
+      "BackdropBricksRightTop\u0421orner": 2768094575599526095
+      BackdropDrainA: -629962775456734188
+      BackdropDrainB: -7783473699507538935
+      BackdropLantern: 7919363677383011767
+      BackdropShadow: -3972366668421672545
+      BackdropShadowBottomLeft: 860161679807723686
+      BackdropShadowBottomRight: -6134682945295963777
+      BackdropShadowCenterLeft: -2361237145112079606
+      BackdropShadowCenterRight: 2352206229709187550
+      BackdropShadowLeft: 7857654174077240320
+      BackdropShadowRight: -4377548799765974370
+      BackdropShadowTopCenter: -5916142875628598625
+      BackdropShadowTopLeft: -5303202372429136646
+      BackdropShadowTopRight: 5377830689974041092
+      BackdropStairsDown: 8864126493599320946
+      BackdropStairsUp: 5874141504128534325
+      Banner: 832961201858245310
+      BannerBig: -312367467777034936
+      Chest: -1515693602025706957
+      ChestOpened: -3926137423837644553
+      ColumnABottom: -8146799332792372280
+      ColumnAMiddle: -2280210802218986038
+      ColumnATop: -421922180711549341
+      ColumnBBottom: 69097633227105531
+      ColumnBMiddle: 9078214843651273747
+      ColumnBTop: 4422658384734471270
+      CornerBottomLeft: 1167275927115754813
+      CornerBottomRight: 5006457237505504544
+      CornerTopLeft: -5337576169146855987
+      CornerTopRight: 3804151421242027988
+      DoorClosed: 462579121162559109
+      DoorOpen: 3804631259661138646
+      ExternalCornerBottomLeft: 1065299194805751620
+      ExternalCornerBottomRight: -5791286541844677980
+      ExternalCornerTopLeftA: -5370355276318982701
+      ExternalCornerTopLeftB: -1881282043989643345
+      ExternalCornerTopRightA: 4985417468706766452
+      ExternalCornerTopRightB: -5920451072890637126
+      FloorA: 2700791101412474751
+      FloorB: -8103411433886781607
+      FloorBig: -7210395720246230784
+      FloorC: -7069520671972300245
+      FloorCornerTopLeft: -4181897972887727991
+      FloorCornerTopRight: 687078075867812911
+      GoldenChest: 4741438694967797507
+      GoldenChestOpened: -7678019646920709038
+      Inner: -2706909384852813819
+      InnerRandom: 5978302116753736889
+      IntersectionA: -5164728938980241003
+      IntersectionB: 8365768281937712198
+      Keg: -9184959344833821648
+      Kegs: 4323238737646632496
+      LadderBottom: 1076580485530262477
+      LadderMiddle: 91668649906566581
+      LadderTop: -8590266718386698713
+      LanternA: 878867233855565643
+      LanternB: 553547375938840588
+      Platform: 3288978150451153553
+      PlatformBottom: -5108763263847725511
+      PlatformCornerBottomLeft: -3665648936819116971
+      PlatformCornerBottomRight: 6328673601925198636
+      PlatformCornerTopLeft: 9133691755874382833
+      PlatformCornerTopRight: 5954240682823776418
+      PlatformHorizontalMiddle: -7042515064965405228
+      PlatformIntersectionDawnLeftRight: 6211717407571034310
+      PlatformIntersectionLeftDawnRight: 7285250978847680889
+      PlatformIntersectionLeftUpRight: -6993023535287421586
+      PlatformIntersectionUpRightDown: -7872196669501613619
+      PlatformLeft: 2238727228359952006
+      PlatformMiddle: -5392851800893640008
+      PlatformRight: -4754356906659361458
+      PlatformTop: 5497381770991422970
+      PlatformVerticalMiddle: 3344484147033642064
+      PrisonCellA: 3879433005832696135
+      PrisonCellB: 2517591690881356028
+      Roof: -4355447609090006971
+      RoofCornerBottomLeft: -5256427452298962496
+      RoofCornerBottomRight: 3679504316312994312
+      ShieldRed: 6965432620035595926
+      ShieldWood: 1830602890927169166
+      Skells2: -6853500975124762746
+      Skull: -8539193674733646098
+      SkullsMany: 5514424250629374624
+      SkullsMiddle: -6463383425867285052
+      StairsDown: 6727084611504447095
+      StairsUp: 1600482216276026047
+      Statue: 4759866357976164925
+      ThreeCornerBottomLeft: 7932307542691606931
+      ThreeCornerBottomRight: -5837949120361749889
+      ThreeCornerRightTop: 8239500218009925243
+      ThreeCornerTopLeft: 952743741448973106
+      TrapA: -9190245524772683251
+      TwoCornerBottom: -1308518803808673106
+      TwoCornerLeft: 5325809603210556856
+      TwoCornerRight: 2536662641456939720
+      TwoCornerTopB: -2316635736980783942
+      WallLeft: -4542804089024972400
+      WallLeftCornerBottomRight: 5039822840893810605
+      WallLeftCornerTopRight: 2430970103475143450
+      WallRight: -528559636770605021
+      WallRightCornerBottomLeft: 6211598851214995395
+      WallRightCornerTopLeft: 2820440836940415868
+      Window: -2579434511673007903
+      "\u0421hainBottomA": 2607748733348440402
+      "\u0421hainBottomB": -690348114391111817
+      "\u0421hainLong": 1745664359406460404
+      "\u0421hainMiddle": 2611074688671560058
+      "\u0421hainShort": -210127746977866015
+      "\u0421hainTop": -4690421254116516410
+      "\u0421handelierBottom": 4174720285215303519
+      "\u0421handelierMiddle": -7393727184102426629
+      "\u0421handelierTop": -2211414216141682909
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
