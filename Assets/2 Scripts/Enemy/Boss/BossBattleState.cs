@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossBattleState : EnemyState
 {
-    private Transform player;
     private Enemy_Boss enemy;
+    private Transform player;
     private int moveDir;
-
-    private bool flippedOnce;
 
     public BossBattleState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _animBoolName, Enemy_Boss _enemy) : base(_enemyBase, _stateMachine, _animBoolName)
     {
@@ -18,63 +14,42 @@ public class BossBattleState : EnemyState
     public override void Enter()
     {
         base.Enter();
-
         player = PlayerManager.instance.player.transform;
-
-        if (player.GetComponent<PlayerStats>().isDead)
-            stateMachine.ChangeState(enemy.moveState);
-
-        stateTimer = enemy.battleTime;
-        flippedOnce = false;
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
     }
 
     public override void Update()
     {
         base.Update();
 
-        enemy.anim.SetFloat("xVelocity", enemy.rb.velocity.x);
-
         if (enemy.IsPlayerDetected())
         {
             stateTimer = enemy.battleTime;
 
-            if (enemy.IsPlayerDetected().distance < enemy.attackDistance)
+            if (enemy.IsPlayerDetected().distance < enemy.attackDistance) // 공격 거리 이내
             {
-                if (CanAttack())
-                    stateMachine.ChangeState(enemy.attackState);
+                if (CanAttack()) // 공격 가능하면
+                    stateMachine.ChangeState(enemy.attackState); // 공격 상태로 전환
+                else
+                    stateMachine.ChangeState(enemy.idleState); // 공격 쿨타임이면 대기 상태로 전환
             }
         }
-        else
-        {
-            if (flippedOnce == false)
-            {
-                flippedOnce = true;
-                enemy.Flip();
-            }
 
-            if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 7)
-                stateMachine.ChangeState(enemy.idleState);
-        }
-
-        float distanceToPlayerX = Mathf.Abs(player.position.x - enemy.transform.position.x);
-
-        if (distanceToPlayerX < .8f)
-            return;
-
-        if (player.position.x > enemy.transform.position.x)
+        if (player.position.x > enemy.transform.position.x) // 방향 전환
             moveDir = 1;
-        else if (player.position.x < enemy.transform.position.x)
+        else if (player.position.x < enemy.transform.position.x) // 방향 전환
             moveDir = -1;
 
+        if (enemy.IsPlayerDetected() && enemy.IsPlayerDetected().distance < enemy.attackDistance - .1f)
+            return; // 너무 가까우면 멈춤
 
-        enemy.SetVelocity(enemy.moveSpeed * moveDir, rb.velocity.y);
+        enemy.SetVelocity(enemy.moveSpeed * moveDir, rb.velocity.y); // 플레이어 쪽으로 이동
     }
 
+    public override void Exit()
+    {
+        base.Exit();
+        // 필요 시 이동/버프 해제 등 정리
+    }
     private bool CanAttack()
     {
         if (Time.time >= enemy.lastTimeAttacked + enemy.attackCooldown)
@@ -83,7 +58,6 @@ public class BossBattleState : EnemyState
             enemy.lastTimeAttacked = Time.time;
             return true;
         }
-
         return false;
     }
 }

@@ -33,24 +33,24 @@ public class DeathBringerBattleState : EnemyState
         {
             stateTimer = enemy.battleTime;
 
-            if (enemy.IsPlayerDetected().distance < enemy.attackDistance)
+            if (enemy.IsPlayerDetected().distance < enemy.attackDistance) // 공격 거리 이내
             {
-                if (CanAttack())
-                    stateMachine.ChangeState(enemy.attackState);
+                if (CanAttack()) // 공격 가능하면
+                    stateMachine.ChangeState(enemy.attackState); // 공격 상태로 전환
                 else
-                    stateMachine.ChangeState(enemy.idleState);
+                    stateMachine.ChangeState(enemy.idleState); // 공격 쿨타임이면 대기 상태로 전환
             }
         }
 
-        if (player.position.x > enemy.transform.position.x)
+        if (player.position.x > enemy.transform.position.x) // 방향 전환
             moveDir = 1;
-        else if (player.position.x < enemy.transform.position.x)
+        else if (player.position.x < enemy.transform.position.x) // 방향 전환
             moveDir = -1;
 
-        if (enemy.IsPlayerDetected() && enemy.IsPlayerDetected().distance < enemy.attackDistance - .1f)
-            return;
+        if (enemy.IsPlayerDetected() && enemy.IsPlayerDetected().distance < enemy.attackDistance - .1f) 
+            return; // 너무 가까우면 멈춤
 
-        enemy.SetVelocity(enemy.moveSpeed * moveDir, rb.velocity.y);
+        enemy.SetVelocity(enemy.moveSpeed * moveDir, rb.velocity.y); // 플레이어 쪽으로 이동
     }
 
     public override void Exit()

@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class UI_HealthBar : MonoBehaviour
 {
-    private Entity entity => GetComponentInParent<Entity>();
-    private CharacterStats myStats => GetComponentInParent<CharacterStats>();
-    private RectTransform myTransform => GetComponent<RectTransform>();
+    private Entity entity => GetComponentInParent<Entity>(); // Entity 컴포넌트를 가져오는 속성
+    private CharacterStats myStats => GetComponentInParent<CharacterStats>(); // 체력 정보를 가져오는 속성
+    private RectTransform myTransform => GetComponent<RectTransform>(); // UI의 RectTransform 컴포넌트를 가져오는 속성
     private Slider slider;
 
 
@@ -14,22 +14,22 @@ public class UI_HealthBar : MonoBehaviour
         //myTransform = GetComponent<RectTransform>();
         slider = GetComponentInChildren<Slider>();
 
-        UpdateHealthUI();
+        UpdateHealthUI(); // 초기 체력 UI 업데이트
     }
 
-    private void UpdateHealthUI()
+    private void UpdateHealthUI() // 체력 UI 업데이트
     {
         slider.maxValue = myStats.GetMaxHealthValue();
         slider.value = myStats.currentHealth;
     }
 
-    private void OnEnable()
+    private void OnEnable() // 이벤트 구독
     {
         entity.onFlipped += FlipUI;
         myStats.onHealthChanged += UpdateHealthUI;
     }
 
-    private void OnDisable()
+    private void OnDisable() // 이벤트 구독 해제
     {
         if(entity !=null)
             entity.onFlipped -= FlipUI;
@@ -37,5 +37,5 @@ public class UI_HealthBar : MonoBehaviour
         if(myStats != null)
             myStats.onHealthChanged -= UpdateHealthUI;
     }
-    private void FlipUI() => myTransform.Rotate(0, 180, 0);
+    private void FlipUI() => myTransform.Rotate(0, 180, 0); // UI 뒤집기
 }

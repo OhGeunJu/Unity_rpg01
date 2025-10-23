@@ -778,11 +778,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: 5836cbe5-6b91-49b5-87f1-2dda3e336611
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: rpg01
+  organizationId: afence
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 
-public enum StatType
+public enum StatType // 능력치 종류
 {
     strength,
     agility,
@@ -24,32 +24,32 @@ public class CharacterStats : MonoBehaviour
 {
     private EntityFX fx;
 
-    [Header("Major stats")]
-    public Stat strength; // 1 point increase damage by 1 and crit.power by 1%
-    public Stat agility;  // 1 point increase evasion by 1% and crit.chance by 1%
-    public Stat intelligence; // 1 point increase magic damage by 1 and magic resistance by 3
-    public Stat vitality; // 1 point incredase health by 5 points
+    [Header("Major stats")] // 주요 능력치
+    public Stat strength; // 1점 증가시 데미지 1 증가 및 치명타 파워 1% 증가
+    public Stat agility;  // 1점 증가시 회피 1%, 치명타 기회 1% 증가
+    public Stat intelligence; // 1점 증가시 마법 데미지 1 증가 및 마법 저항력 3 증가
+    public Stat vitality; // 1점 증가시 최대 체력 5 증가
 
-    [Header("Offensive stats")]
+    [Header("Offensive stats")] // 공격 능력치
     public Stat damage;
     public Stat critChance;
-    public Stat critPower;              // default value 150%
+    public Stat critPower;              // 기본 치명타 비율 150%
 
-    [Header("Defensive stats")]
+    [Header("Defensive stats")] // 방어 능력치
     public Stat maxHealth;
     public Stat armor;
     public Stat evasion;
     public Stat magicResistance;
 
-    [Header("Magic stats")]
+    [Header("Magic stats")] // 마법 능력치
     public Stat fireDamage;
     public Stat iceDamage;
     public Stat lightingDamage;
 
 
-    public bool isIgnited;   // does damage over time
-    public bool isChilled;   // reduce armor by 20%
-    public bool isShocked;   // reduce accuracy by 20%
+    public bool isIgnited;   // 화염 데미지 지속
+    public bool isChilled;   // 방어력 20% 감소 및 이동 속도 감소
+    public bool isShocked;   // 정확도 20% 감소
 
 
     [SerializeField] private float ailmentsDuration = 4;
@@ -63,17 +63,17 @@ public class CharacterStats : MonoBehaviour
     private int igniteDamage;
     [SerializeField] private GameObject shockStrikePrefab;
     private int shockDamage;
-    public int currentHealth;
+    public int currentHealth; // 현재 체력
 
-    public System.Action onHealthChanged;
-    public bool isDead { get; private set; }
-    public bool isInvincible { get; private set; }
-    private bool isVulnerable;
+    public System.Action onHealthChanged; // 체력 변경 시 실행될 델리게이트
+    public bool isDead { get; private set; } // 사망 여부
+    public bool isInvincible { get; private set; } // 무적 상태 여부
+    private bool isVulnerable; // 취약 상태 여부
 
     protected virtual void Start()
     {
-        critPower.SetDefaultValue(150);
-        currentHealth = GetMaxHealthValue();
+        critPower.SetDefaultValue(150); 
+        currentHealth = GetMaxHealthValue(); // 초기 체력을 최대 체력으로 설정
 
         fx = GetComponent<EntityFX>();
     }
@@ -101,9 +101,9 @@ public class CharacterStats : MonoBehaviour
     }
 
 
-    public void MakeVulnerableFor(float _duration) => StartCoroutine(VulnerableCorutine(_duration));
+    public void MakeVulnerableFor(float _duration) => StartCoroutine(VulnerableCorutine(_duration)); // 취약 상태 코루틴 시작
 
-    private IEnumerator VulnerableCorutine(float _duartion)
+    private IEnumerator VulnerableCorutine(float _duartion) // 취약 상태 코루틴
     {
         isVulnerable = true;
 
@@ -112,13 +112,12 @@ public class CharacterStats : MonoBehaviour
         isVulnerable = false;
     }
 
-    public virtual void IncreaseStatBy(int _modifier, float _duration, Stat _statToModify)
+    public virtual void IncreaseStatBy(int _modifier, float _duration, Stat _statToModify) // 능력치 증가 메서드
     {
-        // start corototuine for stat increase
-        StartCoroutine(StatModCoroutine(_modifier, _duration, _statToModify));
+        StartCoroutine(StatModCoroutine(_modifier, _duration, _statToModify)); // 능력치 증가 코루틴 시작
     }
 
-    private IEnumerator StatModCoroutine(int _modifier, float _duration, Stat _statToModify)
+    private IEnumerator StatModCoroutine(int _modifier, float _duration, Stat _statToModify) // 능력치 증가 코루틴
     {
         _statToModify.AddModifier(_modifier);
 
@@ -128,40 +127,40 @@ public class CharacterStats : MonoBehaviour
     }
     
 
-    public virtual void DoDamage(CharacterStats _targetStats)
+    public virtual void DoDamage(CharacterStats _targetStats) // 기본 물리 공격 메서드
     {
         bool criticalStrike = false;
 
 
-        if (_targetStats.isInvincible)
+        if (_targetStats.isInvincible) // 무적 상태면 공격 무시
             return;
 
-        if (TargetCanAvoidAttack(_targetStats))
+        if (TargetCanAvoidAttack(_targetStats)) // 회피 성공 시 공격 무시
             return;
 
-        _targetStats.GetComponent<Entity>().SetupKnockbackDir(transform);
+        _targetStats.GetComponent<Entity>().SetupKnockbackDir(transform); // 넉백 방향 설정
 
-        int totalDamage = damage.GetValue() + strength.GetValue();
+        int totalDamage = damage.GetValue() + strength.GetValue(); // 기본 데미지 계산
 
-        if (CanCrit())
+        if (CanCrit()) // 치명타 계산
         {
             totalDamage = CalculateCriticalDamage(totalDamage);
             criticalStrike = true;
         }
 
-        fx.CreateHitFx(_targetStats.transform,criticalStrike);
+        fx.CreateHitFx(_targetStats.transform,criticalStrike); // 히트 이펙트 생성
 
-        totalDamage = CheckTargetArmor(_targetStats, totalDamage);
-        _targetStats.TakeDamage(totalDamage);
+        totalDamage = CheckTargetArmor(_targetStats, totalDamage); // 대상의 방어력 계산
+        _targetStats.TakeDamage(totalDamage); // 대상에게 데미지 적용
 
 
-         DoMagicalDamage(_targetStats); // remove if you don't want to apply magic hit on primary attack
+        DoMagicalDamage(_targetStats); // remove if you don't want to apply magic hit on primary attack
 
     }
 
-    #region Magical damage and ailemnts
+    #region Magical damage and ailemnts // 마법 데미지 및 상태 이상
 
-    public virtual void DoMagicalDamage(CharacterStats _targetStats)
+    public virtual void DoMagicalDamage(CharacterStats _targetStats) // 마법 데미지 메서드
     {
         int _fireDamage = fireDamage.GetValue();
         int _iceDamage = iceDamage.GetValue();
@@ -169,27 +168,27 @@ public class CharacterStats : MonoBehaviour
 
 
 
-        int totalMagicalDamage = _fireDamage + _iceDamage + _lightingDamage + intelligence.GetValue();
+        int totalMagicalDamage = _fireDamage + _iceDamage + _lightingDamage + intelligence.GetValue(); // 마법 데미지 계산
 
-        totalMagicalDamage = CheckTargetResistance(_targetStats, totalMagicalDamage);
-        _targetStats.TakeDamage(totalMagicalDamage);
+        totalMagicalDamage = CheckTargetResistance(_targetStats, totalMagicalDamage); // 대상의 마법 저항력 계산
+        _targetStats.TakeDamage(totalMagicalDamage); // 대상에게 마법 데미지 적용
 
 
-        if (Mathf.Max(_fireDamage, _iceDamage, _lightingDamage) <= 0)
+        if (Mathf.Max(_fireDamage, _iceDamage, _lightingDamage) <= 0) // 상태 이상 적용 조건 검사
             return;
 
 
-        AttemptyToApplyAilements(_targetStats, _fireDamage, _iceDamage, _lightingDamage);
+        AttemptyToApplyAilements(_targetStats, _fireDamage, _iceDamage, _lightingDamage); // 상태 이상 적용 시도
 
     }
 
-    private void AttemptyToApplyAilements(CharacterStats _targetStats, int _fireDamage, int _iceDamage, int _lightingDamage)
+    private void AttemptyToApplyAilements(CharacterStats _targetStats, int _fireDamage, int _iceDamage, int _lightingDamage) // 상태 이상 적용 시도 메서드
     {
         bool canApplyIgnite = _fireDamage > _iceDamage && _fireDamage > _lightingDamage;
         bool canApplyChill = _iceDamage > _fireDamage && _iceDamage > _lightingDamage;
         bool canApplyShock = _lightingDamage > _fireDamage && _lightingDamage > _iceDamage;
 
-        while (!canApplyIgnite && !canApplyChill && !canApplyShock)
+        while (!canApplyIgnite && !canApplyChill && !canApplyShock) // 무작위로 상태 이상 적용
         {
             if (Random.value < .3f && _fireDamage > 0)
             {
@@ -217,87 +216,87 @@ public class CharacterStats : MonoBehaviour
             }
         }
 
-        if (canApplyIgnite)
+        if (canApplyIgnite) // 상태 이상 적용
             _targetStats.SetupIgniteDamage(Mathf.RoundToInt(_fireDamage * .2f));
 
-        if (canApplyShock)
+        if (canApplyShock) // 상태 이상 적용
             _targetStats.SetupShockStrikeDamage(Mathf.RoundToInt(_lightingDamage * .1f));
 
-        _targetStats.ApplyAilments(canApplyIgnite, canApplyChill, canApplyShock);
+        _targetStats.ApplyAilments(canApplyIgnite, canApplyChill, canApplyShock); // 상태 이상 적용
     }
 
 
-    public void ApplyAilments(bool _ignite, bool _chill, bool _shock)
+    public void ApplyAilments(bool _ignite, bool _chill, bool _shock) // 상태 이상 적용 메서드
     {
         bool canApplyIgnite = !isIgnited && !isChilled && !isShocked;
         bool canApplyChill = !isIgnited && !isChilled && !isShocked;
         bool canApplyShock = !isIgnited && !isChilled;
 
 
-        if (_ignite && canApplyIgnite)
+        if (_ignite && canApplyIgnite) // 상태 이상 적용 조건 검사
         {
-            isIgnited = _ignite;
-            ignitedTimer = ailmentsDuration;
+            isIgnited = _ignite; // 상태 이상 적용
+            ignitedTimer = ailmentsDuration; // 지속 시간 설정
 
-            fx.IgniteFxFor(ailmentsDuration);
+            fx.IgniteFxFor(ailmentsDuration); // 이펙트 재생
         }
 
-        if (_chill && canApplyChill)
+        if (_chill && canApplyChill) // 상태 이상 적용 조건 검사
         {
-            chilledTimer = ailmentsDuration;
-            isChilled = _chill;
+            chilledTimer = ailmentsDuration; // 지속 시간 설정
+            isChilled = _chill; // 상태 이상 적용
 
-            float slowPercentage = .2f;
+            float slowPercentage = .2f; // 이동 속도 감소 비율 설정
 
-            GetComponent<Entity>().SlowEntityBy(slowPercentage, ailmentsDuration);
-            fx.ChillFxFor(ailmentsDuration);
+            GetComponent<Entity>().SlowEntityBy(slowPercentage, ailmentsDuration); // 이동 속도 감소 적용
+            fx.ChillFxFor(ailmentsDuration); // 이펙트 재생
         }
 
-        if (_shock && canApplyShock)
+        if (_shock && canApplyShock) // 상태 이상 적용 조건 검사
         {
-            if (!isShocked)
+            if (!isShocked) 
             {
-                ApplyShock(_shock);
+                ApplyShock(_shock); // 상태 이상 적용
             }
             else
             {
                 if (GetComponent<Player>() != null)
                     return;
 
-                HitNearestTargetWithShockStrike();
+                HitNearestTargetWithShockStrike(); // 가장 가까운 적에게 충격파 공격 적용
             }
         }
 
     }
 
-    public void ApplyShock(bool _shock)
+    public void ApplyShock(bool _shock) // 충격 상태 적용 메서드
     {
         if (isShocked)
             return;
 
         shockedTimer = ailmentsDuration;
-        isShocked = _shock;
+        isShocked = _shock; // 상태 이상 적용
 
         fx.ShockFxFor(ailmentsDuration);
     }
 
-    private void HitNearestTargetWithShockStrike()
+    private void HitNearestTargetWithShockStrike() // 가장 가까운 적에게 충격파 공격 적용 메서드
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 25);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 25); // 범위 내 모든 콜라이더 검색
 
-        float closestDistance = Mathf.Infinity;
-        Transform closestEnemy = null;
+        float closestDistance = Mathf.Infinity; // 가장 가까운 적과의 거리 초기화
+        Transform closestEnemy = null; // 가장 가까운 적 초기화
 
         foreach (var hit in colliders)
         {
-            if (hit.GetComponent<Enemy>() != null && Vector2.Distance(transform.position, hit.transform.position) > 1)
+            if (hit.GetComponent<Enemy>() != null && Vector2.Distance(transform.position, hit.transform.position) > 1) // 적 콜라이더인지 확인 및 자기 자신 제외
             {
-                float distanceToEnemy = Vector2.Distance(transform.position, hit.transform.position);
+                float distanceToEnemy = Vector2.Distance(transform.position, hit.transform.position); // 적과의 거리 계산
 
-                if (distanceToEnemy < closestDistance)
+                if (distanceToEnemy < closestDistance) // 가장 가까운 적 갱신
                 {
                     closestDistance = distanceToEnemy;
-                    closestEnemy = hit.transform;
+                    closestEnemy = hit.transform; // 가장 가까운 적 설정
                 }
             }
 
@@ -306,42 +305,42 @@ public class CharacterStats : MonoBehaviour
         }
 
 
-        if (closestEnemy != null)
+        if (closestEnemy != null) // 가장 가까운 적이 존재하면 충격파 공격 생성
         {
-            GameObject newShockStrike = Instantiate(shockStrikePrefab, transform.position, Quaternion.identity);
-            newShockStrike.GetComponent<ShockStrike_Controller>().Setup(shockDamage, closestEnemy.GetComponent<CharacterStats>());
+            GameObject newShockStrike = Instantiate(shockStrikePrefab, transform.position, Quaternion.identity); // 충격파 공격 생성
+            newShockStrike.GetComponent<ShockStrike_Controller>().Setup(shockDamage, closestEnemy.GetComponent<CharacterStats>()); // 충격파 공격 설정
         }
     }
-    private void ApplyIgniteDamage()
+    private void ApplyIgniteDamage() // 화염 지속 데미지 적용 메서드
     {
         if (igniteDamageTimer < 0)
         {
-            DecreaseHealthBy(igniteDamage);
+            DecreaseHealthBy(igniteDamage); // 화염 지속 데미지 적용
 
             if (currentHealth < 0 && !isDead)
                 Die();
 
-            igniteDamageTimer = igniteDamageCoodlown;
+            igniteDamageTimer = igniteDamageCoodlown; // 쿨다운 초기화
         }
     }
 
-    public void SetupIgniteDamage(int _damage) => igniteDamage = _damage;
-    public void SetupShockStrikeDamage(int _damage) => shockDamage = _damage;
+    public void SetupIgniteDamage(int _damage) => igniteDamage = _damage; // 화염 지속 데미지 설정 메서드
+    public void SetupShockStrikeDamage(int _damage) => shockDamage = _damage; // 충격파 데미지 설정 메서드
 
     #endregion
 
-    public virtual void TakeDamage(int _damage)
+    public virtual void TakeDamage(int _damage) // 데미지 적용 메서드
     {
 
-        if (isInvincible)
+        if (isInvincible) // 무적 상태면 데미지 무시
             return;
 
-        DecreaseHealthBy(_damage);
+        DecreaseHealthBy(_damage); // 데미지 감소 메서드 호출
 
 
 
-        GetComponent<Entity>().DamageImpact();
-        fx.StartCoroutine("FlashFX");
+        GetComponent<Entity>().DamageImpact(); // 피격 반응 메서드 호출
+        fx.StartCoroutine("FlashFX"); // 피격 플래시 이펙트 재생
 
         if (currentHealth < 0 && !isDead)
             Die();
@@ -350,31 +349,31 @@ public class CharacterStats : MonoBehaviour
     }
 
 
-    public virtual void IncreaseHealthBy(int _amount)
+    public virtual void IncreaseHealthBy(int _amount) // 체력 회복 메서드
     {
-        currentHealth += _amount;
+        currentHealth += _amount; // 체력 증가
 
-        if (currentHealth > GetMaxHealthValue())
+        if (currentHealth > GetMaxHealthValue()) // 최대 체력 초과 방지
             currentHealth = GetMaxHealthValue();
 
         if(onHealthChanged != null)
-            onHealthChanged();
+            onHealthChanged(); // 체력 변경 델리게이트 호출
     }
 
 
-    protected virtual void DecreaseHealthBy(int _damage)
+    protected virtual void DecreaseHealthBy(int _damage) // 데미지 감소 메서드
     {
 
         if (isVulnerable)
-            _damage = Mathf.RoundToInt( _damage * 1.1f);
+            _damage = Mathf.RoundToInt( _damage * 1.1f); // 취약 상태일 때 받는 데미지 10% 증가
 
-        currentHealth -= _damage;
+        currentHealth -= _damage; // 체력 감소
 
         if (_damage > 0)
-            fx.CreatePopUpText(_damage.ToString());
+            fx.CreatePopUpText(_damage.ToString()); // 데미지 팝업 텍스트 생성
 
         if (onHealthChanged != null)
-            onHealthChanged();
+            onHealthChanged(); // 체력 변경 델리게이트 호출
     }
 
     protected virtual void Die()
@@ -382,17 +381,17 @@ public class CharacterStats : MonoBehaviour
         isDead = true;
     }
 
-    public void KillEntity()
+    public void KillEntity() // 즉시 사망 메서드
     {
         if (!isDead)
             Die();
     }
 
-    public void MakeInvincible(bool _invincible) => isInvincible = _invincible;
+    public void MakeInvincible(bool _invincible) => isInvincible = _invincible; // 무적 상태 설정 메서드
 
 
     #region Stat calculations
-    protected int CheckTargetArmor(CharacterStats _targetStats, int totalDamage)
+    protected int CheckTargetArmor(CharacterStats _targetStats, int totalDamage) // 대상의 방어력 계산 메서드
     {
         if (_targetStats.isChilled)
             totalDamage -= Mathf.RoundToInt(_targetStats.armor.GetValue() * .8f);
@@ -405,19 +404,19 @@ public class CharacterStats : MonoBehaviour
     }
 
 
-    private int CheckTargetResistance(CharacterStats _targetStats, int totalMagicalDamage)
+    private int CheckTargetResistance(CharacterStats _targetStats, int totalMagicalDamage) // 대상의 마법 저항력 계산 메서드
     {
         totalMagicalDamage -= _targetStats.magicResistance.GetValue() + (_targetStats.intelligence.GetValue() * 3);
         totalMagicalDamage = Mathf.Clamp(totalMagicalDamage, 0, int.MaxValue);
         return totalMagicalDamage;
     }
 
-    public virtual void OnEvasion()
+    public virtual void OnEvasion() 
     {
 
     }
 
-    protected bool TargetCanAvoidAttack(CharacterStats _targetStats)
+    protected bool TargetCanAvoidAttack(CharacterStats _targetStats) // 대상의 회피 성공 여부 계산 메서드
     {
         int totalEvasion = _targetStats.evasion.GetValue() + _targetStats.agility.GetValue();
 
@@ -433,7 +432,7 @@ public class CharacterStats : MonoBehaviour
         return false;
     }
 
-    protected bool CanCrit()
+    protected bool CanCrit() // 치명타 성공 여부 계산 메서드
     {
         int totalCriticalChance = critChance.GetValue() + agility.GetValue();
 
@@ -446,7 +445,7 @@ public class CharacterStats : MonoBehaviour
         return false;
     }
 
-    protected int CalculateCriticalDamage(int _damage)
+    protected int CalculateCriticalDamage(int _damage) // 치명타 데미지 계산 메서드
     {
         float totalCritPower = (critPower.GetValue() + strength.GetValue()) * .01f;
         float critDamage = _damage * totalCritPower;
@@ -454,14 +453,14 @@ public class CharacterStats : MonoBehaviour
         return Mathf.RoundToInt(critDamage);
     }
 
-    public int GetMaxHealthValue()
+    public int GetMaxHealthValue() // 최대 체력 계산 메서드
     {
         return maxHealth.GetValue() + vitality.GetValue() * 5;
     }
 
     #endregion
 
-    public Stat GetStat(StatType _statType)
+    public Stat GetStat(StatType _statType) // 능력치 반환 메서드
     {
         if (_statType == StatType.strength) return strength;
         else if (_statType == StatType.agility) return agility;

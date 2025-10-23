@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossIdleState : BossGroundedState
+public class BossIdleState : EnemyState
 {
-    public BossIdleState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _animBoolName, Enemy_Boss _enemy) : base(_enemyBase, _stateMachine, _animBoolName, _enemy)
+    private Enemy_Boss enemy;
+    private Transform player;
+
+    public BossIdleState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _animBoolName, Enemy_Boss enemy) : base(_enemyBase, _stateMachine, _animBoolName)
     {
+        this.enemy = enemy;
     }
 
     public override void Enter()
@@ -13,6 +17,7 @@ public class BossIdleState : BossGroundedState
         base.Enter();
 
         stateTimer = enemy.idleTime;
+        player = PlayerManager.instance.player.transform;
     }
 
     public override void Exit()
@@ -24,7 +29,10 @@ public class BossIdleState : BossGroundedState
     {
         base.Update();
 
-        if (stateTimer < 0)
-            stateMachine.ChangeState(enemy.moveState);
+        if (Vector2.Distance(player.transform.position, enemy.transform.position) < 7)
+            enemy.bossFightBegun = true;
+
+        if (stateTimer < 0 && enemy.bossFightBegun)
+            stateMachine.ChangeState(enemy.battleState);
     }
 }

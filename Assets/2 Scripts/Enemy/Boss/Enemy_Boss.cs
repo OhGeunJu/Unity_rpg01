@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
 using UnityEngine;
 
 public class Enemy_Boss : Enemy
 {
+    public bool bossFightBegun;
+
     public BossIdleState idleState { get; private set; }
-    public BossMoveState moveState { get; private set; }
     public BossBattleState battleState { get; private set; }
     public BossAttackState attackState { get; private set; }
     public BossDeadState deadState { get; private set; }
@@ -14,12 +14,18 @@ public class Enemy_Boss : Enemy
 
     protected override void Awake()
     {
-        deadState = new BossDeadState(this, stateMachine, "Idle", this);
+        base.Awake();
+
+        idleState = new BossIdleState(this, stateMachine, "Idle", this);
+        battleState = new BossBattleState(this, stateMachine, "Move", this);
+        attackState = new BossAttackState(this, stateMachine, "Attack", this);
+        deadState = new BossDeadState(this, stateMachine, "Dead", this);
     }
 
     protected override void Start()
     {
         base.Start();
+        stateMachine.Initialize(idleState);
 
     }
 
