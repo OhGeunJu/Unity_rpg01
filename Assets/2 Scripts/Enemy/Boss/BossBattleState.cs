@@ -15,6 +15,8 @@ public class BossBattleState : EnemyState
     {
         base.Enter();
         player = PlayerManager.instance.player.transform;
+
+        enemy.bossUI.gameObject.SetActive(true);
     }
 
     public override void Update()

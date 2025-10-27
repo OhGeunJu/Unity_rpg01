@@ -12,7 +12,7 @@ public class EntityFX : MonoBehaviour
     [Header("Pop Up Text")]
     [SerializeField] private GameObject popUpTextPrefab;
 
-
+    
 
     
 

@@ -20,6 +20,8 @@ public class BossDeadState : EnemyState
         enemy.cd.enabled = false;
 
         stateTimer = .15f;
+
+        enemy.bossUI.gameObject.SetActive(false);
     }
 
     public override void Exit()

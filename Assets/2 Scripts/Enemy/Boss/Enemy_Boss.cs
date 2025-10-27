@@ -6,6 +6,8 @@ public class Enemy_Boss : Enemy
 {
     public bool bossFightBegun;
 
+    [SerializeField] public GameObject bossUI;
+
     public BossIdleState idleState { get; private set; }
     public BossBattleState battleState { get; private set; }
     public BossAttackState attackState { get; private set; }

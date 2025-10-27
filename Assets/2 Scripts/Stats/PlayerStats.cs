@@ -18,44 +18,44 @@ public class PlayerStats : CharacterStats
         base.TakeDamage(_damage);
     }
 
-    protected override void Die()
+    protected override void Die() // 사망 처리
     {
-        base.Die();
-        player.Die();
+        base.Die(); // 기본 사망 처리
+        player.Die(); // 플레이어 사망 처리
 
-        GameManager.instance.lostCurrencyAmount = PlayerManager.instance.currency;
-        PlayerManager.instance.currency = 0;
+        GameManager.instance.lostCurrencyAmount = PlayerManager.instance.currency; // 잃은 골드 저장
+        PlayerManager.instance.currency = 0; // 플레이어 골드 0으로 초기화
 
-        GetComponent<PlayerItemDrop>()?.GenerateDrop();
+        GetComponent<PlayerItemDrop>()?.GenerateDrop(); // 아이템 드롭 생성
     }
 
-    protected override void DecreaseHealthBy(int _damage)
+    protected override void DecreaseHealthBy(int _damage) // 체력 감소
     {
         base.DecreaseHealthBy(_damage);
 
         if (isDead)
             return;
 
-        if (_damage > GetMaxHealthValue() * .3f )
+        if (_damage > GetMaxHealthValue() * .3f ) // 데미지를 입었을 때
         {
-            player.SetupKnockbackPower(new Vector2(10,6));
-            player.fx.ScreenShake(player.fx.shakeHighDamage);
+            player.SetupKnockbackPower(new Vector2(10,6)); // 넉백 설정
+            player.fx.ScreenShake(player.fx.shakeHighDamage); // 화면 흔들림 효과
 
 
-            int randomSound = Random.Range(34, 35);
-            AudioManager.instance.PlaySFX(randomSound, null);
-            
+            int randomSound = Random.Range(34, 35); // 데미지 사운드 재생
+            AudioManager.instance.PlaySFX(randomSound, null); // 플레이어 데미지 사운드 재생
+
         }
 
-        ItemData_Equipment currentArmor = Inventory.instance.GetEquipment(EquipmentType.Armor);
+        ItemData_Equipment currentArmor = Inventory.instance.GetEquipment(EquipmentType.Armor); // 장착된 갑옷의 효과 실행
 
-        if (currentArmor != null)
-            currentArmor.Effect(player.transform);
+        if (currentArmor != null) // 장착된 갑옷이 있을 때
+            currentArmor.Effect(player.transform); // 갑옷 효과 실행
     }
 
-    public override void OnEvasion()
+    public override void OnEvasion() // 회피 시
     {
-        player.skill.dodge.CreateMirageOnDodge();
+        player.skill.dodge.CreateMirageOnDodge(); // 회피 시 신기루 생성
     }
 
     public void CloneDoDamage(CharacterStats _targetStats,float _multiplier)

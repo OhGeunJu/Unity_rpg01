@@ -15,6 +15,7 @@ public class UI : MonoBehaviour, ISaveManager
     [SerializeField] private GameObject craftUI;
     [SerializeField] private GameObject optionsUI;
     [SerializeField] private GameObject inGameUI;
+    [SerializeField] private GameObject bossUI;
 
 
 
@@ -28,16 +29,18 @@ public class UI : MonoBehaviour, ISaveManager
     private void Awake()
     {
 
-        SwitchTo(skillTreeUI); // we need this to assign events on skill tree slots before we asssign events on skill scripts
-        fadeScreen.gameObject.SetActive(true);
+        SwitchTo(skillTreeUI); // 스킬 스크립트에 이벤트를 할당하기 전에 스킬 트리 슬롯에 이벤트를 할당하려면 이것이 필요합니다
+        fadeScreen.gameObject.SetActive(true); // fade screen이 비활성화된 상태에서 시작되면 안되므로 활성화 상태로 설정합니다.
     }
 
     void Start()
     {
-        SwitchTo(inGameUI);
+        SwitchTo(inGameUI); // 시작할 때 인게임 UI로 전환합니다.
 
-        itemToolTip.gameObject.SetActive(false);
-        statToolTip.gameObject.SetActive(false);
+        bossUI.gameObject.SetActive(false); // 보스 UI를 비활성화합니다.
+
+        itemToolTip.gameObject.SetActive(false); // 툴팁을 비활성화합니다.
+        statToolTip.gameObject.SetActive(false); // 툴팁을 비활성화합니다.
 
         //gameObject.SetActive(false);
     }

@@ -10,13 +10,22 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource[] sfx;
     [SerializeField] private AudioSource[] bgm;
 
+    private static bool isQuitting;
 
     public bool playBgm;
     private int bgmIndex;
 
     private bool canPlaySFX;
-    private void Awake()
+    private void Awake() //계속 오디오 소스를 한 번에 들고 다닐 지 고민해봐야함
     {
+        //if (instance != null && instance != this)
+        //{
+        //    Destroy(gameObject);
+        //    return;
+        //}
+
+        //instance = this;
+
         if (instance != null)
             Destroy(instance.gameObject);
         else
@@ -61,7 +70,13 @@ public class AudioManager : MonoBehaviour
 
     public void StopSFX(int _index) => sfx[_index].Stop();
 
-    public void StopSFXWithTime(int _index) => StartCoroutine(DecreaseVolume(sfx[_index]));
+    public void StopSFXWithTime(int _index)
+    {
+        if (isQuitting) return; // 종료 중이면 아무것도 안 함
+
+        if (_index >= 0 && _index < sfx.Length && sfx[_index] != null)
+            StartCoroutine(DecreaseVolume(sfx[_index]));
+    }
 
     private IEnumerator DecreaseVolume(AudioSource _audio)
     {
@@ -105,4 +120,9 @@ public class AudioManager : MonoBehaviour
     }
 
     private void AllowSFX() => canPlaySFX = true;
+
+    private void OnApplicationQuit()
+    {
+        isQuitting = true;
+    }
 }

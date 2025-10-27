@@ -11,7 +11,7 @@ public class UI_InGame : MonoBehaviour
     [SerializeField] private Image dashImage;
     [SerializeField] private Image parryImage;
     [SerializeField] private Image crystalImage;
-    [SerializeField] private Image swordImage;
+    //[SerializeField] private Image swordImage;
     [SerializeField] private Image blackholeImage;
     [SerializeField] private Image flaskImage;
 
@@ -45,8 +45,8 @@ public class UI_InGame : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && skills.crystal.crystalUnlocked)
             SetCooldownOf(crystalImage);
 
-        if (Input.GetKeyDown(KeyCode.Mouse1) && skills.sword.swordUnlocked)
-            SetCooldownOf(swordImage);
+        //if (Input.GetKeyDown(KeyCode.Mouse1) && skills.sword.swordUnlocked)
+        //    SetCooldownOf(swordImage);
 
         if (Input.GetKeyDown(KeyCode.R) && skills.blackhole.blackholeUnlocked)
             SetCooldownOf(blackholeImage);
@@ -58,7 +58,7 @@ public class UI_InGame : MonoBehaviour
         CheckCooldownOf(dashImage, skills.dash.cooldown);
         CheckCooldownOf(parryImage, skills.parry.cooldown);
         CheckCooldownOf(crystalImage, skills.crystal.cooldown);
-        CheckCooldownOf(swordImage, skills.sword.cooldown);
+        //CheckCooldownOf(swordImage, skills.sword.cooldown);
         CheckCooldownOf(blackholeImage, skills.blackhole.cooldown);
 
         CheckCooldownOf(flaskImage, Inventory.instance.flaskCooldown);
