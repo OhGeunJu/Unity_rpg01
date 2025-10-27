@@ -12,11 +12,15 @@ public class EntityFX : MonoBehaviour
     [Header("Pop Up Text")]
     [SerializeField] private GameObject popUpTextPrefab;
 
-    
 
-    
+
+
 
     [Header("Flash FX")]
+    private SpriteRenderer[] renderers;
+    private Color[] originalColors;
+    private Material[] originalMats;
+
     [SerializeField] private float flashDuration;
     [SerializeField] private Material hitMat;
     private Material originalMat;
@@ -39,18 +43,29 @@ public class EntityFX : MonoBehaviour
     private GameObject myHealthBar;
 
 
-    
+
     protected virtual void Start()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
         player = PlayerManager.instance.player;
-        
+
         originalMat = sr.material;
 
 
         myHealthBar = GetComponentInChildren<UI_HealthBar>(true).gameObject;
-    }
 
+        // 자식에 있는 모든 SpriteRenderer 수집 (일반몹은 1개, 보스는 여러 개)
+        renderers = GetComponentsInChildren<SpriteRenderer>(true);
+        originalColors = new Color[renderers.Length];
+        originalMats = new Material[renderers.Length];
+
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            if (!renderers[i]) continue;
+            originalColors[i] = renderers[i].color;
+            originalMats[i] = renderers[i].material;
+        }
+    }
 
     public void CreatePopUpText(string _text)
     {
@@ -64,8 +79,8 @@ public class EntityFX : MonoBehaviour
         newText.GetComponent<TextMeshPro>().text = _text;
     }
 
- 
-    
+
+
 
     public void MakeTransprent(bool _transprent)
     {
@@ -84,14 +99,37 @@ public class EntityFX : MonoBehaviour
 
     private IEnumerator FlashFX()
     {
-        sr.material = hitMat;
-        Color currentColor = sr.color;
-        sr.color = Color.white;
+        if (renderers == null || renderers.Length == 0)
+            yield break;
+
+        // 1) 모두 hitMat + 흰색으로 번쩍
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            var r = renderers[i];
+            if (!r) continue;
+
+            if (hitMat) r.material = hitMat;   // 머티리얼 교체(선택) 기존 효과 유지
+            r.color = Color.white;             // 기존 방식: Color.white
+        }
 
         yield return new WaitForSeconds(flashDuration);
 
-        sr.color = currentColor;
-        sr.material = originalMat;
+        // 2) 모두 원래 색/머티리얼로 복구
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            var r = renderers[i];
+            if (!r) continue;
+
+            // 색 복구
+            if (originalColors != null && i < originalColors.Length)
+                r.color = originalColors[i];
+            else
+                r.color = Color.white;
+
+            // 머티리얼 복구
+            if (hitMat && originalMats != null && i < originalMats.Length && originalMats[i])
+                r.material = originalMats[i];
+        }
     }
 
     private void RedColorBlink()
@@ -159,7 +197,7 @@ public class EntityFX : MonoBehaviour
             sr.color = shockColor[1];
     }
 
-    public void CreateHitFx(Transform _target,bool _critical)
+    public void CreateHitFx(Transform _target, bool _critical)
     {
 
 
@@ -167,7 +205,7 @@ public class EntityFX : MonoBehaviour
         float xPosition = Random.Range(-.5f, .5f);
         float yPosition = Random.Range(-.5f, .5f);
 
-        Vector3 hitFxRotaion = new Vector3(0,0,zRotation);
+        Vector3 hitFxRotaion = new Vector3(0, 0, zRotation);
 
         GameObject hitPrefab = hitFx;
 

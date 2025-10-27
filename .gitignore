@@ -72,3 +72,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 /[Aa]ssets/ProgressBars #4/
+/[Aa]ssets/Cainos/
+/[Aa]ssets/DungeonTileset/
+/[Aa]ssets/greedy mouth/
+/[Aa]ssets/NPC Pack - Pixel Art/

@@ -22,7 +22,7 @@ public enum StatType // 능력치 종류
 
 public class CharacterStats : MonoBehaviour
 {
-    private EntityFX fx;
+    protected EntityFX fx;
 
     [Header("Major stats")] // 주요 능력치
     public Stat strength; // 1점 증가시 데미지 1 증가 및 치명타 파워 1% 증가

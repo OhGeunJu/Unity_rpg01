@@ -2,22 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAttackState : EnemyState
+public class BossAttackState2 : EnemyState
 {
     private Enemy_Boss enemy;
 
-    public BossAttackState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _animBoolName, Enemy_Boss _enemy) : base(_enemyBase, _stateMachine, _animBoolName)
+    public BossAttackState2(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _animBoolName, Enemy_Boss _enemy) : base(_enemyBase, _stateMachine, _animBoolName)
     {
         this.enemy = _enemy;
     }
-
     public override void Enter()
     {
         base.Enter();
 
-        enemy.currentAttackId = 1;
+        enemy.currentAttackId = 2;
 
-        enemy.StampAttack1Cooldown();
+        enemy.StampAttack2Cooldown();
     }
 
     public override void Exit()
