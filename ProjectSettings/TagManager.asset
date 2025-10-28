@@ -55,6 +55,9 @@ TagManager:
   - name: Checkpoint
     uniqueID: 1082012881
     locked: 0
+  - name: Npc
+    uniqueID: 3444373173
+    locked: 0
   - name: Item
     uniqueID: 348656065
     locked: 0
