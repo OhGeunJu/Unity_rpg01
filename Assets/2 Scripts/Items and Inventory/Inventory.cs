@@ -70,16 +70,16 @@ public class Inventory : MonoBehaviour , ISaveManager
         AddStartingItems();
     }
 
-    private void AddStartingItems()
+    private void AddStartingItems() // 아이템 추가
     {
-        foreach (ItemData_Equipment item in loadedEquipment)
+        foreach (ItemData_Equipment item in loadedEquipment) // 장착 아이템 불러오기
         {
             EquipItem(item);
         }
         
-        if (loadedItems.Count > 0)
+        if (loadedItems.Count > 0) // 로드 아이템이 있을 때
         {
-            foreach (InventoryItem item in loadedItems)
+            foreach (InventoryItem item in loadedItems) // 인벤토리 아이템 불러오기
             {
                 for (int i = 0; i < item.stackSize; i++)
                 {

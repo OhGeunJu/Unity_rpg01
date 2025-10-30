@@ -52,8 +52,8 @@ public class UI : MonoBehaviour, ISaveManager
         if (Input.GetKeyDown(KeyCode.C))
             SwitchWithKeyTo(charcaterUI);
 
-        if (Input.GetKeyDown(KeyCode.B))
-            SwitchWithKeyTo(craftUI);
+        //if (Input.GetKeyDown(KeyCode.B))
+        //    SwitchWithKeyTo(craftUI);
 
 
         if (Input.GetKeyDown(KeyCode.K))
@@ -157,5 +157,15 @@ public class UI : MonoBehaviour, ISaveManager
         {
             _data.volumeSettings.Add(item.parametr, item.slider.value);
         }
+    }
+
+    public void OpenCraftUI()
+    {
+        SwitchTo(craftUI);
+    }
+
+    public void CloseToInGameUI()
+    {
+        SwitchTo(inGameUI);
     }
 }
