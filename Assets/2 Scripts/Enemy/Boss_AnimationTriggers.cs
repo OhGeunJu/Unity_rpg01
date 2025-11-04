@@ -4,11 +4,13 @@ public class Boss_AnimationTriggers : MonoBehaviour
 {
     private Enemy_Boss enemy;
     private BossStats bossStats;
+    private BossSummonController summonController;
 
     void Awake()
     {
         enemy = GetComponentInParent<Enemy_Boss>();
         bossStats = GetComponentInParent<BossStats>();
+        summonController = GetComponentInParent<BossSummonController>();
     }
 
     private void AnimationTrigger()
@@ -48,9 +50,20 @@ public class Boss_AnimationTriggers : MonoBehaviour
         }
     }
 
-    private void SpeicalAttackTrigger() // 특수 공격 트리거
+    // 공격 3 (원거리 고정형 스펠)
+    private void AttackTrigger3()
+    {
+        enemy.CastSpell(); // 스펠 생성만 수행
+    }
+
+    private void SpeicalAttackTrigger()
     {
         enemy.AnimationSpecialAttackTrigger();
+    }
+    private void Summon_Spawn()
+    {
+        if (enemy == null || summonController == null) return;
+        summonController.TrySummonNow(); // 조건 확인 + 스폰
     }
 
     // 선택적으로 카운터 윈도우가 필요하면 유지
