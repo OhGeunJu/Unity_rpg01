@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5075672626563386462}
   - component: {fileID: 5595429308695765705}
   - component: {fileID: 3738374509657438993}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Entity_Status_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 6043538945296711548}
   - component: {fileID: 7550326017167331859}
   - component: {fileID: 8892837432719911241}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Servant_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,6 +371,7 @@ MonoBehaviour:
   minAttackCooldown: 0.35
   maxAttackCooldown: 0.55
   lastTimeAttacked: 0
+  servantFightBegun: 0
 --- !u!1 &4032748494698452990
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,7 +382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1141726044475179536}
   - component: {fileID: 4693626710290379421}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Health_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,7 +472,7 @@ GameObject:
   - component: {fileID: 8208305076224389693}
   - component: {fileID: 8951843955902524226}
   - component: {fileID: 1951703648451699557}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +545,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3491954233452162858}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,7 +576,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6194424270503146612}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,7 +614,7 @@ GameObject:
   - component: {fileID: 9185506699596264546}
   - component: {fileID: 4092648150815678770}
   - component: {fileID: 38142118905750168}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -687,7 +688,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7912025787521199673}
   - component: {fileID: 2713701364655022357}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CounterImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -770,7 +771,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5162504102565474858}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -801,7 +802,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7403305063561121401}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -834,6 +835,10 @@ PrefabInstance:
     - target: {fileID: 3038427717818873336, guid: 406035b4affc86141acb6b2db90f9cbd, type: 3}
       propertyPath: m_Name
       value: ChillFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038427717818873336, guid: 406035b4affc86141acb6b2db90f9cbd, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3038427717818873341, guid: 406035b4affc86141acb6b2db90f9cbd, type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -925,6 +930,10 @@ PrefabInstance:
     - target: {fileID: 3376266647829427749, guid: 5ee4612ebbfdefb488b04fed763655b1, type: 3}
       propertyPath: m_Name
       value: ShockFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 3376266647829427749, guid: 5ee4612ebbfdefb488b04fed763655b1, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3376266647829427752, guid: 5ee4612ebbfdefb488b04fed763655b1, type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -1077,6 +1086,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IgniteFX
       objectReference: {fileID: 0}
+    - target: {fileID: 8391695977692023367, guid: 283d3449409af034e8c3ee7513141f6e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8391695977692023482, guid: 283d3449409af034e8c3ee7513141f6e, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 1
@@ -1104,9 +1117,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2940743535599752664}
     m_Modifications:
+    - target: {fileID: 1579596415587020112, guid: e6f1bfaa0d8266841b40f7f1e481ef7c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1626369884507190331, guid: e6f1bfaa0d8266841b40f7f1e481ef7c, type: 3}
       propertyPath: m_Name
       value: Animator
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626369884507190331, guid: e6f1bfaa0d8266841b40f7f1e481ef7c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306527054934229111, guid: e6f1bfaa0d8266841b40f7f1e481ef7c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366809146970200437, guid: e6f1bfaa0d8266841b40f7f1e481ef7c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2558033562057838508, guid: e6f1bfaa0d8266841b40f7f1e481ef7c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3620877658771568535, guid: e6f1bfaa0d8266841b40f7f1e481ef7c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1115,6 +1148,10 @@ PrefabInstance:
     - target: {fileID: 3620877658771568535, guid: e6f1bfaa0d8266841b40f7f1e481ef7c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 99.999985
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122849174070732316, guid: e6f1bfaa0d8266841b40f7f1e481ef7c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4136061220464046920, guid: e6f1bfaa0d8266841b40f7f1e481ef7c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1155,6 +1192,22 @@ PrefabInstance:
     - target: {fileID: 4136061220464046920, guid: e6f1bfaa0d8266841b40f7f1e481ef7c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4519025903877633800, guid: e6f1bfaa0d8266841b40f7f1e481ef7c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183477627946242640, guid: e6f1bfaa0d8266841b40f7f1e481ef7c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7803829243970675335, guid: e6f1bfaa0d8266841b40f7f1e481ef7c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626387130679695151, guid: e6f1bfaa0d8266841b40f7f1e481ef7c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

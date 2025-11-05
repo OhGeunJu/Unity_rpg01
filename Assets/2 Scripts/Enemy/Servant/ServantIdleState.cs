@@ -6,6 +6,7 @@ public class ServantIdleState : ServantGroundedState
 {
     public ServantIdleState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _animBoolName, Enemy_Servant _enemy) : base(_enemyBase, _stateMachine, _animBoolName, _enemy)
     {
+        this.enemy = _enemy;
     }
 
     public override void Enter()
@@ -13,6 +14,7 @@ public class ServantIdleState : ServantGroundedState
         base.Enter();
 
         stateTimer = enemy.idleTime;
+        player = PlayerManager.instance.player.transform;
     }
 
     public override void Exit()
@@ -24,7 +26,10 @@ public class ServantIdleState : ServantGroundedState
     {
         base.Update();
 
-        if (stateTimer < 0)
-            stateMachine.ChangeState(enemy.moveState);
+        if (Vector2.Distance(player.transform.position, enemy.transform.position) < 7)
+            enemy.servantFightBegun = true;
+
+        if (stateTimer < 0 && enemy.servantFightBegun)
+            stateMachine.ChangeState(enemy.battleState);
     }
 }

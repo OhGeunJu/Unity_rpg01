@@ -5,6 +5,8 @@ using UnityEngine.InputSystem.XR;
 
 public class Enemy_Servant : Enemy
 {
+    public bool servantFightBegun;
+
     public ServantIdleState idleState { get; private set; }
     public ServantMoveState moveState { get; private set; }
     public ServantBattleState battleState { get; private set; }
