@@ -16,6 +16,8 @@ public class Object_NPC : MonoBehaviour
     [SerializeField] private float floatRange = 0.1f;
     private Vector3 startPosition;
 
+    protected bool isPlayerInRange = false;
+
     protected virtual void Awake()
     {
         ui = FindFirstObjectByType<UI>();
@@ -57,21 +59,25 @@ public class Object_NPC : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+
         player = collision.transform;
+        isPlayerInRange = true;
         interactToolTip.SetActive(true);
     }
 
     protected virtual void OnTriggerExit2D(Collider2D collision)
     {
+
+        isPlayerInRange = false;
         interactToolTip.SetActive(false);
     }
 
-    public void OnTalk() // 대화 시작 시(트리거/이벤트에서 호출)
+    public virtual void OnTalk() // 대화 시작 시(트리거/이벤트에서 호출)
     {
-        ui.OpenCraftUI();
+        //ui.OpenCraftUI();
     }
 
-    public void OnEndTalk() // 대화 종료 시(원하면)
+    public virtual void OnEndTalk() // 대화 종료 시(원하면)
     {
         ui.CloseToInGameUI();
     }

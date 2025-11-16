@@ -4,9 +4,36 @@ using UnityEngine;
 
 public class NPC_BlackSmith : Object_NPC, IIteractable
 {
-    public void Interact()
+    [SerializeField] private KeyCode interactKey = KeyCode.F;
+
+    protected override void Update()
     {
-        Debug.Log("Open BlackSmith shop");
+        base.Update();
+
+        Interact();
+
+        Close();
     }
 
+    private void Close()
+    {
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnEndTalk();
+        }
+    }
+
+    public void Interact()
+    {
+        if (isPlayerInRange && Input.GetKeyDown(interactKey))
+        {
+            OnTalk();
+        }
+    }
+    public override void OnTalk()
+    {
+        ui.OpenCraftUI();
+        // 필요 시 대화 종료를 F로 토글하려면:
+        // if (ui.IsCraftUIOpen()) ui.CloseToInGameUI(); else ui.OpenCraftUI();
+    }
 }

@@ -174,7 +174,7 @@ public class Inventory : MonoBehaviour , ISaveManager
 
     public void UpdateStatsUI()
     {
-        for (int i = 0; i < statSlot.Length; i++) // update info of stats in character UI
+        for (int i = 0; i < statSlot.Length; i++) // 캐릭터 UI에서 스탯 업데이트
         {
             statSlot[i].UpdateStatValueUI();
         }
@@ -260,7 +260,7 @@ public class Inventory : MonoBehaviour , ISaveManager
 
     public bool CanCraft(ItemData_Equipment _itemToCraft, List<InventoryItem> _requiredMaterials)
     {
-        // Check if all required materials are avalible with the required quantity.
+        // 필요한 모든 재료가 필요한 수량으로 제공되는지 확인
 
         foreach (var requiredItem in _requiredMaterials)
         {
@@ -279,9 +279,9 @@ public class Inventory : MonoBehaviour , ISaveManager
             }
         }
 
-        // If all materials are avalible, remove them from stash.
+        // 모든 재료가 사용 가능한 경우 보관함에서 제거
 
-        foreach(var requiredMaterial in _requiredMaterials)
+        foreach (var requiredMaterial in _requiredMaterials)
         {
             for (int i = 0; i < requiredMaterial.stackSize; i++)
             {

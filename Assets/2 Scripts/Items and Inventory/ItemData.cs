@@ -8,14 +8,14 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-public enum ItemType
+public enum ItemType // 아이템 타입
 {
-    Material,
-    Equipment
+    Material, // 재료
+    Equipment // 장비
 }
 
 
-[CreateAssetMenu(fileName = "New Item Data", menuName = "Data/Item")]
+[CreateAssetMenu(fileName = "New Item Data", menuName = "Data/Item")] // 인스펙테어서 템 생성
 public class ItemData : ScriptableObject 
 {
     public ItemType itemType;
@@ -26,7 +26,7 @@ public class ItemData : ScriptableObject
     [Range(0,100)]
     public float dropChance;
 
-    protected StringBuilder sb = new StringBuilder();
+    protected StringBuilder sb = new StringBuilder(); // 문자열 한번에
 
     private void OnValidate()
     {

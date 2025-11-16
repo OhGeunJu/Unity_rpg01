@@ -11,6 +11,7 @@ public class UI : MonoBehaviour, ISaveManager
     [Space]
 
     [SerializeField] private GameObject charcaterUI;
+    [SerializeField] private GameObject InventoryUI;
     [SerializeField] private GameObject skillTreeUI;
     [SerializeField] private GameObject craftUI;
     [SerializeField] private GameObject optionsUI;
@@ -22,6 +23,7 @@ public class UI : MonoBehaviour, ISaveManager
     public UI_SkillToolTip skillToolTip;
     public UI_ItemTooltip itemToolTip;
     public UI_StatToolTip statToolTip;
+    public UI_StatToolTip invenStatToolTip;
     public UI_CraftWindow craftWindow;
 
     [SerializeField] private UI_VolumeSlider[] volumeSettings;
@@ -41,6 +43,7 @@ public class UI : MonoBehaviour, ISaveManager
 
         itemToolTip.gameObject.SetActive(false); // 툴팁을 비활성화합니다.
         statToolTip.gameObject.SetActive(false); // 툴팁을 비활성화합니다.
+        invenStatToolTip.gameObject.SetActive(false);
 
         //gameObject.SetActive(false);
     }
@@ -50,6 +53,9 @@ public class UI : MonoBehaviour, ISaveManager
     {
 
         if (Input.GetKeyDown(KeyCode.C))
+            SwitchWithKeyTo(charcaterUI);
+
+        if (Input.GetKeyDown(KeyCode.I))
             SwitchWithKeyTo(charcaterUI);
 
         //if (Input.GetKeyDown(KeyCode.B))
@@ -72,7 +78,7 @@ public class UI : MonoBehaviour, ISaveManager
 
         for (int i = 0; i < transform.childCount; i++)
         {
-            bool fadeScreen = transform.GetChild(i).GetComponent<UI_FadeScreen>() != null; // we need this to keep fade screen game object active
+            bool fadeScreen = transform.GetChild(i).GetComponent<UI_FadeScreen>() != null; // 페이드 스크린 게임 객체를 활성화하려면 이것이 필요합니다
 
 
             if (fadeScreen == false)
