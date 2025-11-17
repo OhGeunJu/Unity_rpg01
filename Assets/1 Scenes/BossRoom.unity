@@ -15733,7 +15733,7 @@ SpriteRenderer:
   m_SortingLayerID: -261313079
   m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3318188226485093758, guid: ae72133dacba6ec4eb33ecde48f50e56, type: 3}
+  m_Sprite: {fileID: -1560101056, guid: 75cca3425dde22b42b5c5f66d9e5774a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -45458,6 +45458,7 @@ MonoBehaviour:
   endText: {fileID: 56013356}
   restartButton: {fileID: 956652572}
   charcaterUI: {fileID: 409169062}
+  InventoryUI: {fileID: 0}
   skillTreeUI: {fileID: 553883374}
   craftUI: {fileID: 990257072}
   optionsUI: {fileID: 845239263}
@@ -45466,6 +45467,7 @@ MonoBehaviour:
   skillToolTip: {fileID: 329884185}
   itemToolTip: {fileID: 1070290408}
   statToolTip: {fileID: 1244190313}
+  invenStatToolTip: {fileID: 0}
   craftWindow: {fileID: 1715657823}
   volumeSettings:
   - {fileID: 254001574}

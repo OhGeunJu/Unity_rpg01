@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,16 @@ using UnityEngine;
 public class PlayerStats : CharacterStats
 {
     private Player player;
+
+    [Header("Level")]
+    public int level = 1;           // 현재 레벨
+    public int Exp = 0;      // 현재 경험치
+    public int expToNextLevel = 100; // 다음 레벨까지 필요한 경험치
+    public int statPoints = 0;      // 아직 안 찍은 스탯 포인트
+
+    public event Action<int> onLevelChanged;
+    public event Action<int, int> onExpChanged; // (currentExp, expToNextLevel)
+    public event Action<int> onStatPointChanged;
 
     protected override void Start()
     {
@@ -42,7 +53,7 @@ public class PlayerStats : CharacterStats
             player.fx.ScreenShake(player.fx.shakeHighDamage); // 화면 흔들림 효과
 
 
-            int randomSound = Random.Range(34, 35); // 데미지 사운드 재생
+            int randomSound = UnityEngine.Random.Range(34, 35); // 데미지 사운드 재생
             AudioManager.instance.PlaySFX(randomSound, null); // 플레이어 데미지 사운드 재생
 
         }
@@ -79,4 +90,82 @@ public class PlayerStats : CharacterStats
 
         DoMagicalDamage(_targetStats); // remove if you don't want to apply magic hit on primary attack
     }
+
+    public void GainExp(int amount)
+    {
+        Exp += amount;
+        onExpChanged?.Invoke(Exp, expToNextLevel);
+
+        // 여러 레벨이 한 번에 오를 수도 있으니 while
+        while (Exp >= expToNextLevel)
+        {
+            Exp -= expToNextLevel;
+            LevelUp();
+        }
+    }
+
+    private void LevelUp()
+    {
+        level++;
+        // 레벨업할 때 줄 스탯 포인트 양 (원하는 대로 조정 가능)
+        statPoints += 3;
+
+        // 다음 레벨까지 필요한 경험치 증가 (계단식 성장)
+        expToNextLevel = CalculateNextExpRequirement();
+
+        // 이벤트 호출해서 UI 갱신할 수 있게
+        onLevelChanged?.Invoke(level);
+        onExpChanged?.Invoke(Exp, expToNextLevel);
+        onStatPointChanged?.Invoke(statPoints);
+    }
+
+    private int CalculateNextExpRequirement()
+    {
+        // 1.2배씩 증가
+        return Mathf.RoundToInt(expToNextLevel * 1.2f);
+    }
+
+    public void AllocateStatPoint(StatType statType)
+    {
+        if (statPoints <= 0)
+            return;
+
+        Stat targetStat = GetStat(statType);
+        if (targetStat == null)
+            return;
+
+        // 체력 관련 스탯이면 최대 체력 재계산 및 현재 체력 조정
+        if (statType == StatType.vitality)
+        {
+            int beforeMax = GetMaxHealthValue();
+
+            targetStat.AddModifier(1);
+            statPoints--;
+
+            // 체력 올리기
+            int afterMax = GetMaxHealthValue();
+            int diff = afterMax - beforeMax;
+
+            currentHealth += diff;
+
+            if (currentHealth > afterMax)
+                currentHealth = afterMax;
+
+            onHealthChanged?.Invoke();
+            onStatPointChanged?.Invoke(statPoints);
+            return;
+        }
+
+        //Stat에 +1
+        targetStat.AddModifier(1);
+
+        statPoints--;
+        onStatPointChanged?.Invoke(statPoints);
+    }
+
+    public void AllocateStrength() => AllocateStatPoint(StatType.strength);
+    public void AllocateAgility() => AllocateStatPoint(StatType.agility);
+    public void AllocateIntelligence() => AllocateStatPoint(StatType.intelegence); // enum 철자 주의
+    public void AllocateVitality() => AllocateStatPoint(StatType.vitality);
+
 }

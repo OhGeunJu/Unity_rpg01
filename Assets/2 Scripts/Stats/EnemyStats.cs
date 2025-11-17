@@ -7,6 +7,7 @@ public class EnemyStats : CharacterStats
     private Enemy enemy;
     private ItemDrop myDropSystem;
     public Stat soulsDropAmount; // 영혼 드랍 양
+    public int expReward; // 경험치 보상
 
     [Header("Level details")]
     [SerializeField] private int level = 1;
@@ -73,6 +74,15 @@ public class EnemyStats : CharacterStats
         enemy.Die();
 
         PlayerManager.instance.currency += soulsDropAmount.GetValue(); // 플레이어에게 영혼 추가
+
+        // 경험치 지급
+        var player = PlayerManager.instance.player;
+        if (player != null)
+        {
+            var stats = player.GetComponent<PlayerStats>();
+            if (stats != null)
+                stats.GainExp(expReward);
+        }
 
 
         Destroy(gameObject, 5f);

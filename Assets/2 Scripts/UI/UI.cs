@@ -43,6 +43,7 @@ public class UI : MonoBehaviour, ISaveManager
 
         itemToolTip.gameObject.SetActive(false); // 툴팁을 비활성화합니다.
         statToolTip.gameObject.SetActive(false); // 툴팁을 비활성화합니다.
+        skillToolTip.gameObject.SetActive(false);
         invenStatToolTip.gameObject.SetActive(false);
 
         //gameObject.SetActive(false);
@@ -56,7 +57,7 @@ public class UI : MonoBehaviour, ISaveManager
             SwitchWithKeyTo(charcaterUI);
 
         if (Input.GetKeyDown(KeyCode.I))
-            SwitchWithKeyTo(charcaterUI);
+            SwitchWithKeyTo(InventoryUI);
 
         //if (Input.GetKeyDown(KeyCode.B))
         //    SwitchWithKeyTo(craftUI);
