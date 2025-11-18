@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class PlayerStats : CharacterStats
 {
@@ -139,7 +140,8 @@ public class PlayerStats : CharacterStats
         {
             int beforeMax = GetMaxHealthValue();
 
-            targetStat.AddModifier(1);
+            
+            targetStat.baseValue += 1;
             statPoints--;
 
             // 체력 올리기
@@ -157,15 +159,30 @@ public class PlayerStats : CharacterStats
         }
 
         //Stat에 +1
-        targetStat.AddModifier(1);
+        targetStat.baseValue += 1;
 
         statPoints--;
         onStatPointChanged?.Invoke(statPoints);
     }
 
-    public void AllocateStrength() => AllocateStatPoint(StatType.strength);
-    public void AllocateAgility() => AllocateStatPoint(StatType.agility);
-    public void AllocateIntelligence() => AllocateStatPoint(StatType.intelegence); // enum 철자 주의
-    public void AllocateVitality() => AllocateStatPoint(StatType.vitality);
+    public void ResetPoint(int level)
+    {
+        List<StatType> statTypes = new List<StatType>()
+        {
+            StatType.strength,
+            StatType.agility,
+            StatType.intelegence,
+            StatType.vitality
+        };
 
+        foreach (StatType statType in statTypes)
+        {
+            Stat stat = GetStat(statType);
+            statPoints += stat.baseValue;
+            stat.SetDefaultValue(0);
+        }
+
+        onHealthChanged?.Invoke();
+        onStatPointChanged?.Invoke(statPoints);
+    }
 }

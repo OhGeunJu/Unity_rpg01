@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Stat // 스탯 클래스
 {
-   [SerializeField] private int baseValue; // 기본 값
+   [SerializeField] public int baseValue; // 기본 값
 
     public List<int> modifiers;
     public int GetValue() // 스탯의 최종 값을 계산하는 메서드
