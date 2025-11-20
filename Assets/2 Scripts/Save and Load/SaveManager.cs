@@ -1,100 +1,97 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
-using UnityEngine.SceneManagement;
 
-public class SaveManager : MonoBehaviour 
+public class SaveManager : MonoBehaviour
 {
-    public static SaveManager instance;
+    public static SaveManager Instance;
 
-    [SerializeField] private string fileName;
-    [SerializeField] private bool encryptData = true;
-    private GameData gameData;
-    [SerializeField] private List<ISaveManager> saveManagers;
-    private FileDataHandler dataHandler;
+    [SerializeField] private PlayerStatsSave playerStats;
+    [SerializeField] private SkillTreeSave skillTree;
+    [SerializeField] private InventorySave inventory;
+    [SerializeField] private CheckpointSave checkpoints;
+    [SerializeField] private OptionsSave options;
 
-
-    [ContextMenu("Delete save file")]
-    public void DeleteSavedData()
-    {
-        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData);
-        dataHandler.Delete();
-
-    }
+    public OptionsSave Options => options;
 
     private void Awake()
     {
-        if (instance != null)
-            Destroy(instance.gameObject);
-        else
-            instance = this;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
-
-    private void Start()
-    {
-        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName,encryptData);
-        saveManagers = FindAllSaveManagers();
-
-        //Invoke("LoadGame", .05f);
-        
-        LoadGame();
-        
-        
-    }
-
+    /// <summary>새 게임 시작: 기존 세이브를 날리고 기본값으로 초기화</summary>
     public void NewGame()
     {
-        gameData = new GameData();
+        DeleteSavedData();
+
+        if (playerStats != null) playerStats.ResetToDefault();
+        if (skillTree != null) skillTree.ResetToDefault();
+        if (inventory != null) inventory.ResetToDefault();
+        if (checkpoints != null) checkpoints.ResetToDefault();
+        if (options != null) options.ResetToDefault();
+
+        // 각 시스템의 기본 상태를 세팅
+        // 예: PlayerStats 기본값, 스킬 초기 상태, 인벤토리 빈 상태 등
+        // 필요하다면 여기서 각 매니저의 Init() 호출
     }
 
-    public void LoadGame()
+    /// <summary>세이브 데이터가 존재하는지 여부</summary>
+    public bool HasSavedData()
     {
-        gameData = dataHandler.Load();
-
-        if (this.gameData == null)
+        foreach (var key in SaveKeys.AllKeys)
         {
-            Debug.Log("No saved data found!");
-            NewGame();
+            if (ES3.KeyExists(key))
+                return true;
         }
-
-        foreach(ISaveManager saveManager in saveManagers)
-        {
-            saveManager.LoadData(gameData);
-        }
+        return false;
     }
 
+    /// <summary>게임 전체 저장</summary>
     public void SaveGame()
     {
+        if (playerStats != null) playerStats.Save();
+        if (skillTree != null) skillTree.Save();
+        if (inventory != null) inventory.Save();
+        if (checkpoints != null) checkpoints.Save();
+        if (options != null) options.Save();
+    }
 
-        foreach(ISaveManager saveManager in saveManagers)
+    /// <summary>게임 전체 불러오기</summary>
+    public void LoadGame()
+    {
+        if (!HasSavedData())
         {
-            saveManager.SaveData(ref gameData);
+            Debug.Log("저장된 데이터가 없어 NewGame으로 초기화합니다.");
+            NewGame();
+            return;
         }
 
-        dataHandler.Save(gameData);
+        if (playerStats != null) playerStats.Load();
+        if (skillTree != null) skillTree.Load();
+        if (inventory != null) inventory.Load();
+        if (checkpoints != null) checkpoints.Load();
+        if (options != null) options.Load();
+    }
+
+    /// <summary>전체 세이브 데이터 삭제</summary>
+    [ContextMenu("Delete save file")]
+    public void DeleteSavedData()
+    {
+        // SaveKeys에 정의된 모든 키를 삭제
+        foreach (var key in SaveKeys.AllKeys)
+        {
+            if (ES3.KeyExists(key))
+                ES3.DeleteKey(key);
+        }
     }
 
     private void OnApplicationQuit()
     {
         SaveGame();
-    }
-
-    private List<ISaveManager> FindAllSaveManagers()
-    {
-        IEnumerable<ISaveManager> saveManagers = FindObjectsOfType<MonoBehaviour>().OfType<ISaveManager>();
-
-        return new List<ISaveManager>(saveManagers);
-    }
-
-    public bool HasSavedData()
-    {
-        if (dataHandler.Load() != null)
-        {
-            return true;
-        }
-
-        return false;
     }
 }

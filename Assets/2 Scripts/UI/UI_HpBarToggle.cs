@@ -16,5 +16,11 @@ public class UI_HpBarToggle : MonoBehaviour
         // 2) EntityFX 쪽에 "유저가 HpBar 켜둔 상태"를 알려주기
         if (entityFx != null)
             entityFx.SetUserHpBarState(isOn);
+
+        // ★ 옵션 저장 호출
+        if (SaveManager.Instance != null && SaveManager.Instance.Options != null)
+        {
+            SaveManager.Instance.Options.SetHpBar(isOn);
+        }
     }
 }

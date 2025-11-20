@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
-public class UI : MonoBehaviour, ISaveManager
+public class UI : MonoBehaviour
 {
     [Header("End screen")]
     [SerializeField] private UI_FadeScreen fadeScreen;
     [SerializeField] private GameObject endText;
     [SerializeField] private GameObject restartButton;
+
     [Space]
 
+    [Header("UI Groups")]
     [SerializeField] private GameObject charcaterUI;
     [SerializeField] private GameObject InventoryUI;
     [SerializeField] private GameObject skillTreeUI;
@@ -18,76 +22,62 @@ public class UI : MonoBehaviour, ISaveManager
     [SerializeField] private GameObject inGameUI;
     [SerializeField] private GameObject bossUI;
 
-
-
     public UI_SkillToolTip skillToolTip;
     public UI_ItemTooltip itemToolTip;
     public UI_StatToolTip statToolTip;
     public UI_StatToolTip invenStatToolTip;
     public UI_CraftWindow craftWindow;
 
+    [Header("Volume Sliders (UI Only)")]
     [SerializeField] private UI_VolumeSlider[] volumeSettings;
 
     private void Awake()
     {
+        // 스킬트리 초기 비활성 처리
         skillTreeUI.SetActive(true);
         skillTreeUI.SetActive(false);
-        //SwitchTo(skillTreeUI); // 스킬 스크립트에 이벤트를 할당하기 전에 스킬 트리 슬롯에 이벤트를 할당하려면 이것이 필요합니다
-        fadeScreen.gameObject.SetActive(true); // fade screen이 비활성화된 상태에서 시작되면 안되므로 활성화 상태로 설정합니다.
+
+        // 페이드 스크린은 반드시 활성 상태여야 함
+        fadeScreen.gameObject.SetActive(true);
     }
 
-    void Start()
+    private void Start()
     {
-        SwitchTo(inGameUI); // 시작할 때 인게임 UI로 전환합니다.
+        // 기본 UI 오픈
+        SwitchTo(inGameUI);
 
-        bossUI.gameObject.SetActive(false); // 보스 UI를 비활성화합니다.
+        bossUI.gameObject.SetActive(false);
 
-        itemToolTip.gameObject.SetActive(false); // 툴팁을 비활성화합니다.
-        statToolTip.gameObject.SetActive(false); // 툴팁을 비활성화합니다.
+        itemToolTip.gameObject.SetActive(false);
+        statToolTip.gameObject.SetActive(false);
         skillToolTip.gameObject.SetActive(false);
         invenStatToolTip.gameObject.SetActive(false);
-
-        //gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.C))
             SwitchWithKeyTo(charcaterUI);
 
         if (Input.GetKeyDown(KeyCode.I))
             SwitchWithKeyTo(InventoryUI);
 
-        //if (Input.GetKeyDown(KeyCode.B))
-        //    SwitchWithKeyTo(craftUI);
-
-
         if (Input.GetKeyDown(KeyCode.K))
             SwitchWithKeyTo(skillTreeUI);
 
         if (Input.GetKeyDown(KeyCode.O))
             SwitchWithKeyTo(optionsUI);
-
-       
-
     }
-
 
     public void SwitchTo(GameObject _menu)
     {
-
         for (int i = 0; i < transform.childCount; i++)
         {
-            bool fadeScreen = transform.GetChild(i).GetComponent<UI_FadeScreen>() != null; // 페이드 스크린 게임 객체를 활성화하려면 이것이 필요합니다
+            bool isFade = transform.GetChild(i).GetComponent<UI_FadeScreen>() != null;
 
-
-            if (fadeScreen == false)
+            if (!isFade)
                 transform.GetChild(i).gameObject.SetActive(false);
         }
-
-
 
         if (_menu != null)
         {
@@ -95,7 +85,7 @@ public class UI : MonoBehaviour, ISaveManager
             _menu.SetActive(true);
         }
 
-
+        // UI 전환 시 게임 정지 여부 결정
         if (GameManager.instance != null)
         {
             if (_menu == inGameUI)
@@ -121,13 +111,15 @@ public class UI : MonoBehaviour, ISaveManager
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            if (transform.GetChild(i).gameObject.activeSelf && transform.GetChild(i).GetComponent<UI_FadeScreen>() == null)
+            if (transform.GetChild(i).gameObject.activeSelf &&
+                transform.GetChild(i).GetComponent<UI_FadeScreen>() == null)
                 return;
         }
 
         SwitchTo(inGameUI);
     }
 
+    // 엔딩 화면
     public void SwitchOnEndScreen()
     {
         fadeScreen.FadeOut();
@@ -140,33 +132,12 @@ public class UI : MonoBehaviour, ISaveManager
         endText.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         restartButton.SetActive(true);
-
     }
 
-    public void RestartGameButton() => GameManager.instance.RestartScene();
+    public void RestartGameButton()
+        => GameManager.instance.RestartScene();
 
-    public void LoadData(GameData _data)
-    {
-        foreach (KeyValuePair<string, float> pair in _data.volumeSettings)
-        {
-            foreach (UI_VolumeSlider item in volumeSettings)
-            {
-                if (item.parametr == pair.Key)
-                    item.LoadSlider(pair.Value);
-            }
-        }
-    }
-
-    public void SaveData(ref GameData _data)
-    {
-        _data.volumeSettings.Clear();
-
-        foreach (UI_VolumeSlider item in volumeSettings)
-        {
-            _data.volumeSettings.Add(item.parametr, item.slider.value);
-        }
-    }
-
+    // 크래프트 UI
     public void OpenCraftUI()
     {
         SwitchTo(craftUI);
@@ -175,5 +146,21 @@ public class UI : MonoBehaviour, ISaveManager
     public void CloseToInGameUI()
     {
         SwitchTo(inGameUI);
+    }
+
+    // OptionsSave가 불러온 값을 UI에 적용할 때 호출
+    public void ApplyVolumeSliders(float master, float bgm, float sfx)
+    {
+        foreach (var v in volumeSettings)
+        {
+            if (v.parametr == SaveKeys.MasterVolume)
+                v.LoadSlider(master);
+
+            if (v.parametr == SaveKeys.BGMVolume)
+                v.LoadSlider(bgm);
+
+            if (v.parametr == SaveKeys.SFXVolume)
+                v.LoadSlider(sfx);
+        }
     }
 }

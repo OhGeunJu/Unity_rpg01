@@ -11,7 +11,7 @@ public class UI_MainMenu : MonoBehaviour
 
     private void Start()
     {
-        if (SaveManager.instance.HasSavedData() == false)
+        if (SaveManager.Instance.HasSavedData() == false)
             continueButton.SetActive(false);
     }
 
@@ -22,7 +22,7 @@ public class UI_MainMenu : MonoBehaviour
 
     public void NewGame()
     {
-        SaveManager.instance.DeleteSavedData();
+        SaveManager.Instance.DeleteSavedData();
         StartCoroutine(LoadSceneWithFadeEffect(1.5f));
     }
 

@@ -36,10 +36,15 @@ public class PlayerStats : CharacterStats
         base.Die(); // 기본 사망 처리
         player.Die(); // 플레이어 사망 처리
 
-        GameManager.instance.lostCurrencyAmount = PlayerManager.instance.currency; // 잃은 골드 저장
-        PlayerManager.instance.currency = 0; // 플레이어 골드 0으로 초기화
+        // 잃은 골드 저장
+        GameManager.instance.lostCurrencyAmount = PlayerManager.instance.currency;
+        PlayerManager.instance.currency = 0;
 
-        GetComponent<PlayerItemDrop>()?.GenerateDrop(); // 아이템 드롭 생성
+        // ★ 잃은 골드가 떨어진 위치 저장
+        GameManager.instance.lostCurrencyPosition = transform.position;
+
+        // 아이템 드롭
+        GetComponent<PlayerItemDrop>()?.GenerateDrop();
     }
 
     protected override void DecreaseHealthBy(int _damage) // 체력 감소
@@ -193,5 +198,19 @@ public class PlayerStats : CharacterStats
     public void ResetPoint()
     {
         ResetPoint(level);
+    }
+
+    public void UpdateDerivedStats()
+    {
+        // 최대 체력 재계산 (vitality = 1당 체력 +5)
+        maxHealth.SetValue(vitality.GetValue() * 5);
+
+        // 현재 체력이 최대 체력보다 크지 않게 보정
+        if (currentHealth > GetMaxHealthValue())
+            currentHealth = GetMaxHealthValue();
+
+        // 스탯 관련 이벤트 호출 (UI 갱신용)
+        onHealthChanged?.Invoke();
+        onStatsChanged?.Invoke();
     }
 }
