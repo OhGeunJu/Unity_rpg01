@@ -41,6 +41,8 @@ public class EntityFX : MonoBehaviour
     [SerializeField] private GameObject criticalHitFx;
 
     private GameObject myHealthBar;
+    [SerializeField] private bool useHpBarToggle = false;
+    private bool userHpBarOn = true;
 
 
 
@@ -53,6 +55,10 @@ public class EntityFX : MonoBehaviour
 
 
         myHealthBar = GetComponentInChildren<UI_HealthBar>(true).gameObject;
+
+        // 플레이어인 경우, 현재 체력바 활성 상태 저장
+        if (useHpBarToggle && myHealthBar != null)
+            userHpBarOn = myHealthBar.activeSelf;
 
         // 자식에 있는 모든 SpriteRenderer 수집 (일반몹은 1개, 보스는 여러 개)
         renderers = GetComponentsInChildren<SpriteRenderer>(true);
@@ -81,9 +87,22 @@ public class EntityFX : MonoBehaviour
 
 
 
+    public void SetUserHpBarState(bool isOn)
+    {
+        userHpBarOn = isOn;
+        Debug.Log($"[SetUserHpBarState] isOn={isOn}, useHpBarToggle={useHpBarToggle}");
+
+        if (!useHpBarToggle)
+            return; // 몬스터는 토글 무시
+
+        Debug.Log($"[SetUserHpBarState] myHealthBar.SetActive({isOn}) 호출");
+        myHealthBar.SetActive(isOn);
+    }
 
     public void MakeTransprent(bool _transprent)
     {
+        Debug.Log($"[MakeTransprent] transparent={_transprent}, useHpBarToggle={useHpBarToggle}, userHpBarOn={userHpBarOn}, activeSelf={myHealthBar.activeSelf}, activeInHierarchy={myHealthBar.activeInHierarchy}");
+
         if (_transprent)
         {
             myHealthBar.SetActive(false);
@@ -91,8 +110,12 @@ public class EntityFX : MonoBehaviour
         }
         else
         {
-            myHealthBar.SetActive(true);
+            if (useHpBarToggle)
+                myHealthBar.SetActive(userHpBarOn); // 플레이어: 토글 상태 존중
+            else
+                myHealthBar.SetActive(true);        // 몬스터: 무조건 켜기
             sr.color = Color.white;
+            Debug.Log($"[MakeTransprent END] activeSelf={myHealthBar.activeSelf}, activeInHierarchy={myHealthBar.activeInHierarchy}");
         }
     }
 

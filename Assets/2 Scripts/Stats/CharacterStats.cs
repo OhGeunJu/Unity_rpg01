@@ -6,7 +6,7 @@ public enum StatType // 능력치 종류
 {
     strength,
     agility,
-    intelegence,
+    intelligence,
     vitality,
     damage,
     critChance,
@@ -464,7 +464,7 @@ public class CharacterStats : MonoBehaviour
     {
         if (_statType == StatType.strength) return strength;
         else if (_statType == StatType.agility) return agility;
-        else if (_statType == StatType.intelegence) return intelligence;
+        else if (_statType == StatType.intelligence) return intelligence;
         else if (_statType == StatType.vitality) return vitality;
         else if (_statType == StatType.damage) return damage;
         else if (_statType == StatType.critChance) return critChance;

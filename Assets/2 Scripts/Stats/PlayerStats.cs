@@ -17,6 +17,7 @@ public class PlayerStats : CharacterStats
     public event Action<int> onLevelChanged;
     public event Action<int, int> onExpChanged; // (currentExp, expToNextLevel)
     public event Action<int> onStatPointChanged;
+    public event Action onStatsChanged;
 
     protected override void Start()
     {
@@ -154,6 +155,7 @@ public class PlayerStats : CharacterStats
                 currentHealth = afterMax;
 
             onHealthChanged?.Invoke();
+            onStatsChanged?.Invoke();
             onStatPointChanged?.Invoke(statPoints);
             return;
         }
@@ -162,6 +164,7 @@ public class PlayerStats : CharacterStats
         targetStat.baseValue += 1;
 
         statPoints--;
+        onStatsChanged?.Invoke();
         onStatPointChanged?.Invoke(statPoints);
     }
 
@@ -171,7 +174,7 @@ public class PlayerStats : CharacterStats
         {
             StatType.strength,
             StatType.agility,
-            StatType.intelegence,
+            StatType.intelligence,
             StatType.vitality
         };
 
@@ -183,6 +186,12 @@ public class PlayerStats : CharacterStats
         }
 
         onHealthChanged?.Invoke();
+        onStatsChanged?.Invoke();
         onStatPointChanged?.Invoke(statPoints);
+    }
+
+    public void ResetPoint()
+    {
+        ResetPoint(level);
     }
 }

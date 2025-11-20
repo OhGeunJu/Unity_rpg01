@@ -30,8 +30,9 @@ public class UI : MonoBehaviour, ISaveManager
 
     private void Awake()
     {
-
-        SwitchTo(skillTreeUI); // 스킬 스크립트에 이벤트를 할당하기 전에 스킬 트리 슬롯에 이벤트를 할당하려면 이것이 필요합니다
+        skillTreeUI.SetActive(true);
+        skillTreeUI.SetActive(false);
+        //SwitchTo(skillTreeUI); // 스킬 스크립트에 이벤트를 할당하기 전에 스킬 트리 슬롯에 이벤트를 할당하려면 이것이 필요합니다
         fadeScreen.gameObject.SetActive(true); // fade screen이 비활성화된 상태에서 시작되면 안되므로 활성화 상태로 설정합니다.
     }
 
