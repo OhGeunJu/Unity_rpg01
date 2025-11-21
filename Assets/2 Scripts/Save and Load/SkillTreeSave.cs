@@ -14,6 +14,8 @@ public class SkillTreeSave : MonoBehaviour
         // 인스펙터에 안 넣어줬으면 자식에서 자동으로 찾기
         if (slots == null || slots.Length == 0)
             slots = GetComponentsInChildren<UI_SkillTreeSlot>(true);
+
+        SaveManager.Instance.RegisterSkillTree(this);
     }
 
     /// <summary>ES3에 스킬 트리 상태 저장</summary>

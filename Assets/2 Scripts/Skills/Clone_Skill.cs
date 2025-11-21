@@ -47,7 +47,7 @@ public class Clone_Skill : Skill
     }
 
     #region Unlock region
-    protected override void CheckUnlock()
+    public override void CheckUnlock()
     {
         UnlockCloneAttack();
         UnlockAggresiveClone();

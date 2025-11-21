@@ -12,7 +12,7 @@ public class PlayerStats : CharacterStats
     public int level = 1;           // 현재 레벨
     public int Exp = 0;      // 현재 경험치
     public int expToNextLevel = 100; // 다음 레벨까지 필요한 경험치
-    public int statPoints = 0;      // 아직 안 찍은 스탯 포인트
+    public int statPoints = 10;      // 아직 안 찍은 스탯 포인트
 
     public event Action<int> onLevelChanged;
     public event Action<int, int> onExpChanged; // (currentExp, expToNextLevel)
@@ -202,12 +202,11 @@ public class PlayerStats : CharacterStats
 
     public void UpdateDerivedStats()
     {
-        // 최대 체력 재계산 (vitality = 1당 체력 +5)
-        maxHealth.SetValue(vitality.GetValue() * 5);
+        int newMaxHealth = GetMaxHealthValue();
 
         // 현재 체력이 최대 체력보다 크지 않게 보정
-        if (currentHealth > GetMaxHealthValue())
-            currentHealth = GetMaxHealthValue();
+        if (currentHealth > newMaxHealth)
+            currentHealth = newMaxHealth;
 
         // 스탯 관련 이벤트 호출 (UI 갱신용)
         onHealthChanged?.Invoke();

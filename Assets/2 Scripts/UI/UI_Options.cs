@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class UI_Options : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OnSaveButton()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SaveManager.Instance.SaveGame();
     }
 }

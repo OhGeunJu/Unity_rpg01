@@ -10,6 +10,8 @@ public class InventorySave : MonoBehaviour
     {
         if (inventory == null)
             inventory = GetComponent<Inventory>();
+
+        SaveManager.Instance.RegisterInventory(this);
     }
 
     // ------------------------------------
@@ -96,6 +98,8 @@ public class InventorySave : MonoBehaviour
 
         ES3.DeleteKey(SaveKeys.Inventory);
         ES3.DeleteKey(SaveKeys.EquipmentIds);
+
+        inventory.AddStartingItems();
 
         inventory.UpdateSlotUI();
     }

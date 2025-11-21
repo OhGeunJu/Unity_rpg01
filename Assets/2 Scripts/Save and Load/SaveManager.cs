@@ -23,6 +23,11 @@ public class SaveManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
+    public void RegisterPlayerStats(PlayerStatsSave s) => playerStats = s;
+    public void RegisterSkillTree(SkillTreeSave s) => skillTree = s;
+    public void RegisterInventory(InventorySave s) => inventory = s;
+    public void RegisterCheckpoints(CheckpointSave s) => checkpoints = s;
+    public void RegisterOptions(OptionsSave s) => options = s;
 
     /// <summary>새 게임 시작: 기존 세이브를 날리고 기본값으로 초기화</summary>
     public void NewGame()
@@ -76,6 +81,8 @@ public class SaveManager : MonoBehaviour
         if (inventory != null) inventory.Load();
         if (checkpoints != null) checkpoints.Load();
         if (options != null) options.Load();
+
+        SkillManager.instance.RefreshSkillUnlocks();
     }
 
     /// <summary>전체 세이브 데이터 삭제</summary>

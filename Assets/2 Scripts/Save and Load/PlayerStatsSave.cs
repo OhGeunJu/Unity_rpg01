@@ -8,6 +8,8 @@ public class PlayerStatsSave : MonoBehaviour
     {
         if (stats == null)
             stats = GetComponent<PlayerStats>();
+
+        SaveManager.Instance.RegisterPlayerStats(this);
     }
 
     // 式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式
@@ -67,7 +69,7 @@ public class PlayerStatsSave : MonoBehaviour
         // 蝶囌 蟾晦��
         stats.level = 1;
         stats.Exp = 0;
-        stats.statPoints = 0;
+        stats.statPoints = 10;
 
         stats.strength.SetValue(0);
         stats.agility.SetValue(0);

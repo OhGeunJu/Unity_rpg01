@@ -127,7 +127,7 @@ public class Sword_Skill : Skill
 
     #region Unlock region
 
-    protected override void CheckUnlock()
+    public override void CheckUnlock()
     {
         UnlockSword();
         UnlockBounceSword();

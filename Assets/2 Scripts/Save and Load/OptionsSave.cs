@@ -12,6 +12,16 @@ public class OptionsSave : MonoBehaviour
 
     public IReadOnlyDictionary<string, float> VolumeSettings => volumeSettings;
 
+    private void Awake()
+    {
+        SaveManager.Instance.RegisterOptions(this);
+    }
+
+    private void Start()
+    {
+        Load();   // ES3에서 읽어서 ApplyVolumeToUIAndMixer까지 실행
+    }
+
     public void SetVolume(string channel, float value)
     {
         if (string.IsNullOrEmpty(channel))
@@ -19,6 +29,7 @@ public class OptionsSave : MonoBehaviour
 
         volumeSettings[channel] = Mathf.Clamp01(value);
         // 여기에 오디오 믹서 반영 코드 추가 가능
+        ES3.Save(SaveKeys.VolumeSettings, volumeSettings); // 볼륨 바뀔 때마다 바로 저장
     }
 
     public float GetVolume(string channel, float defaultValue = 1f)
@@ -41,6 +52,8 @@ public class OptionsSave : MonoBehaviour
         hpBarOn = ES3.Load<bool>(SaveKeys.HpBarToggle, true);
         ApplyHpBar();
 
+        ApplyVolumeToUIAndMixer();
+
         // 불러온 후 오디오 시스템에 바로 반영하고 싶으면 여기서 처리
     }
 
@@ -52,6 +65,8 @@ public class OptionsSave : MonoBehaviour
         // volumeSettings["Master"] = 1f;
         // volumeSettings["BGM"] = 1f;
         // volumeSettings["SFX"] = 1f;
+        ApplyHpBar();
+        ApplyVolumeToUIAndMixer();
     }
     public void ApplyHpBar()
     {
@@ -59,7 +74,8 @@ public class OptionsSave : MonoBehaviour
         var toggle = FindObjectOfType<UI_HpBarToggle>();
         if (toggle != null)
         {
-            toggle.GetComponent<Toggle>().isOn = hpBarOn;
+            var uiToggle = toggle.GetComponent<Toggle>();
+            uiToggle.isOn = hpBarOn;
             toggle.OnToggleHpBar(hpBarOn);
         }
     }
@@ -68,5 +84,34 @@ public class OptionsSave : MonoBehaviour
     {
         hpBarOn = isOn;
         Save();       // 즉시 저장
+    }
+
+    private void ApplyVolumeToUIAndMixer()
+    {
+        UI_VolumeSlider[] sliders = FindObjectsOfType<UI_VolumeSlider>();
+
+        foreach (var sliderUI in sliders)
+        {
+            float value = GetVolume(sliderUI.parametr, 1f);
+
+            // UI 슬라이더 반영
+            sliderUI.LoadSlider(value);
+
+            // Mixer 적용
+            if (value > 0.0001f)
+                sliderUI.SliderValue(value);
+            else
+                sliderUI.SliderValue(0.0001f);
+        }
+    }
+
+    public void OnBgmVolumeChanged(float value)
+    {
+        SetVolume("bgm", value);   // 딕셔너리에 저장
+    }
+
+    public void OnSfxVolumeChanged(float value)
+    {
+        SetVolume("sfx", value);   // 딕셔너리에 저장
     }
 }

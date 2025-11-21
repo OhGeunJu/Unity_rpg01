@@ -53,7 +53,7 @@ public class Crystal_Skill : Skill
     // here we unlock crystal skills
     #region Unlock skill region
 
-    protected override void CheckUnlock()
+    public override void CheckUnlock()
     {
         UnlockCrystal();
         UnlockCrystalMirage();

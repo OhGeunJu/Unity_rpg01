@@ -71,12 +71,10 @@ public class Inventory : MonoBehaviour
         stashItemSlot = stashSlotParent.GetComponentsInChildren<UI_ItemSlot>();
         equipmentSlot = equpmentSlotParent.GetComponentsInChildren<UI_EquipmentSlot>();
         statSlot = statSlotParent.GetComponentsInChildren<UI_StatSlot>();
-
-        AddStartingItems(); // 시작 아이템 지급
     }
 
 
-    private void AddStartingItems()
+    public void AddStartingItems()
     {
         // 시작 아이템 지급
         foreach (var item in startingItems)

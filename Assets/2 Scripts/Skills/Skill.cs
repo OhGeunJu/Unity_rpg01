@@ -24,7 +24,7 @@ public class Skill : MonoBehaviour
     }
 
 
-    protected virtual void CheckUnlock()
+    public virtual void CheckUnlock()
     {
 
     }

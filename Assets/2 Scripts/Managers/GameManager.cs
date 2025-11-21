@@ -34,6 +34,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        // 코루틴으로 초기화 + 로드 처리
+        StartCoroutine(StartRoutine());
+    }
+
+    private IEnumerator StartRoutine()
+    {
+        yield return null; // 모든 오브젝트 생성 대기
+        SaveManager.Instance.LoadGame();
+
         // 씬 내 모든 체크포인트 가져오기
         checkpoints = FindObjectsOfType<Checkpoint>(true);
 
