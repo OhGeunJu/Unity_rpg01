@@ -24,12 +24,14 @@ public class Inventory : MonoBehaviour
     [Header("인벤토리 UI 연결")]
     [SerializeField] private Transform inventorySlotParent;
     [SerializeField] private Transform stashSlotParent;
+    [SerializeField] private Transform inventorySlotParent_Secondary; // 새 인벤 UI
     [SerializeField] private Transform equpmentSlotParent;
     [SerializeField] private Transform statSlotParent;
 
     // 슬롯 UI 배열들
     private UI_ItemSlot[] inventoryItemSlot;
     private UI_ItemSlot[] stashItemSlot;
+    private UI_ItemSlot[] inventoryItemSlot_Secondary;   // 새 인벤 UI용
     private UI_EquipmentSlot[] equipmentSlot;
     private UI_StatSlot[] statSlot;
 
@@ -69,6 +71,7 @@ public class Inventory : MonoBehaviour
         // UI 슬롯들 캐싱
         inventoryItemSlot = inventorySlotParent.GetComponentsInChildren<UI_ItemSlot>();
         stashItemSlot = stashSlotParent.GetComponentsInChildren<UI_ItemSlot>();
+        inventoryItemSlot_Secondary = inventorySlotParent_Secondary.GetComponentsInChildren<UI_ItemSlot>();
         equipmentSlot = equpmentSlotParent.GetComponentsInChildren<UI_EquipmentSlot>();
         statSlot = statSlotParent.GetComponentsInChildren<UI_StatSlot>();
     }
@@ -166,10 +169,18 @@ public class Inventory : MonoBehaviour
         // 인벤/스태시 슬롯 초기화
         foreach (var s in inventoryItemSlot) s.CleanUpSlot();
         foreach (var s in stashItemSlot) s.CleanUpSlot();
+        foreach (var s in inventoryItemSlot_Secondary) s.CleanUpSlot();
 
         // 인벤토리 적용
-        for (int i = 0; i < inventory.Count && i < inventoryItemSlot.Length; i++)
-            inventoryItemSlot[i].UpdateSlot(inventory[i]);
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            if (i < inventoryItemSlot.Length)
+                inventoryItemSlot[i].UpdateSlot(inventory[i]);
+
+            // 새 인벤 UI에도 동일한 인덱스로 채워줌
+            if (inventoryItemSlot_Secondary != null && i < inventoryItemSlot_Secondary.Length)
+                inventoryItemSlot_Secondary[i].UpdateSlot(inventory[i]);
+        }
 
         // 스태시 적용
         for (int i = 0; i < stash.Count && i < stashItemSlot.Length; i++)
@@ -189,14 +200,27 @@ public class Inventory : MonoBehaviour
     // ─────────────────────────────────────────────
     //             아이템 추가·제거
     // ─────────────────────────────────────────────
+    public bool CanAddItem(ItemData _item)
+    {
+        // 1) 이미 인벤토리에 있는 아이템이면 스택만 올리면 되므로 OK
+        if (inventoryDictianory.ContainsKey(_item))
+            return true;
+
+        // 2) 새 아이템이면, 빈 슬롯이 있는지 확인
+        return inventory.Count < inventoryItemSlot.Length;
+    }
 
     public void AddItem(ItemData _item)
     {
-        // 장비/재료 구분하여 넣기
-        if (_item.itemType == ItemType.Equipment && CanAddItem())
-            AddToInventory(_item);
-        else if (_item.itemType == ItemType.Material)
-            AddToStash(_item);
+        // 인벤토리 자리가 없으면 못 먹음
+        if (!CanAddItem(_item))
+        {
+            Debug.Log($"인벤토리가 가득 차서 {_item.itemName} 을(를) 주울 수 없습니다.");
+            return;
+        }
+
+        // 인벤토리에만 추가 (자동으로 stash로 보내지 않음)
+        AddToInventory(_item);
 
         UpdateSlotUI();
     }
@@ -269,11 +293,23 @@ public class Inventory : MonoBehaviour
 
     public bool CanCraft(ItemData_Equipment craftItem, List<InventoryItem> required)
     {
-        // 재료 확인
+        if (!CanAddItem(craftItem)) // 0) 결과물을 넣을 인벤토리 공간이 있는지 먼저 확인
+        {
+            Debug.Log("인벤토리가 가득 차 있어서 제작 결과물을 받을 수 없습니다.");
+            return false;
+        }
+        // 재료 확인 (인벤토리 + 창고 합산)
         foreach (var req in required)
         {
-            if (!stashDictianory.TryGetValue(req.data, out InventoryItem stashItem)
-                || stashItem.stackSize < req.stackSize)
+            int totalCount = 0;
+
+            if (inventoryDictianory.TryGetValue(req.data, out InventoryItem invItem))
+                totalCount += invItem.stackSize;
+
+            if (stashDictianory.TryGetValue(req.data, out InventoryItem stashItem))
+                totalCount += stashItem.stackSize;
+
+            if (totalCount < req.stackSize)
                 return false;
         }
 
@@ -360,4 +396,66 @@ public class Inventory : MonoBehaviour
         return list;
     }
 #endif
+
+    // ─────────────────────────────────────────────
+    //       창고로 템 전달 기능
+    // ─────────────────────────────────────────────
+
+    public void MoveInventoryToStash(ItemData itemData)
+    {
+        // 1) 인벤토리에 이 아이템이 있는지 확인
+        if (!inventoryDictianory.TryGetValue(itemData, out InventoryItem invItem))
+            return;
+
+        // 2) 스택 하나를 창고로 보내기
+        //    - 먼저 창고에 추가
+        AddToStash(itemData);
+
+        // 3) 인벤토리에서 스택 하나 빼기
+        if (invItem.stackSize <= 1)
+        {
+            inventory.Remove(invItem);
+            inventoryDictianory.Remove(itemData);
+        }
+        else
+        {
+            invItem.RemoveStack();
+        }
+
+        UpdateSlotUI();
+    }
+
+    // ─────────────────────────────────────────────
+    //       인벤토리로 템 전달 기능
+    // ─────────────────────────────────────────────
+    public void MoveStashToInventory(ItemData itemData)
+    {
+        // 0) 인벤토리에 들어갈 자리 있는지 먼저 확인
+        if (!CanAddItem(itemData))
+        {
+            Debug.Log("인벤토리가 가득 차서 창고에서 꺼낼 수 없습니다.");
+            return;
+        }
+
+        // 1) 창고에 이 아이템이 있는지 확인
+        if (!stashDictianory.TryGetValue(itemData, out InventoryItem stashItem))
+            return;
+
+        // 2) 인벤토리에 추가 (스택 합치기 포함)
+        AddToInventory(itemData);
+
+        // 3) 창고에서 스택 하나 빼기
+        if (stashItem.stackSize <= 1)
+        {
+            stash.Remove(stashItem);
+            stashDictianory.Remove(itemData);
+        }
+        else
+        {
+            stashItem.RemoveStack();
+        }
+
+        UpdateSlotUI();
+    }
+
 }

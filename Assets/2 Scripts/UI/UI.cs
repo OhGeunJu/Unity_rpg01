@@ -17,9 +17,10 @@ public class UI : MonoBehaviour
     [SerializeField] private GameObject charcaterUI;
     [SerializeField] private GameObject InventoryUI;
     [SerializeField] private GameObject skillTreeUI;
-    [SerializeField] private GameObject craftUI;
     [SerializeField] private GameObject optionsUI;
     [SerializeField] private GameObject inGameUI;
+    [SerializeField] private GameObject craftUI;
+    [SerializeField] private GameObject stashUI;
     [SerializeField] private GameObject bossUI;
 
     public UI_SkillToolTip skillToolTip;
@@ -141,6 +142,11 @@ public class UI : MonoBehaviour
     public void OpenCraftUI()
     {
         SwitchTo(craftUI);
+    }
+
+    public void OpenStashUI()
+    {
+        SwitchTo(stashUI);
     }
 
     public void CloseToInGameUI()
