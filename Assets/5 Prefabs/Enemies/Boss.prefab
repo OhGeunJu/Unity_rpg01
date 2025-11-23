@@ -191,7 +191,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1768169261
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 0.5019608}
@@ -260,7 +260,7 @@ Transform:
   m_GameObject: {fileID: 3711092927857924119}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.1859996, y: 0.54, z: 0}
+  m_LocalPosition: {x: 1.89, y: 0.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -281,6 +281,8 @@ GameObject:
   - component: {fileID: 8161167673017976376}
   - component: {fileID: 6160168075094102076}
   - component: {fileID: 1394075952448198244}
+  - component: {fileID: 5838831223076688674}
+  - component: {fileID: 1162570545307179665}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
@@ -298,8 +300,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.7, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7238292999524283489}
   - {fileID: 2271874071011452880}
@@ -337,7 +339,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   damage:
-    baseValue: 200
+    baseValue: 150
     modifiers: 
   critChance:
     baseValue: 0
@@ -375,6 +377,7 @@ MonoBehaviour:
   soulsDropAmount:
     baseValue: 0
     modifiers: 
+  expReward: 0
   level: 1
   percantageModifier: 0.4
 --- !u!50 &5222079602787284118
@@ -436,8 +439,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.3}
-  m_Size: {x: 3.5657191, y: 3.5657191}
+  m_Offset: {x: -0.0054306984, y: 0.43577027}
+  m_Size: {x: 3.2941785, y: 3.2941785}
   m_Direction: 0
 --- !u!114 &8161167673017976376
 MonoBehaviour:
@@ -468,6 +471,7 @@ MonoBehaviour:
   shockFx: {fileID: 756318913534456600}
   hitFx: {fileID: 4431538376159538090, guid: 2f387d67210ae6246b602d015d7b9968, type: 3}
   criticalHitFx: {fileID: 3347290265377545998, guid: b74d5da7ef04de04099c0144d41367ce, type: 3}
+  useHpBarToggle: 0
 --- !u!114 &6160168075094102076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,7 +503,7 @@ MonoBehaviour:
   knockbackOffset: {x: 0.5, y: 2}
   knockbackDuration: 0.07
   attackCheck: {fileID: 2938234773929260634}
-  attackCheckRadius: 2
+  attackCheckRadius: 3
   groundCheck: {fileID: 2271874071011452880}
   groundCheckDistance: 1
   wallCheck: {fileID: 4776252772857406626}
@@ -517,7 +521,7 @@ MonoBehaviour:
   idleTime: 0.7
   battleTime: 7
   agroDistance: 10
-  attackDistance: 2
+  attackDistance: 6
   attackCooldown: 0
   minAttackCooldown: 1
   maxAttackCooldown: 2
@@ -532,8 +536,104 @@ MonoBehaviour:
   atk1MaxRange: 2.2
   atk2MinRange: 1.5
   atk2MaxRange: 8
-  atk1RequireLOS: 0
-  atk2RequireLOS: 1
+  spellPrefab: {fileID: 1212147843073526107, guid: 76f058d2254059c41a8faa0e04439c66, type: 3}
+  amountOfSpells: 5
+  spellCooldown: 0.8
+  lastTimeCast: 0
+  spellStateCooldown: 10
+  spellOffset: {x: 3, y: 3}
+  summonController: {fileID: 1162570545307179665}
+  maxMinionsOnField: 6
+  totalSummonBudget: 30
+  baseSummonCooldown: 30
+  nextSummonTime: 0
+  totalSummoned: 0
+--- !u!114 &5838831223076688674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3788835317418523254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c988588a14444c47af379a918961f75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength:
+    baseValue: 0
+    modifiers: 
+  agility:
+    baseValue: 0
+    modifiers: 
+  intelligence:
+    baseValue: 0
+    modifiers: 
+  vitality:
+    baseValue: 0
+    modifiers: 
+  damage:
+    baseValue: 150
+    modifiers: 
+  critChance:
+    baseValue: 0
+    modifiers: 
+  critPower:
+    baseValue: 0
+    modifiers: 
+  maxHealth:
+    baseValue: 1500
+    modifiers: 
+  armor:
+    baseValue: 0
+    modifiers: 
+  evasion:
+    baseValue: 0
+    modifiers: 
+  magicResistance:
+    baseValue: 0
+    modifiers: 
+  fireDamage:
+    baseValue: 0
+    modifiers: 
+  iceDamage:
+    baseValue: 0
+    modifiers: 
+  lightingDamage:
+    baseValue: 0
+    modifiers: 
+  isIgnited: 0
+  isChilled: 0
+  isShocked: 0
+  ailmentsDuration: 4
+  shockStrikePrefab: {fileID: 4158689088258206225, guid: 90919e9c918fc84499a3a88be8033ade, type: 3}
+  currentHealth: 0
+  soulsDropAmount:
+    baseValue: 0
+    modifiers: 
+  expReward: 0
+  level: 1
+  percantageModifier: 0.4
+--- !u!114 &1162570545307179665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3788835317418523254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5e1388cddeaec34fb15be6edfc9c0f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  summonPoints: []
+  radius: 2.5
+  heightOffset: 0
+  SummonCountPerCast: 2
+  servantPrefabs:
+  - {fileID: 2470722000969373925, guid: 37c6ad19e8cbf4246b6065905ba7e82c, type: 3}
+  - {fileID: 8892837432719911241, guid: 1e635aa6a6c71104084534843d5ea261, type: 3}
+  probA: 0.5
 --- !u!1 &5085503748198090278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,11 +1526,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4198639837844710, guid: 84303590294f2ca44a6ee647ea50edc1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 86.736336
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4400707633462392, guid: 84303590294f2ca44a6ee647ea50edc1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 90.76383
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4987258068777410, guid: 84303590294f2ca44a6ee647ea50edc1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1442,7 +1542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 210612909647764868, guid: 84303590294f2ca44a6ee647ea50edc1, type: 3}
       propertyPath: m_SortingLayer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 210612909647764868, guid: 84303590294f2ca44a6ee647ea50edc1, type: 3}
       propertyPath: m_SortingOrder
@@ -1484,10 +1584,30 @@ PrefabInstance:
     - {fileID: 114911002763995854, guid: 84303590294f2ca44a6ee647ea50edc1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1071864619236008, guid: 84303590294f2ca44a6ee647ea50edc1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3974017927657026298}
   m_SourcePrefab: {fileID: 100100000, guid: 84303590294f2ca44a6ee647ea50edc1, type: 3}
 --- !u!4 &7238292999524283489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4094086253830946, guid: 84303590294f2ca44a6ee647ea50edc1, type: 3}
   m_PrefabInstance: {fileID: 7240977511574771523}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7241454449001098731 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1071864619236008, guid: 84303590294f2ca44a6ee647ea50edc1, type: 3}
+  m_PrefabInstance: {fileID: 7240977511574771523}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3974017927657026298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7241454449001098731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f412942aa261fa2468ff88c1e5196a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -15,18 +15,16 @@ public class SkeletonDeadState : EnemyState
     {
         base.Enter();
 
-        enemy.anim.SetBool(enemy.lastAnimBoolName, true);
-        enemy.anim.speed = 0;
-        enemy.cd.enabled = false;
+        var uiHealthBar = enemy.GetComponentInChildren<UI_HealthBar>(true);
+        if (uiHealthBar != null)
+            uiHealthBar.gameObject.SetActive(false);
 
-        stateTimer = .15f;
+        enemy.cd.enabled = false;
+        enemy.rb.simulated = false;
     }
 
     public override void Update()
     {
         base.Update();
-
-        if (stateTimer > 0)
-            rb.velocity = new Vector2(0, 10);
     }
 }

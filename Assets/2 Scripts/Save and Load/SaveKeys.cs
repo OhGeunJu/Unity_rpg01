@@ -5,6 +5,7 @@ public static class SaveKeys
     public const string PlayerLevel = "PlayerLevel";
     public const string PlayerExp = "PlayerExp";
     public const string PlayerStatPoints = "PlayerStatPoints";
+    public const string PlayerExpToNextLevel = "PlayerExpToNextLevel";
 
     public const string StatStrength = "StatStrength";
     public const string StatAgility = "StatAgility";
@@ -14,6 +15,7 @@ public static class SaveKeys
 
     public const string SkillTree = "SkillTree";        // Dictionary<string, bool>
     public const string Inventory = "Inventory";        // Dictionary<string, int>
+    public const string Stash = "Stash";                // Dictionary<string, int>
     public const string EquipmentIds = "EquipmentIds";     // List<string>
 
     public const string CheckpointDict = "CheckpointDict";      // Dictionary<string, bool>

@@ -7,6 +7,7 @@ public class UI_InGame : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Slider slider;
+    [SerializeField] private Slider expSlider;
 
     [SerializeField] private Image dashImage;
     [SerializeField] private Image parryImage;
@@ -26,7 +27,13 @@ public class UI_InGame : MonoBehaviour
     void Start()
     {
         if (playerStats != null)
+        {
             playerStats.onHealthChanged += UpdateHealthUI;
+            playerStats.onExpChanged += UpdateExpUI;
+
+            UpdateHealthUI();
+            UpdateExpUI(playerStats.Exp, playerStats.expToNextLevel);
+        }
 
         skills = SkillManager.instance;
     }
@@ -81,6 +88,16 @@ public class UI_InGame : MonoBehaviour
         slider.maxValue = playerStats.GetMaxHealthValue();
         slider.value = playerStats.currentHealth;
     }
+
+    private void UpdateExpUI(int currentExp, int expToNextLevel)
+    {
+        if (expSlider == null)
+            return;
+
+        expSlider.maxValue = expToNextLevel; // 다음 레벨까지 필요한 양
+        expSlider.value = currentExp;        // 현재 경험치
+    }
+
 
 
     private void SetCooldownOf(Image _image)

@@ -101,7 +101,6 @@ public class PlayerStats : CharacterStats
     public void GainExp(int amount)
     {
         Exp += amount;
-        onExpChanged?.Invoke(Exp, expToNextLevel);
 
         // 여러 레벨이 한 번에 오를 수도 있으니 while
         while (Exp >= expToNextLevel)
@@ -109,15 +108,17 @@ public class PlayerStats : CharacterStats
             Exp -= expToNextLevel;
             LevelUp();
         }
+
+        onExpChanged?.Invoke(Exp, expToNextLevel);
     }
 
     private void LevelUp()
     {
         level++;
         // 레벨업할 때 줄 스탯 포인트 양 (원하는 대로 조정 가능)
-        statPoints += 3;
+        statPoints += 5;
 
-        // 다음 레벨까지 필요한 경험치 증가 (계단식 성장)
+        // 다음 레벨까지 필요한 경험치 증가 -(계단식 성장)
         expToNextLevel = CalculateNextExpRequirement();
 
         // 이벤트 호출해서 UI 갱신할 수 있게
@@ -173,7 +174,7 @@ public class PlayerStats : CharacterStats
         onStatPointChanged?.Invoke(statPoints);
     }
 
-    public void ResetPoint(int level)
+    public void ResetPoint()
     {
         List<StatType> statTypes = new List<StatType>()
         {
@@ -195,11 +196,6 @@ public class PlayerStats : CharacterStats
         onStatPointChanged?.Invoke(statPoints);
     }
 
-    public void ResetPoint()
-    {
-        ResetPoint(level);
-    }
-
     public void UpdateDerivedStats()
     {
         int newMaxHealth = GetMaxHealthValue();
@@ -210,6 +206,14 @@ public class PlayerStats : CharacterStats
 
         // 스탯 관련 이벤트 호출 (UI 갱신용)
         onHealthChanged?.Invoke();
+        onStatsChanged?.Invoke();
+    }
+
+    public void RefreshAllUI()
+    {
+        onHealthChanged?.Invoke();
+        onExpChanged?.Invoke(Exp, expToNextLevel);
+        onStatPointChanged?.Invoke(statPoints);
         onStatsChanged?.Invoke();
     }
 }

@@ -21,6 +21,7 @@ public class PlayerStatsSave : MonoBehaviour
         ES3.Save(SaveKeys.PlayerLevel, stats.level);
         ES3.Save(SaveKeys.PlayerExp, stats.Exp);
         ES3.Save(SaveKeys.PlayerStatPoints, stats.statPoints);
+        ES3.Save(SaveKeys.PlayerExpToNextLevel, stats.expToNextLevel);
 
         // 능력치
         ES3.Save(SaveKeys.StatStrength, stats.strength.GetBase());
@@ -43,6 +44,7 @@ public class PlayerStatsSave : MonoBehaviour
         stats.level = ES3.Load<int>(SaveKeys.PlayerLevel, 1);
         stats.Exp = ES3.Load<int>(SaveKeys.PlayerExp, 0);
         stats.statPoints = ES3.Load<int>(SaveKeys.PlayerStatPoints, 0);
+        stats.expToNextLevel = ES3.Load<int>(SaveKeys.PlayerExpToNextLevel, 100);
 
         // 능력치
         stats.strength.SetValue(ES3.Load<int>(SaveKeys.StatStrength, 0));
@@ -59,6 +61,8 @@ public class PlayerStatsSave : MonoBehaviour
         float x = ES3.Load<float>(SaveKeys.LostCurrencyX, 0);
         float y = ES3.Load<float>(SaveKeys.LostCurrencyY, 0);
         GameManager.instance.lostCurrencyPosition = new Vector2(x, y);
+
+        stats.RefreshAllUI();
     }
 
     // ─────────────────────────────────────
@@ -70,6 +74,7 @@ public class PlayerStatsSave : MonoBehaviour
         stats.level = 1;
         stats.Exp = 0;
         stats.statPoints = 10;
+        stats.expToNextLevel = 100;
 
         stats.strength.SetValue(0);
         stats.agility.SetValue(0);
