@@ -4,9 +4,12 @@ public class ParallaxBackground : MonoBehaviour
 {
     private GameObject cam;
 
-    [SerializeField] private float parallaxEffect;
+    [Header("ÆÐ·²·°½º °­µµ")]
+    [SerializeField] private float parallaxEffect = 1;
+    [SerializeField] private float parallaxEffectY = 1f;
 
     private float xPosition;
+    private float yPosition;
     private float length;
 
     private Vector3 targetPosition;
@@ -16,15 +19,23 @@ public class ParallaxBackground : MonoBehaviour
         cam = GameObject.Find("Main Camera");
 
         length = GetComponent<SpriteRenderer>().bounds.size.x;
+
         xPosition = transform.position.x;
+        yPosition = transform.position.y;
     }
 
     void Update()
     {
-        float distanceMoved = cam.transform.position.x * (1 - parallaxEffect);
-        float distanceToMove = cam.transform.position.x * parallaxEffect;
+        Vector3 camPos = cam.transform.position;
 
-        targetPosition = new Vector3(xPosition + distanceToMove, transform.position.y, transform.position.z);
+        // X ÆÐ·²·°½º
+        float distanceMoved = camPos.x * (1 - parallaxEffect);
+        float distanceToMove = camPos.x * parallaxEffect;
+
+        // Y ÆÐ·²·°½º
+        float distanceToMoveY = camPos.y * parallaxEffectY;
+
+        targetPosition = new Vector3(xPosition + distanceToMove, yPosition + distanceToMoveY, transform.position.z);
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * lerpSpeed);
 
         if (distanceMoved > xPosition + length)

@@ -23,6 +23,18 @@ public class Player : Entity
     private float defaultDashSpeed;
     public float dashDir { get; private set; }
 
+    [Header("Step Offset")]
+    [SerializeField] private float stepHeight = 0.6f;        // 올라갈 수 있는 최대 턱 높이
+    [SerializeField] private float stepCheckDistance = 0.05f; // 앞쪽 검사 거리
+    [SerializeField] private float stepSmooth = 12f;          // 부드럽게 올라가는 속도
+    public Transform stepLowerCheck;
+    public Transform stepUpperCheck;
+
+    [SerializeField] private float stepStateDuration = 0.1f; // 계단 타는 상태 유지 시간
+
+    [HideInInspector] public bool isStepping;
+    [HideInInspector] public float stepStateTimer;
+
 
     public SkillManager skill { get; private set; }
     public GameObject sword {  get ; private set; }
@@ -181,5 +193,67 @@ public class Player : Entity
     protected override void SetupZeroKnockbackPower()
     {
         knockbackPower = new Vector2(0, 0);
+    }
+
+    public void StepClimb(float moveDir)
+    {
+        if (Mathf.Abs(moveDir) < 0.01f)
+            return;
+
+        Vector2 forward = Vector2.right * moveDir;
+
+        RaycastHit2D lowerHit = Physics2D.Raycast(
+            stepLowerCheck.position,
+            forward,
+            stepCheckDistance,
+            whatIsGround
+        );
+
+        RaycastHit2D upperHit = Physics2D.Raycast(
+            stepUpperCheck.position,
+            forward,
+            stepCheckDistance,
+            whatIsGround
+        );
+
+        if (lowerHit && !upperHit)
+        {
+            // upperCheck 지점에서 아래로 쏘아 실제 '바닥 높이'를 찾는 부분
+            RaycastHit2D groundHit = Physics2D.Raycast(
+                stepUpperCheck.position + Vector3.up * 0.05f,
+                Vector2.down,
+                stepHeight + 0.2f,
+                whatIsGround
+            );
+
+            if (groundHit)
+            {
+                float targetY = groundHit.point.y + cd.bounds.extents.y;
+
+                Vector2 pos = rb.position;
+                pos.y = Mathf.Lerp(pos.y, targetY, stepSmooth * Time.deltaTime);
+                rb.position = pos;
+
+                isStepping = true;
+                stepStateTimer = stepStateDuration;
+            }
+        }
+    }
+    protected override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+
+        if (stepLowerCheck == null || stepUpperCheck == null)
+            return;
+
+        Vector2 forward = Vector2.right * facingDir;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(stepLowerCheck.position, stepLowerCheck.position + (Vector3)forward * stepCheckDistance);
+        Gizmos.DrawSphere(stepLowerCheck.position, 0.03f);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(stepUpperCheck.position, stepUpperCheck.position + (Vector3)forward * stepCheckDistance);
+        Gizmos.DrawSphere(stepUpperCheck.position, 0.03f);
     }
 }

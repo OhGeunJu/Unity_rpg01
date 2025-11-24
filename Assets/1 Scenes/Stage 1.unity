@@ -9561,6 +9561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.9
+  parallaxEffectY: 0.4
   lerpSpeed: 10
 --- !u!212 &520924726
 SpriteRenderer:
@@ -10096,6 +10097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.8
+  parallaxEffectY: 0.3
   lerpSpeed: 10
 --- !u!212 &603982398
 SpriteRenderer:
@@ -37802,6 +37804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 1
+  parallaxEffectY: 0.5
   lerpSpeed: 10
 --- !u!212 &1581749112
 SpriteRenderer:

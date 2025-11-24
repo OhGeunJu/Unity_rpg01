@@ -31,5 +31,16 @@ public class PlayerMoveState : PlayerGroundedState
 
         if (xInput == 0 || player.IsWallDetected())
             stateMachine.ChangeState(player.idleState);
+
+        //지상에서만, 이동 입력 있을 때만 턱 넘기
+        if (player.IsGroundDetected() && Mathf.Abs(xInput) > 0.01f)
+            player.StepClimb(Mathf.Sign(xInput));
+
+        if (player.isStepping)
+        {
+            player.stepStateTimer -= Time.deltaTime;
+            if (player.stepStateTimer <= 0)
+                player.isStepping = false;
+        }
     }
 }
