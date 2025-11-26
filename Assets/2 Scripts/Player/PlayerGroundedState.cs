@@ -46,7 +46,7 @@ public class PlayerGroundedState : PlayerState
         if (!player.IsGroundDetected() && !player.isStepping)
             stateMachine.ChangeState(player.airState);
 
-        if (Input.GetKeyDown(KeyCode.Space) && player.IsGroundDetected())
+        if (Input.GetKeyDown(KeyCode.Space) && (player.IsGroundDetected() || player.isStepping))
             stateMachine.ChangeState(player.jumpState);
     }
 

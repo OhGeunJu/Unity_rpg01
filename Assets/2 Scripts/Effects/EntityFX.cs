@@ -90,19 +90,16 @@ public class EntityFX : MonoBehaviour
     public void SetUserHpBarState(bool isOn)
     {
         userHpBarOn = isOn;
-        Debug.Log($"[SetUserHpBarState] isOn={isOn}, useHpBarToggle={useHpBarToggle}");
 
         if (!useHpBarToggle)
             return; // 몬스터는 토글 무시
 
-        Debug.Log($"[SetUserHpBarState] myHealthBar.SetActive({isOn}) 호출");
         myHealthBar.SetActive(isOn);
     }
 
     public void MakeTransprent(bool _transprent)
     {
-        Debug.Log($"[MakeTransprent] transparent={_transprent}, useHpBarToggle={useHpBarToggle}, userHpBarOn={userHpBarOn}, activeSelf={myHealthBar.activeSelf}, activeInHierarchy={myHealthBar.activeInHierarchy}");
-
+        
         if (_transprent)
         {
             myHealthBar.SetActive(false);
@@ -115,7 +112,6 @@ public class EntityFX : MonoBehaviour
             else
                 myHealthBar.SetActive(true);        // 몬스터: 무조건 켜기
             sr.color = Color.white;
-            Debug.Log($"[MakeTransprent END] activeSelf={myHealthBar.activeSelf}, activeInHierarchy={myHealthBar.activeInHierarchy}");
         }
     }
 

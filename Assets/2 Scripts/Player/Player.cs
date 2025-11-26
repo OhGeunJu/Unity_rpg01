@@ -26,7 +26,7 @@ public class Player : Entity
     [Header("Step Offset")]
     [SerializeField] private float stepHeight = 0.6f;        // 올라갈 수 있는 최대 턱 높이
     [SerializeField] private float stepCheckDistance = 0.05f; // 앞쪽 검사 거리
-    [SerializeField] private float stepSmooth = 12f;          // 부드럽게 올라가는 속도
+    [SerializeField] private float stepSmooth = 20f;          // 부드럽게 올라가는 속도
     public Transform stepLowerCheck;
     public Transform stepUpperCheck;
 
@@ -228,7 +228,7 @@ public class Player : Entity
 
             if (groundHit)
             {
-                float targetY = groundHit.point.y + cd.bounds.extents.y;
+                float targetY = groundHit.point.y + cd.bounds.extents.y - 0.02f;
 
                 Vector2 pos = rb.position;
                 pos.y = Mathf.Lerp(pos.y, targetY, stepSmooth * Time.deltaTime);
