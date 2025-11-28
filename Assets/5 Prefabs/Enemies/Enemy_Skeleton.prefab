@@ -713,9 +713,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b745fa6d35ca246a9bdee3852f258b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackPower: {x: 7, y: 12}
-  knockbackOffset: {x: 0, y: 0}
-  knockbackDuration: 0.07
   attackCheck: {fileID: 5413061282480843610}
   attackCheckRadius: 1.2
   groundCheck: {fileID: 5413061283799475926}
@@ -725,6 +722,9 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  knockbackPower: {x: 7, y: 12}
+  knockbackOffset: {x: 0, y: 0}
+  knockbackDuration: 0.07
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
@@ -740,6 +740,7 @@ MonoBehaviour:
   minAttackCooldown: 0.35
   maxAttackCooldown: 0.55
   lastTimeAttacked: 0
+  healthBar: {fileID: 5413061283538624497}
 --- !u!50 &5413061283600725302
 Rigidbody2D:
   serializedVersion: 4

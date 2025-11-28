@@ -5,6 +5,9 @@ using UnityEngine.UIElements;
 
 public class Player : Entity
 {
+    [SerializeField] private float knockbackCooldown = 0.4f; // 연속 넉백 방지 시간
+    private float lastKnockbackTime = -100f;
+
     [Header("Attack details")]
     public Vector2[] attackMovement;
     public float counterAttackDuration = .2f;
@@ -255,5 +258,37 @@ public class Player : Entity
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(stepUpperCheck.position, stepUpperCheck.position + (Vector3)forward * stepCheckDistance);
         Gizmos.DrawSphere(stepUpperCheck.position, 0.03f);
+    }
+
+    public override void DamageImpact()
+    {
+        // 최근 넉백 시점 + 쿨타임보다 시간이 덜 지났으면 넉백 무시
+        if (Time.time < lastKnockbackTime + knockbackCooldown)
+            return;
+
+        lastKnockbackTime = Time.time;
+
+        // 원래 Entity의 넉백 코루틴 실행
+        base.DamageImpact();
+    }
+
+    protected override IEnumerator HitKnockback()
+    {
+        isKnocked = true;
+
+        float xOffset = Random.Range(knockbackOffset.x, knockbackOffset.y);
+
+        if (knockbackPower.x > 0 || knockbackPower.y > 0)
+            rb.velocity = new Vector2((knockbackPower.x + xOffset) * knockbackDir, knockbackPower.y);
+
+        yield return new WaitForSeconds(knockbackDuration);
+
+        isKnocked = false;
+
+        // 여기서 확실히 멈춰주기
+        rb.velocity = new Vector2(0, rb.velocity.y);
+
+
+        SetupZeroKnockbackPower();
     }
 }

@@ -15,11 +15,6 @@ public class Entity : MonoBehaviour
     public CapsuleCollider2D cd {  get; private set; }
     #endregion
 
-    [Header("Knockback info")]
-    [SerializeField] protected Vector2 knockbackPower = new Vector2(7,12); // knockbackPower : 피격 시 캐릭터가 튕겨나가는 힘 (x, y 방향)
-    [SerializeField] protected Vector2 knockbackOffset = new Vector2(.5f,2);
-    [SerializeField] protected float knockbackDuration = .07f;
-    protected bool isKnocked; // isKnocked : 넉백 중인지 여부(넉백 중에는 이동 입력 무시)
 
     [Header("Collision info")]
     public Transform attackCheck; // 공격 범위 체크 위치
@@ -30,6 +25,12 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float wallCheckDistance = .8f;
     [SerializeField] protected LayerMask whatIsGround;  // 땅 레이어 마스크
 
+    [Header("Knockback info")]
+    [SerializeField] protected Vector2 knockbackPower = new Vector2(7,12); // knockbackPower : 피격 시 캐릭터가 튕겨나가는 힘 (x, y 방향)
+    [SerializeField] protected Vector2 knockbackOffset = new Vector2(.5f,2);
+    [SerializeField] protected float knockbackDuration = .07f;
+    protected bool isKnocked;
+    public bool IsKnocked => isKnocked;
     public int knockbackDir { get; private set; } // knockbackDir : 맞은 방향 반대쪽으로 밀려나도록 방향 설정
 
     public int facingDir { get; private set; } = 1;

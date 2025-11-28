@@ -38,4 +38,9 @@ public class UI_HealthBar : MonoBehaviour
             myStats.onHealthChanged -= UpdateHealthUI;
     }
     private void FlipUI() => myTransform.Rotate(0, 180, 0); // UI µÚÁý±â
+
+    public void SetVisible(bool value)
+    {
+        gameObject.SetActive(value);
+    }
 }
