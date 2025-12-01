@@ -18640,7 +18640,7 @@ GameObject:
   - component: {fileID: 1195560140}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61271,6 +61271,7 @@ MonoBehaviour:
   statToolTip: {fileID: 2601510241539289524}
   invenStatToolTip: {fileID: 5834799816707192737}
   craftWindow: {fileID: 1397722711713033}
+  isUIOpen: 0
   volumeSettings:
   - {fileID: 7742572448594729568}
   - {fileID: 3214645177601530004}

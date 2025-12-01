@@ -29,6 +29,8 @@ public class UI : MonoBehaviour
     public UI_StatToolTip invenStatToolTip;
     public UI_CraftWindow craftWindow;
 
+    public bool isUIOpen = false;
+
     [Header("Volume Sliders (UI Only)")]
     [SerializeField] private UI_VolumeSlider[] volumeSettings;
 
@@ -141,16 +143,19 @@ public class UI : MonoBehaviour
     // 크래프트 UI
     public void OpenCraftUI()
     {
+        isUIOpen = true;
         SwitchTo(craftUI);
     }
 
     public void OpenStashUI()
     {
+        isUIOpen = true;
         SwitchTo(stashUI);
     }
 
     public void CloseToInGameUI()
     {
+        isUIOpen = false;
         SwitchTo(inGameUI);
     }
 

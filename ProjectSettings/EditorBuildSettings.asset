@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/1 Scenes/MainMenu.unity
     guid: 20a7a46ff539a7c48957740682be8398
   - enabled: 1
+    path: Assets/1 Scenes/Loading.unity
+    guid: a36f562bcd2ce7345a66d3e6ff973bfb
+  - enabled: 1
     path: Assets/1 Scenes/Village.unity
     guid: dde9f90bb93c09c4f808934f919af3ba
+  - enabled: 1
+    path: Assets/1 Scenes/Stage 2.unity
+    guid: e59aa2fc4390095488167d9f2352cde6
+  - enabled: 1
+    path: Assets/1 Scenes/BossRoom.unity
+    guid: e2348ff7bff6a254f9628bea7e573b40
   m_configObjects: {}

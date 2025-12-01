@@ -286,6 +286,7 @@ MonoBehaviour:
   soulsDropAmount:
     baseValue: 0
     modifiers: 
+  expReward: 0
   level: 1
   percantageModifier: 0.4
 --- !u!114 &6043538945296711548
@@ -317,6 +318,7 @@ MonoBehaviour:
   shockFx: {fileID: 5414511853038474433}
   hitFx: {fileID: 4431538376159538090, guid: 2f387d67210ae6246b602d015d7b9968, type: 3}
   criticalHitFx: {fileID: 3347290265377545998, guid: b74d5da7ef04de04099c0144d41367ce, type: 3}
+  useHpBarToggle: 0
 --- !u!114 &7550326017167331859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,9 +346,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bdf9e7e0ac2a3745896d7b9ea00ebec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackPower: {x: 7, y: 12}
-  knockbackOffset: {x: 0.5, y: 2}
-  knockbackDuration: 0.07
   attackCheck: {fileID: 3491954233452162858}
   attackCheckRadius: 1.2
   groundCheck: {fileID: 7403305063561121401}
@@ -356,6 +355,9 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  knockbackPower: {x: 7, y: 12}
+  knockbackOffset: {x: 0.5, y: 2}
+  knockbackDuration: 0.07
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
@@ -704,7 +706,7 @@ Transform:
   m_GameObject: {fileID: 7223489348987536352}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.54, y: 0.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

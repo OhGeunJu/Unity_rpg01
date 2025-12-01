@@ -32,8 +32,9 @@ public class NPC_Stash : Object_NPC, IIteractable
     }
     public override void OnTalk()
     {
-        ui.OpenCraftUI();
-        // 필요 시 대화 종료를 F로 토글하려면:
-        // if (ui.IsCraftUIOpen()) ui.CloseToInGameUI(); else ui.OpenCraftUI();
+        if(ui.isUIOpen)
+            ui.CloseToInGameUI();
+        else
+            ui.OpenStashUI();
     }
 }
