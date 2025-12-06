@@ -132,6 +132,10 @@ public class PlayerStats : CharacterStats
         // 1.2배씩 증가
         return Mathf.RoundToInt(expToNextLevel * 1.2f);
     }
+    public void InvokeStatsChanged()
+    {
+        onStatsChanged?.Invoke();
+    }
 
     public void AllocateStatPoint(StatType statType)
     {

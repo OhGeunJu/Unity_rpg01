@@ -6,37 +6,57 @@ public class CheckpointSave : MonoBehaviour
     private string filePath =>
         System.IO.Path.Combine(Application.persistentDataPath, "checkpoints.es3");
 
-    [Header("연결된 체크포인트들 (없으면 자동 검색)")]
+    [Header("현재 씬 체크포인트들 (자동 검색됨)")]
     [SerializeField] private Checkpoint[] checkpoints;
 
     private Transform player;
 
     private void Awake()
     {
-        // 체크포인트 자동 검색
-        if (checkpoints == null || checkpoints.Length == 0)
-            checkpoints = FindObjectsOfType<Checkpoint>(true);
-
-        player = PlayerManager.instance.player.transform;
-
         SaveManager.Instance.RegisterCheckpoints(this);
     }
 
+    /// <summary>
+    /// 현재 씬 기준으로 체크포인트 다시 찾아오기
+    /// </summary>
+    private void RefreshCheckpoints()
+    {
+        checkpoints = FindObjectsOfType<Checkpoint>(true);
+    }
+
+    /// <summary>
+    /// 현재 씬 기준으로 플레이어 다시 찾아오기
+    /// </summary>
+    private void RefreshPlayer()
+    {
+        var p = FindObjectOfType<Player>();
+        player = p != null ? p.transform : null;
+    }
+
+    // ─────────────────────────────────────────────
     // 저장
+    // ─────────────────────────────────────────────
     public void Save()
     {
+        RefreshCheckpoints();
+
         Dictionary<string, bool> checkpointDict = new Dictionary<string, bool>();
 
         foreach (var cp in checkpoints)
-            checkpointDict[cp.id] = cp.activationStatus;
+        {
+            if (cp == null)
+                continue;
 
-        ES3.Save<Dictionary<string, bool>>(SaveKeys.CheckpointDict, checkpointDict, filePath);
+            checkpointDict[cp.id] = cp.activationStatus;
+        }
+
+        ES3.Save(SaveKeys.CheckpointDict, checkpointDict, filePath);
 
         // 가장 가까운 활성 체크포인트 저장
         Checkpoint closest = GameManager.instance.GetClosestActiveCheckpoint();
         string closestId = closest != null ? closest.id : string.Empty;
 
-        ES3.Save<string>(SaveKeys.ClosestCheckpointId, closestId, filePath);
+        ES3.Save(SaveKeys.ClosestCheckpointId, closestId, filePath);
     }
 
     // ─────────────────────────────────────────────
@@ -44,31 +64,32 @@ public class CheckpointSave : MonoBehaviour
     // ─────────────────────────────────────────────
     public void Load()
     {
-        // 파일 자체가 없으면(첫 플레이 등) 로드 스킵
+        RefreshCheckpoints();
+        RefreshPlayer();
+
         if (!ES3.FileExists(filePath))
             return;
 
         // 체크포인트 상태 로드
         Dictionary<string, bool> savedDict =
-            ES3.Load<Dictionary<string, bool>>(
-                SaveKeys.CheckpointDict,
-                filePath,
-                defaultValue: new Dictionary<string, bool>()
-            );
+            ES3.Load(SaveKeys.CheckpointDict, filePath, new Dictionary<string, bool>());
 
         foreach (var cp in checkpoints)
         {
+            if (cp == null)
+                continue;
+
             if (savedDict.TryGetValue(cp.id, out bool isActive))
             {
                 if (isActive)
-                    cp.ActivateCheckpoint();    // 저장된 체크포인트 활성화
+                    cp.ActivateCheckpoint();
                 else
-                    cp.DeactivateCheckpoint();  // 필요하면 구현 (없으면 무시)
+                    cp.DeactivateCheckpoint();
             }
         }
 
-        // 플레이어 스폰 위치 로드
-        string closestId = ES3.Load<string>(SaveKeys.ClosestCheckpointId, filePath, string.Empty);
+        // 플레이어 위치 로드
+        string closestId = ES3.Load(SaveKeys.ClosestCheckpointId, filePath, string.Empty);
 
         if (!string.IsNullOrEmpty(closestId))
             TeleportPlayerToCheckpoint(closestId);
@@ -79,11 +100,14 @@ public class CheckpointSave : MonoBehaviour
     // ─────────────────────────────────────────────
     public void ResetToDefault()
     {
-        // 모든 체크포인트 비활성화
-        foreach (var cp in checkpoints)
-            cp.DeactivateCheckpoint();
+        RefreshCheckpoints();
 
-        ES3.DeleteFile(filePath);
+        foreach (var cp in checkpoints)
+            if (cp != null)
+                cp.DeactivateCheckpoint();
+
+        if (ES3.FileExists(filePath))
+            ES3.DeleteFile(filePath);
     }
 
     // ─────────────────────────────────────────────
@@ -91,9 +115,15 @@ public class CheckpointSave : MonoBehaviour
     // ─────────────────────────────────────────────
     private void TeleportPlayerToCheckpoint(string id)
     {
+        if (player == null)
+            RefreshPlayer();
+
+        if (player == null)
+            return;
+
         foreach (var cp in checkpoints)
         {
-            if (cp.id == id)
+            if (cp != null && cp.id == id)
             {
                 player.position = cp.transform.position;
                 return;

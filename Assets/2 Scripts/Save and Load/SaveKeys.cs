@@ -31,6 +31,8 @@ public static class SaveKeys
     public const string SFXVolume = "SFXVolume";
     public const string HpBarToggle = "HpBarToggle";
 
+    public const string StageProgress = "StageProgress";
+
     // 전체 삭제에 쓸 키 목록
     public static readonly string[] AllKeys = new[]
     {
@@ -54,6 +56,7 @@ public static class SaveKeys
         SFXVolume,
         BGMVolume,
         MasterVolume,
-        HpBarToggle
+        HpBarToggle,
+        StageProgress,
     };
 }

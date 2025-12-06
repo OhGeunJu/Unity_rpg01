@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 
@@ -79,6 +80,11 @@ public class ItemData_Equipment : ItemData
         playerStats.fireDamage.AddModifier(fireDamage);
         playerStats.iceDamage.AddModifier(iceDamage);
         playerStats.lightingDamage.AddModifier(lightingDamage);
+
+        // 최대 체력/파생 스탯 다시 계산하고
+        playerStats.UpdateDerivedStats();
+        // 스탯 바뀌었다고 이벤트 날리기
+        playerStats.InvokeStatsChanged();
     }
 
     public void RemoveModifiers() 
@@ -105,6 +111,9 @@ public class ItemData_Equipment : ItemData
         playerStats.fireDamage.RemoveModifier(fireDamage);
         playerStats.iceDamage.RemoveModifier(iceDamage);
         playerStats.lightingDamage.RemoveModifier(lightingDamage);
+
+        playerStats.UpdateDerivedStats();
+        playerStats.InvokeStatsChanged();
     }
 
     public override string GetDescription()

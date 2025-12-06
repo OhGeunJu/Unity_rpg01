@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   itemName: Wood
-  itemIcon: {fileID: 2005540724, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+  itemIcon: {fileID: 21300000, guid: ae672b613b9c87b44b282e3f2d183241, type: 3}
   itemId: 1fc54958788ad4b49acce7f1d0989161
   dropChance: 100

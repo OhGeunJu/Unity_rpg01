@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UI : MonoBehaviour
@@ -10,6 +11,10 @@ public class UI : MonoBehaviour
     [SerializeField] private UI_FadeScreen fadeScreen;
     [SerializeField] private GameObject endText;
     [SerializeField] private GameObject restartButton;
+
+    [Header("Win screen")]
+    [SerializeField] private GameObject winText;
+    [SerializeField] private GameObject clearButton;
 
     [Space]
 
@@ -139,6 +144,28 @@ public class UI : MonoBehaviour
 
     public void RestartGameButton()
         => GameManager.instance.RestartScene();
+
+    // 승리 화면
+    public void SwitchOnWinScreen()
+    {
+        fadeScreen.FadeOut();
+        StartCoroutine(WinScreenCoroutine());
+    }
+
+    private IEnumerator WinScreenCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        winText.SetActive(true);          // 승리 텍스트 표시
+        yield return new WaitForSeconds(1.5f);
+        clearButton.SetActive(true);      // 클리어 버튼 표시
+    }
+
+    public void ClearGameButton()
+    {
+        SaveManager.Instance.SaveGame();
+
+        SceneManager.LoadScene("MainMenu");
+    }
 
     // 크래프트 UI
     public void OpenCraftUI()

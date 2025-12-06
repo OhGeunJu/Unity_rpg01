@@ -17,6 +17,7 @@ public class ItemDrop : MonoBehaviour
             return;
         }
 
+        possibleDrop.Clear();
 
         foreach (ItemData item in itemPool)
         {

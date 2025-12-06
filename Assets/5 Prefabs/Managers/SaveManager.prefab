@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2316876721894684396}
   - component: {fileID: 7168433667809311542}
+  - component: {fileID: 4782087793062506368}
   m_Layer: 0
   m_Name: SaveManager
   m_TagString: Untagged
@@ -44,5 +45,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b377107fe42e74ab62543a163102d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: save.es3
-  encryptData: 1
+  playerStats: {fileID: 0}
+  skillTree: {fileID: 0}
+  inventory: {fileID: 0}
+  checkpoints: {fileID: 0}
+  options: {fileID: 0}
+  stageProgress: {fileID: 4782087793062506368}
+--- !u!114 &4782087793062506368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7910302368314163765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e0707acc07da346b454ebfa4b22563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockedStages: 

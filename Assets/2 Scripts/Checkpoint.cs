@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    private Animator anim;
-
     [Header("Checkpoint Data")]
     public string id;
     public bool activationStatus;
 
-    private void Start()
+    [Header("Animator")]
+    private Animator anim;
+
+    private void Awake()
     {
         anim = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        // 씬 로드 후 최초 상태 반영
+        UpdateVisual();
     }
 
     [ContextMenu("Generate checkpoint id")]
@@ -23,10 +28,10 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Player>() != null)
-        {
-            ActivateCheckpoint();
-        }
+        if (collision.GetComponent<Player>() == null)
+            return;
+
+        ActivateCheckpoint();
     }
 
     /// <summary>
@@ -34,19 +39,28 @@ public class Checkpoint : MonoBehaviour
     /// </summary>
     public void ActivateCheckpoint()
     {
-        if (!activationStatus)
-            AudioManager.instance.PlaySFX(4, transform);
+        //if (!activationStatus)
+            //AudioManager.instance.PlaySFX(4, transform);
 
         activationStatus = true;
-        anim.SetBool("active", true);
+        UpdateVisual();
     }
 
     /// <summary>
-    /// 저장/로드/새 게임 초기화를 위해 필요한 비활성화 함수
+    /// 체크포인트 비활성화 (로드/새 게임 시 사용)
     /// </summary>
     public void DeactivateCheckpoint()
     {
         activationStatus = false;
-        anim.SetBool("active", false);
+        UpdateVisual();
+    }
+
+    /// <summary>
+    /// Animator와 비주얼을 activationStatus에 맞게 갱신
+    /// </summary>
+    private void UpdateVisual()
+    {
+        if (anim != null && this != null)
+            anim.SetBool("active", activationStatus);
     }
 }

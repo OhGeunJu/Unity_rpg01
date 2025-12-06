@@ -913,8 +913,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d919b49c547184da9b10d7bfd2876f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxItemsToDrop: 0
-  itemPool: []
+  maxItemsToDrop: 1
+  itemPool:
+  - {fileID: 11400000, guid: b51c3331ef7b4594bb9e6c6c7401947e, type: 2}
   dropPrefab: {fileID: 8730514117533583190, guid: 7aaa3324c1c4b054ebebaafe3343bf25, type: 3}
 --- !u!1 &5413061283799475925
 GameObject:

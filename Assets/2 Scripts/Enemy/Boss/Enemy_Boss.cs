@@ -87,6 +87,11 @@ public class Enemy_Boss : Enemy
     public override void Die()
     {
         base.Die();
+
+        UI ui = FindObjectOfType<UI>();
+        if (ui != null)
+            ui.SwitchOnWinScreen();
+
         stateMachine.ChangeState(deadState);
 
     }

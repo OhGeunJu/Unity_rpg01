@@ -9,8 +9,10 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private InventorySave inventory;
     [SerializeField] private CheckpointSave checkpoints;
     [SerializeField] private OptionsSave options;
+    [SerializeField] private StageProgressSave stageProgress;
 
     public OptionsSave Options => options;
+    public StageProgressSave StageProgress => stageProgress;
 
     private void Awake()
     {
@@ -28,6 +30,7 @@ public class SaveManager : MonoBehaviour
     public void RegisterInventory(InventorySave s) => inventory = s;
     public void RegisterCheckpoints(CheckpointSave s) => checkpoints = s;
     public void RegisterOptions(OptionsSave s) => options = s;
+    public void RegisterStageProgress(StageProgressSave s) => stageProgress = s;
 
     /// <summary>새 게임 시작: 기존 세이브를 날리고 기본값으로 초기화</summary>
     public void NewGame()
@@ -39,6 +42,7 @@ public class SaveManager : MonoBehaviour
         if (inventory != null) inventory.ResetToDefault();
         if (checkpoints != null) checkpoints.ResetToDefault();
         if (options != null) options.ResetToDefault();
+        if (stageProgress != null) stageProgress.ResetToDefault();
 
         // 각 시스템의 기본 상태를 세팅
         // 예: PlayerStats 기본값, 스킬 초기 상태, 인벤토리 빈 상태 등
@@ -64,6 +68,7 @@ public class SaveManager : MonoBehaviour
         if (inventory != null) inventory.Save();
         if (checkpoints != null) checkpoints.Save();
         if (options != null) options.Save();
+        if (stageProgress != null) stageProgress.Save();
     }
 
     /// <summary>게임 전체 불러오기</summary>
@@ -81,6 +86,7 @@ public class SaveManager : MonoBehaviour
         if (inventory != null) inventory.Load();
         if (checkpoints != null) checkpoints.Load();
         if (options != null) options.Load();
+        if (stageProgress != null) stageProgress.Load();
 
         SkillManager.instance.RefreshSkillUnlocks();
     }

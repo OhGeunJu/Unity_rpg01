@@ -68,7 +68,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15.98, y: -3.25, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.3478261, y: 0.3478261, z: 0.3478261}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8673790545441685322}
@@ -252,8 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d919b49c547184da9b10d7bfd2876f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxItemsToDrop: 0
-  itemPool: []
+  maxItemsToDrop: 1
+  itemPool:
+  - {fileID: 11400000, guid: a0300e0089d439943998db8ef1c2617f, type: 2}
   dropPrefab: {fileID: 8730514117533583190, guid: 7aaa3324c1c4b054ebebaafe3343bf25, type: 3}
 --- !u!114 &3308331503114907103
 MonoBehaviour:
@@ -267,9 +268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a0925c533b3a2469ad757ec8ed47c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackPower: {x: 9, y: 13}
-  knockbackOffset: {x: 0.5, y: 2}
-  knockbackDuration: 0.07
   attackCheck: {fileID: 2854096797077845448}
   attackCheckRadius: 0.8
   groundCheck: {fileID: 215318919463332866}
@@ -279,6 +277,9 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  knockbackPower: {x: 9, y: 13}
+  knockbackOffset: {x: 0.5, y: 2}
+  knockbackDuration: 0.07
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64

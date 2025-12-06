@@ -378,7 +378,7 @@ MonoBehaviour:
   soulsDropAmount:
     baseValue: 0
     modifiers: 
-  expReward: 0
+  expReward: 10000
   level: 1
   percantageModifier: 0.4
 --- !u!50 &5222079602787284118

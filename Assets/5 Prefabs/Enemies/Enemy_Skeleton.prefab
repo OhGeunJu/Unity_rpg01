@@ -740,7 +740,9 @@ MonoBehaviour:
   minAttackCooldown: 0.35
   maxAttackCooldown: 0.55
   lastTimeAttacked: 0
+  enemyType: 0
   healthBar: {fileID: 5413061283538624497}
+  isSleeping: 1
 --- !u!50 &5413061283600725302
 Rigidbody2D:
   serializedVersion: 4
@@ -911,8 +913,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d919b49c547184da9b10d7bfd2876f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxItemsToDrop: 0
-  itemPool: []
+  maxItemsToDrop: 1
+  itemPool:
+  - {fileID: 11400000, guid: 1fc54958788ad4b49acce7f1d0989161, type: 2}
   dropPrefab: {fileID: 8730514117533583190, guid: 7aaa3324c1c4b054ebebaafe3343bf25, type: 3}
 --- !u!1 &5413061283799475925
 GameObject:

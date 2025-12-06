@@ -32,24 +32,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Start()
-    {
-        // 코루틴으로 초기화 + 로드 처리
-        StartCoroutine(StartRoutine());
-    }
-
-    private IEnumerator StartRoutine()
-    {
-        yield return null; // 모든 오브젝트 생성 대기
-        SaveManager.Instance.LoadGame();
-
-        // 씬 내 모든 체크포인트 가져오기
-        checkpoints = FindObjectsOfType<Checkpoint>(true);
-
-        // 플레이어 Transform 가져오기
-        player = PlayerManager.instance.player.transform;
-    }
-
     private void Update()
     {
         // 테스트용 씬 리스타트 (M키)
@@ -64,10 +46,57 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // ───────────────────────────────────────────
-    // 씬 재시작
-    // ───────────────────────────────────────────
-    public void RestartScene()
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // 새 씬이 로드될 때마다 초기화 코루틴 실행
+        StartCoroutine(SceneInitRoutine());
+    }
+
+    private IEnumerator SceneInitRoutine()
+    {
+        // 씬 내 오브젝트들(Awake/OnEnable/Start) 초기화 끝날 때까지 한 프레임 대기
+        yield return null;
+
+        // 1) 새 씬의 체크포인트/플레이어 다시 찾기
+        checkpoints = FindObjectsOfType<Checkpoint>(true);
+
+        Player newPlayer = FindObjectOfType<Player>();
+
+        if (newPlayer != null)
+        {
+            player = newPlayer.transform;
+        }
+        else
+        {
+            // 이 씬에는 플레이어가 없는 씬(예: 로비, 메인 메뉴)일 수 있음
+            player = null;
+        }
+
+        // 2) 저장된 데이터 기준으로 각 시스템 다시 세팅
+        SaveManager.Instance.LoadGame();
+
+        // 3) 잃어버린 화폐가 있다면 다시 생성
+        SpawnLostCurrencyIfNeeded();
+    }
+
+    // 기존 Start, StartRoutine은 이제 필요 없으면 제거해도 됩니다.
+    // 필요하다면 Start에서는 아무 것도 안 해도 됩니다.
+
+
+// ───────────────────────────────────────────
+// 씬 재시작
+// ───────────────────────────────────────────
+public void RestartScene()
     {
         SaveManager.Instance.SaveGame();
 

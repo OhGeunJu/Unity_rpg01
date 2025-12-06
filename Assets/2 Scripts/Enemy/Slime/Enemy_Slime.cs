@@ -13,6 +13,8 @@ public class Enemy_Slime : Enemy
     [SerializeField] private Vector2 minCreationVelocity;
     [SerializeField] private Vector2 maxCreationVelocity;
 
+    public ItemDrop myDropSystem;
+
     #region States
 
     public SlimeIdleState idleState { get ; private set; }
@@ -43,6 +45,8 @@ public class Enemy_Slime : Enemy
     protected override void Start()
     {
         base.Start();
+
+        myDropSystem = GetComponent<ItemDrop>();
 
         stateMachine.Initialize(idleState);
     }
